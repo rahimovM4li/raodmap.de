@@ -37,7 +37,7 @@ export function Hero() {
           >
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-sm text-primary-foreground/80">
-              2024 • Тоҷикистон → Олмон
+              2026 • Тоҷикистон → Олмон
             </span>
           </motion.div>
 

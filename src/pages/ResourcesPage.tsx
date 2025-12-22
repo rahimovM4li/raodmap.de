@@ -215,7 +215,7 @@ const ResourcesPage = () => {
                 <li>• German Embassy Dushanbe — duschanbe.diplo.de</li>
               </ul>
               <p className="mt-6 text-xs text-muted-foreground">
-                {t.common.lastUpdated}: {language === 'de' ? 'Dezember 2024' : 'Декабрь 2024'}
+                {t.common.lastUpdated}: {language === 'de' ? 'Dezember 2025' : 'Декабрь 2025'}
               </p>
             </div>
           </div>

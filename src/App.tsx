@@ -11,6 +11,8 @@ import Index from "./pages/Index";
 import StudyPage from "./pages/StudyPage";
 import WorkPage from "./pages/WorkPage";
 import AusbildungPage from "./pages/AusbildungPage";
+import LivingPage from "./pages/LivingPage";
+import RoadmapPage from "./pages/RoadmapPage";
 import FAQPage from "./pages/FAQPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import CVGeneratorPage from "./pages/CVGeneratorPage";
@@ -34,6 +36,8 @@ const App = () => (
                   <Route path="/study" element={<StudyPage />} />
                   <Route path="/work" element={<WorkPage />} />
                   <Route path="/ausbildung" element={<AusbildungPage />} />
+                  <Route path="/living" element={<LivingPage />} />
+                  <Route path="/roadmap" element={<RoadmapPage />} />
                   <Route path="/faq" element={<FAQPage />} />
                   <Route path="/resources" element={<ResourcesPage />} />
                   <Route path="/cv-generator" element={<CVGeneratorPage />} />

@@ -111,7 +111,7 @@ export const translations = {
           'Шиноснома (паспорт) эътибордор',
           'Аттестат ё диплом',
           'Сертификати забон (B1-B2)',
-          'Маблағи кофӣ (~€11,208/сол)',
+          'Маблағи кофӣ (~€11,904/сол)',
           'Суғуртаи саломатӣ',
         ],
       },
@@ -134,7 +134,7 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Барои мутахассисони баландихтисос',
           requirements: [
-            'Музди ҳадди ақал €45,300/сол (2024)',
+            'Музди ҳадди ақал €48,300/сол (2025)',
             'Шартнома аз корфармо',
             'Дипломи эътирофшуда',
           ],
@@ -182,7 +182,7 @@ export const translations = {
       items: [
         {
           question: 'Барои виза чӣ қадар пул лозим аст?',
-          answer: 'Барои визаи таҳсил шумо бояд ~€11,208 дар ҳисоби банкии Олмон нишон диҳед.',
+          answer: 'Барои визаи таҳсил шумо бояд ~€11,904 дар ҳисоби банкии Олмон нишон диҳед.',
         },
         {
           question: 'Кадом забон лозим аст?',
@@ -212,7 +212,7 @@ export const translations = {
       },
     },
     footer: {
-      copyright: '© 2024 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.',
+      copyright: '© 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.',
       disclaimer: 'Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.',
       createdBy: 'Сохта аз ҷониби',
       developer: 'Full-Stack Developer',
@@ -253,7 +253,7 @@ export const translations = {
           icon: 'Heart',
           items: [
             { title: 'Давлатӣ ё хусусӣ', desc: 'Давлатӣ то €66,600/сол даромад ҳатмист. Хусусӣ хизматҳои бештар медиҳад.' },
-            { title: 'Ӯҳдадории суғурта', desc: 'Суғуртаи саломатӣ дар Олмон ҳатмист. Донишҷӯён ~€110/моҳ мепардозанд.' },
+            { title: 'Ӯҳдадории суғурта', desc: 'Суғуртаи саломатӣ дар Олмон ҳатмист. Донишҷӯён ~€122-125/моҳ мепардозанд.' },
             { title: 'Ёфтани духтур', desc: 'jameda.de ё doctolib.de истифода баред. Терапевт (Hausarzt) тамоси аввал аст.' },
             { title: 'Барои донишҷӯён ва коргарон', desc: 'Донишҷӯён: TK, AOK, DAK маъмуланд. Коргарон: Корфармо автоматикӣ сабт мекунад.' },
           ],
@@ -305,7 +305,7 @@ export const translations = {
             { title: 'Ҳуҷҷатҳо', desc: 'Ҷамъ кунед: паспорт, сертификатҳо, нусхаҳо, CV, мактуби ангезиш, тавсияномаҳо' },
             { title: 'Тарҷумаҳо', desc: 'Тарҷумаҳои тасдиқшудаи олмонӣ аз тарҷумони савганд. Апостил агар лозим бошад.' },
             { title: 'Сатҳи забон', desc: 'Олмониро барвақт оғоз кунед! A1-B1 ҳадди ақал. B2 идеал.' },
-            { title: 'Нақшаи молиявӣ', desc: 'Хароҷоти умумиро ҳисоб кунед. Барои blocked account (~€11,208), сафар, моҳҳои аввал сарфа кунед.' },
+            { title: 'Нақшаи молиявӣ', desc: 'Хароҷоти умумиро ҳисоб кунед. Барои blocked account (~€11,904), сафар, моҳҳои аввал сарфа кунед.' },
           ],
           tips: ['12+ моҳ пештар оғоз кунед', 'Нусхаҳои рақамии ҳама чиз нигоҳ доред', 'Талаботи мушаххасро барои роҳи худ таҳқиқ кунед'],
           checklist: ['Паспорти эътибордор (6+ моҳ)', 'Аттестат/дипломи мактаб/донишгоҳ', 'Сертификати забон', 'Исботи blocked account', 'Суғуртаи саломатӣ', 'Аксҳои биометрикӣ'],
@@ -494,7 +494,7 @@ export const translations = {
           'Действующий паспорт',
           'Аттестат или диплом',
           'Языковой сертификат (B1-B2)',
-          'Достаточные средства (~€11,208/год)',
+          'Достаточные средства (~€11,904/год)',
           'Медицинская страховка',
         ],
       },
@@ -517,7 +517,7 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Для высококвалифицированных специалистов',
           requirements: [
-            'Минимальная зарплата €45,300/год (2024)',
+            'Минимальная зарплата €48,300/год (2025)',
             'Контракт от работодателя',
             'Признанный диплом',
           ],
@@ -565,7 +565,7 @@ export const translations = {
       items: [
         {
           question: 'Сколько денег нужно для визы?',
-          answer: 'Для студенческой визы нужно показать ~€11,208 на блокированном счёте в немецком банке.',
+          answer: 'Для студенческой визы нужно показать ~€11,904 на блокированном счёте в немецком банке.',
         },
         {
           question: 'Какой язык нужен?',
@@ -595,7 +595,7 @@ export const translations = {
       },
     },
     footer: {
-      copyright: '© 2024 Germany Roadmap. Все права защищены.',
+      copyright: '© 2026 Germany Roadmap. Все права защищены.',
       disclaimer: 'Этот сайт не является официальным источником. Для точной информации свяжитесь с посольством.',
       createdBy: 'Создано',
       developer: 'Full-Stack Developer',
@@ -636,7 +636,7 @@ export const translations = {
           icon: 'Heart',
           items: [
             { title: 'Государственная или частная', desc: 'Государственная обязательна до €66,600/год дохода. Частная предлагает больше услуг.' },
-            { title: 'Обязанность страхования', desc: 'Медицинская страховка в Германии обязательна. Студенты платят ~€110/месяц.' },
+            { title: 'Обязанность страхования', desc: 'Медицинская страховка в Германии обязательна. Студенты платят ~€122-125/месяц.' },
             { title: 'Поиск врача', desc: 'Используйте jameda.de или doctolib.de. Терапевт (Hausarzt) — первый контакт.' },
             { title: 'Для студентов и работников', desc: 'Студенты: TK, AOK, DAK популярны. Работники: Работодатель регистрирует автоматически.' },
           ],
@@ -688,7 +688,7 @@ export const translations = {
             { title: 'Документы', desc: 'Соберите: паспорт, сертификаты, выписки, CV, мотивационное письмо, рекомендации' },
             { title: 'Переводы', desc: 'Заверенные переводы на немецкий у присяжного переводчика. Апостиль при необходимости.' },
             { title: 'Уровень языка', desc: 'Начните немецкий рано! A1-B1 минимум. B2 идеально.' },
-            { title: 'Финансовый план', desc: 'Рассчитайте расходы. Накопите на blocked account (~€11,208), проезд, первые месяцы.' },
+            { title: 'Финансовый план', desc: 'Рассчитайте расходы. Накопите на blocked account (~€11,904), проезд, первые месяцы.' },
           ],
           tips: ['Начните за 12+ месяцев', 'Храните цифровые копии всего', 'Изучите требования для вашего пути'],
           checklist: ['Действующий паспорт (6+ месяцев)', 'Аттестат/диплом', 'Языковой сертификат', 'Подтверждение blocked account', 'Медстраховка', 'Биометрические фото'],
@@ -877,7 +877,7 @@ export const translations = {
           'Gültiger Reisepass',
           'Schulabschlusszeugnis oder Diplom',
           'Sprachzertifikat (B1-B2)',
-          'Ausreichende Mittel (~€11.208/Jahr)',
+          'Ausreichende Mittel (~€11.904/Jahr)',
           'Krankenversicherung',
         ],
       },
@@ -900,7 +900,7 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Für hochqualifizierte Fachkräfte',
           requirements: [
-            'Mindestgehalt €45.300/Jahr (2024)',
+            'Mindestgehalt €48.300/Jahr (2025)',
             'Vertrag vom Arbeitgeber',
             'Anerkannter Abschluss',
           ],
@@ -948,7 +948,7 @@ export const translations = {
       items: [
         {
           question: 'Wie viel Geld brauche ich für ein Visum?',
-          answer: 'Für ein Studienvisum müssen Sie ~€11.208 auf einem Sperrkonto bei einer deutschen Bank nachweisen.',
+          answer: 'Für ein Studienvisum müssen Sie ~€11.904 auf einem Sperrkonto bei einer deutschen Bank nachweisen.',
         },
         {
           question: 'Welche Sprache brauche ich?',
@@ -978,7 +978,7 @@ export const translations = {
       },
     },
     footer: {
-      copyright: '© 2024 Germany Roadmap. Alle Rechte vorbehalten.',
+      copyright: '© 2026 Germany Roadmap. Alle Rechte vorbehalten.',
       disclaimer: 'Diese Seite ist keine offizielle Quelle. Kontaktieren Sie die Botschaft für genaue Informationen.',
       createdBy: 'Erstellt von',
       developer: 'Full-Stack Developer',
@@ -1019,7 +1019,7 @@ export const translations = {
           icon: 'Heart',
           items: [
             { title: 'Gesetzlich oder privat', desc: 'Gesetzlich ist Pflicht bis €66.600/Jahr Einkommen. Privat bietet mehr Leistungen.' },
-            { title: 'Versicherungspflicht', desc: 'Krankenversicherung ist in Deutschland Pflicht. Studierende zahlen ~€110/Monat.' },
+            { title: 'Versicherungspflicht', desc: 'Krankenversicherung ist in Deutschland Pflicht. Studierende zahlen ~€122-125/Monat.' },
             { title: 'Arzt finden', desc: 'jameda.de oder doctolib.de nutzen. Hausarzt ist erster Ansprechpartner.' },
             { title: 'Für Studierende & Arbeiter', desc: 'Studierende: TK, AOK, DAK beliebt. Arbeiter: Arbeitgeber meldet automatisch an.' },
           ],
@@ -1071,7 +1071,7 @@ export const translations = {
             { title: 'Dokumente', desc: 'Sammeln: Pass, Zertifikate, Zeugnisse, CV, Motivationsschreiben, Referenzen' },
             { title: 'Übersetzungen', desc: 'Beglaubigte deutsche Übersetzungen vom vereidigten Übersetzer. Apostille bei Bedarf.' },
             { title: 'Sprachniveau', desc: 'Deutsch früh anfangen! A1-B1 Minimum. B2 ideal.' },
-            { title: 'Finanzplan', desc: 'Gesamtkosten berechnen. Für Sperrkonto (~€11.208), Reise, erste Monate sparen.' },
+            { title: 'Finanzplan', desc: 'Gesamtkosten berechnen. Für Sperrkonto (~€11.904), Reise, erste Monate sparen.' },
           ],
           tips: ['12+ Monate vorher beginnen', 'Digitale Kopien von allem aufbewahren', 'Spezifische Anforderungen für Ihren Weg recherchieren'],
           checklist: ['Gültiger Pass (6+ Monate)', 'Schul-/Uni-Zeugnisse', 'Sprachzertifikat', 'Sperrkonto-Nachweis', 'Krankenversicherung', 'Biometrische Fotos'],

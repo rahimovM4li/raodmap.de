@@ -26,8 +26,8 @@ const StudyPage = () => {
       icon: CreditCard,
       title: language === 'de' ? 'Sperrkonto eröffnen' : 'Открытие банковского счёта',
       description: language === 'de' 
-        ? 'Sperrkonto mit ~11.208€' 
-        : 'Блокированный счёт (Sperrkonto) с ~11,208€',
+        ? 'Sperrkonto mit ~11.904€' 
+        : 'Блокированный счёт (Sperrkonto) с ~11,904€',
     },
     {
       icon: Shield,
@@ -46,7 +46,7 @@ const StudyPage = () => {
     'Deutschzertifikat (TestDaF, DSH) oder Englisch (IELTS, TOEFL)',
     'Motivationsschreiben',
     'Lebenslauf auf Deutsch',
-    'Finanzierungsnachweis — Sperrkonto mit €11.208',
+    'Finanzierungsnachweis — Sperrkonto mit €11.904',
     'Krankenversicherung (für Visum)',
     'Biometrische Fotos (35x45mm)',
     'Zulassungsbescheid der Universität',
@@ -57,7 +57,7 @@ const StudyPage = () => {
     'Сертификат немецкого (TestDaF, DSH) или английского (IELTS, TOEFL)',
     'Мотивационное письмо (Motivationsschreiben)',
     'CV / Резюме на немецком',
-    'Подтверждение средств — Sperrkonto с €11,208',
+    'Подтверждение средств — Sperrkonto с €11,904',
     'Медицинская страховка (для визы)',
     'Биометрические фото (35x45mm)',
     'Копия письма о зачислении',

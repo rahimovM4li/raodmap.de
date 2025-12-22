@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* German-inspired professional palette */
+    --background: 210 25% 98%;
+    --foreground: 220 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+
+    /* Deep navy - trust, professionalism */
+    --primary: 220 60% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm gray secondary */
+    --secondary: 220 15% 94%;
+    --secondary-foreground: 220 30% 20%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Golden amber - opportunity, warmth */
+    --accent: 38 95% 50%;
+    --accent-foreground: 220 30% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 60% 25%;
+
+    --radius: 0.75rem;
+
+    /* Custom semantic tokens */
+    --success: 160 60% 40%;
+    --success-foreground: 0 0% 100%;
+    
+    --info: 210 80% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* Path colors */
+    --study: 220 70% 50%;
+    --study-light: 220 70% 95%;
+    --work: 38 90% 50%;
+    --work-light: 38 90% 95%;
+    --ausbildung: 160 50% 45%;
+    --ausbildung-light: 160 50% 95%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(220 50% 35%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 15% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(38 95% 50%) 0%, hsl(38 100% 60%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px hsl(220 30% 15% / 0.08);
+    --shadow-md: 0 4px 12px hsl(220 30% 15% / 0.1);
+    --shadow-lg: 0 12px 40px hsl(220 30% 15% / 0.12);
+    --shadow-card: 0 2px 8px hsl(220 30% 15% / 0.06), 0 8px 32px hsl(220 30% 15% / 0.08);
+    --shadow-glow: 0 0 40px hsl(38 95% 50% / 0.2);
+
+    /* Sidebar */
+    --sidebar-background: 220 25% 97%;
+    --sidebar-foreground: 220 30% 20%;
+    --sidebar-primary: 220 60% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 30% 20%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 60% 25%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 30% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 30% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 38 95% 55%;
+    --primary-foreground: 220 30% 10%;
+
+    --secondary: 220 25% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 38 95% 55%;
+    --accent-foreground: 220 30% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 38 95% 55%;
+
+    --study: 220 70% 60%;
+    --study-light: 220 50% 20%;
+    --work: 38 90% 55%;
+    --work-light: 38 40% 18%;
+    --ausbildung: 160 50% 50%;
+    --ausbildung-light: 160 30% 18%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(220 30% 12%) 0%, hsl(220 35% 18%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 30% 14%) 0%, hsl(220 30% 10%) 100%);
+
+    --sidebar-background: 220 30% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 38 95% 55%;
+    --sidebar-primary-foreground: 220 30% 10%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 38 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Sans', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl border border-border/50;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-path {
+    @apply bg-card rounded-2xl border-2 transition-all duration-300;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-path:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-hero {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-semibold transition-all duration-300;
+    background: var(--gradient-accent);
+    color: hsl(var(--foreground));
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 60px hsl(38 95% 50% / 0.3);
+  }
+
+  .step-indicator {
+    @apply flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold;
+    background: var(--gradient-accent);
+    color: hsl(var(--foreground));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .step-line {
+    @apply w-0.5 bg-border;
+    min-height: 24px;
+  }
+
+  .step-line-active {
+    background: linear-gradient(to bottom, hsl(var(--accent)), hsl(var(--border)));
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg rounded-2xl border border-border/30;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+}

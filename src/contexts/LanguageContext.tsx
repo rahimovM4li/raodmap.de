@@ -22,7 +22,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem('language', language);
-    document.documentElement.lang = language;
+    // Set HTML lang attribute for SEO (tj -> tg for proper ISO code)
+    const htmlLang = language === 'tj' ? 'tg' : language;
+    document.documentElement.lang = htmlLang;
   }, [language]);
 
   const t = translations[language];

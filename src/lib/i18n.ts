@@ -214,7 +214,7 @@ export const translations = {
     footer: {
       copyright: '© 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.',
       disclaimer: 'Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.',
-      createdBy: 'Сохта аз ҷониби',
+      createdBy: 'Сохта шудааст аз ҷониби',
       developer: 'Full-Stack Developer',
       creatorDesc: 'Ин платформа аз ҷониби Муҳаммадалӣ Раҳимов (justAli), Full-Stack Developer муқими Олмон сохта ва таҳия шудааст.',
       portfolio: 'Портфолио ва лоиҳаҳо',

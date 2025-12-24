@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ExternalLink, MapPin, Phone, User, Code } from 'lucide-react';
+import { ExternalLink, MapPin, Phone, User, Code, Icon } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Footer() {
@@ -32,11 +33,38 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand & Creator */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">DE</span>
+            <div className="flex items-center gap-3 mb-4 relative">
+              {/* Animated Flag */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1, 
+                  rotate: 0,
+                  y: [0, -8, 0]
+                }}
+                transition={{
+                  opacity: { duration: 0.6 },
+                  scale: { duration: 0.6 },
+                  rotate: { duration: 0.6 },
+                  y: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+                className="relative"
+              >
+                <img 
+                  src="/flag.png" 
+                  alt="Germany & Tajikistan Flag" 
+                  className="w-12 h-12 object-contain drop-shadow-lg"
+                />
+              </motion.div>
+              
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-lg">Germany Roadmap</span>
               </div>
-              <span className="font-semibold text-lg">Germany Roadmap</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
               {t.footer.disclaimer}

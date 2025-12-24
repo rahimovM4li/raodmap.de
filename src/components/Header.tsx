@@ -42,8 +42,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">DE</span>
+            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
+              <img src="favicon.ico" alt="Germany Roadmap Logo" />
             </div>
             <span className="hidden sm:block font-semibold text-foreground">
               Germany Roadmap

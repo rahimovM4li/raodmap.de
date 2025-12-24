@@ -38,6 +38,7 @@ const LivingPage = () => {
   const seoTitle = {
     de: 'Leben in Deutschland | Praktischer Leitfaden für Neuankömmlinge',
     ru: 'Жизнь в Германии | Практическое руководство для новоприбывших',
+    tj: 'Зиндагӣ дар Олмон | Роҳнамои амалӣ барои наворасидагон',
   };
 
   return (
@@ -60,7 +61,7 @@ const LivingPage = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6">
                 <Home className="w-4 h-4 text-accent" />
                 <span className="text-sm text-primary-foreground/80">
-                  {language === 'de' ? 'Wichtige Informationen' : 'Важная информация'}
+                  {language === 'de' ? 'Wichtige Informationen' : language === 'ru' ? 'Важная информация' : 'Маълумоти муҳим'}
                 </span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
@@ -127,24 +128,24 @@ const LivingPage = () => {
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container-main">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-              {language === 'de' ? 'Schnelle Tipps für Neuankömmlinge' : 'Быстрые советы для новичков'}
+              {language === 'de' ? 'Schnelle Tipps für Neuankömmlinge' : language === 'ru' ? 'Быстрые советы для новичков' : 'Машваратҳои тез барои наворасидагон'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
                 {
                   emoji: '📝',
-                  title: language === 'de' ? 'Anmeldung zuerst' : 'Сначала Anmeldung',
-                  desc: language === 'de' ? 'Innerhalb von 14 Tagen anmelden - du brauchst das für fast alles!' : 'Зарегистрируйся в течение 14 дней — это нужно почти для всего!',
+                  title: language === 'de' ? 'Anmeldung zuerst' : language === 'ru' ? 'Сначала Anmeldung' : 'Аввал Anmeldung',
+                  desc: language === 'de' ? 'Innerhalb von 14 Tagen anmelden - du brauchst das für fast alles!' : language === 'ru' ? 'Зарегистрируйся в течение 14 дней — это нужно почти для всего!' : 'Дар давоми 14 рӯз қайд шавед — ин барои қариб ҳама чиз лозим аст!',
                 },
                 {
                   emoji: '🏦',
-                  title: language === 'de' ? 'Bankkonto eröffnen' : 'Открой счёт',
-                  desc: language === 'de' ? 'Deutsche IBAN nötig für Miete, Gehalt, Verträge' : 'Немецкий IBAN нужен для аренды, зарплаты, контрактов',
+                  title: language === 'de' ? 'Bankkonto eröffnen' : language === 'ru' ? 'Открой счёт' : 'Ҳисоб кушоед',
+                  desc: language === 'de' ? 'Deutsche IBAN nötig für Miete, Gehalt, Verträge' : language === 'ru' ? 'Немецкий IBAN нужен для аренды, зарплаты, контрактов' : 'IBAN-и олмонӣ барои иҷора, музд, шартномаҳо лозим аст',
                 },
                 {
                   emoji: '🇩🇪',
-                  title: language === 'de' ? 'Deutsch lernen' : 'Учи немецкий',
-                  desc: language === 'de' ? 'Selbst Grundkenntnisse machen den Alltag 10x leichter' : 'Даже базовый немецкий упрощает жизнь в 10 раз',
+                  title: language === 'de' ? 'Deutsch lernen' : language === 'ru' ? 'Учи немецкий' : 'Забони олмонӣ омӯзед',
+                  desc: language === 'de' ? 'Selbst Grundkenntnisse machen den Alltag 10x leichter' : language === 'ru' ? 'Даже базовый немецкий упрощает жизнь в 10 раз' : 'Ҳатто забони асосӣ зиндагиро 10 маротиба осон мекунад',
                 },
               ].map((tip, i) => (
                 <motion.div

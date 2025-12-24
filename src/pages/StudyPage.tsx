@@ -24,10 +24,12 @@ const StudyPage = () => {
     },
     {
       icon: CreditCard,
-      title: language === 'de' ? 'Sperrkonto eröffnen' : 'Открытие банковского счёта',
+      title: language === 'de' ? 'Sperrkonto eröffnen' : language === 'ru' ? 'Открытие банковского счёта' : 'Кушодани ҳисоби банкӣ',
       description: language === 'de' 
         ? 'Sperrkonto mit ~11.904€' 
-        : 'Блокированный счёт (Sperrkonto) с ~11,904€',
+        : language === 'ru' 
+        ? 'Блокированный счёт (Sperrkonto) с ~11,904€'
+        : 'Ҳисоби блокшуда (Sperrkonto) бо ~11,904€',
     },
     {
       icon: Shield,
@@ -50,7 +52,7 @@ const StudyPage = () => {
     'Krankenversicherung (für Visum)',
     'Biometrische Fotos (35x45mm)',
     'Zulassungsbescheid der Universität',
-  ] : [
+  ] : language === 'ru' ? [
     'Действующий паспорт (минимум 12 месяцев)',
     'Аттестат об окончании школы (перевод на немецкий)',
     'Диплом (если есть) с заверенным переводом',
@@ -61,11 +63,24 @@ const StudyPage = () => {
     'Медицинская страховка (для визы)',
     'Биометрические фото (35x45mm)',
     'Копия письма о зачислении',
+  ] : [
+    'Шиносномаи эътибор (ҳадди ақал 12 моҳ)',
+    'Шаҳодатномаи хатми мактаб (бо тарҷума)',
+    'Дипломи олӣ (агар дошта бошед) бо тарҷумаи тасдиқшуда',
+    'Сертификати забони олмонӣ (TestDaF, DSH) ё англисӣ (IELTS, TOEFL)',
+    'Мактуби мотивационӣ (Motivationsschreiben)',
+    'CV / Резюме ба забони олмонӣ',
+    'Тасдиқи маблағҳо — Sperrkonto бо €11,904',
+    'Суғуртаи тиббӣ (барои виза)',
+    'Аксҳои биометрӣ (35x45mm)',
+    'Нусхаи мактуби қабулшавӣ',
   ];
 
   const seoTitle = language === 'de' 
     ? 'Studium in Deutschland | Leitfaden für internationale Studierende' 
-    : 'Учёба в Германии | Руководство для студентов';
+    : language === 'ru'
+    ? 'Учёба в Германии | Руководство для студентов'
+    : 'Таҳсил дар Олмон | Роҳнамо барои донишҷӯён';
 
   return (
     <>
@@ -87,7 +102,7 @@ const StudyPage = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-study/20 backdrop-blur-sm mb-6">
                 <GraduationCap className="w-4 h-4 text-primary-foreground" />
                 <span className="text-sm text-primary-foreground/80">
-                  {language === 'de' ? '6-24 Monate Vorbereitung' : '6-24 месяца подготовки'}
+                  {language === 'de' ? '6-24 Monate Vorbereitung' : language === 'ru' ? '6-24 месяца подготовки' : '6-24 моҳ тайёргарӣ'}
                 </span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
@@ -113,7 +128,7 @@ const StudyPage = () => {
               {/* Roadmap */}
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                  {language === 'de' ? 'Wichtige Schritte' : 'Основные шаги'}
+                  {language === 'de' ? 'Wichtige Schritte' : language === 'ru' ? 'Основные шаги' : 'Қадамҳои муҳим'}
                 </h2>
                 <div className="space-y-0">
                   {steps.map((step, i) => (
@@ -148,7 +163,7 @@ const StudyPage = () => {
                 {/* Quick Links */}
                 <div className="mt-8 card-elevated p-6">
                   <h3 className="font-semibold text-foreground mb-4">
-                    {language === 'de' ? 'Wichtige Links' : 'Важные ссылки'}
+                    {language === 'de' ? 'Wichtige Links' : language === 'ru' ? 'Важные ссылки' : 'Истиноҳои муҳим'}
                   </h3>
                   <div className="space-y-3">
                     <a
@@ -158,7 +173,7 @@ const StudyPage = () => {
                       className="flex items-center gap-2 text-info hover:underline"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      DAAD — {language === 'de' ? 'Programmsuche' : 'Поиск программы'}
+                      DAAD — {language === 'de' ? 'Programmsuche' : language === 'ru' ? 'Поиск программы' : 'Ҷустуҷӯи барнома'}
                     </a>
                     <a
                       href="https://www.uni-assist.de/"
@@ -167,7 +182,7 @@ const StudyPage = () => {
                       className="flex items-center gap-2 text-info hover:underline"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      uni-assist — {language === 'de' ? 'Bewerbung' : 'Подача заявки'}
+                      uni-assist — {language === 'de' ? 'Bewerbung' : language === 'ru' ? 'Подача заявки' : 'Пешниҳоди ариза'}
                     </a>
                     <a
                       href="https://www.coracle.de/"
@@ -176,7 +191,7 @@ const StudyPage = () => {
                       className="flex items-center gap-2 text-info hover:underline"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Sperrkonto — {language === 'de' ? 'Sperrkonto eröffnen' : 'Блокированный счёт'}
+                      Sperrkonto — {language === 'de' ? 'Sperrkonto eröffnen' : language === 'ru' ? 'Блокированный счёт' : 'Ҳисоби блокшуда'}
                     </a>
                   </div>
                 </div>
@@ -210,16 +225,18 @@ const StudyPage = () => {
         <section className="py-16 md:py-24">
           <div className="container-main text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              {language === 'de' ? 'Bereit anzufangen?' : 'Готовы начать?'}
+              {language === 'de' ? 'Bereit anzufangen?' : language === 'ru' ? 'Готовы начать?' : 'Омодаед оғоз кунед?'}
             </h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
               {language === 'de'
                 ? 'Erstellen Sie einen individuellen Plan mit unserem Wizard und laden Sie das PDF herunter.'
-                : 'Создайте индивидуальный план с помощью нашего wizard и скачайте PDF.'}
+                : language === 'ru'
+                ? 'Создайте индивидуальный план с помощью нашего wizard и скачайте PDF.'
+                : 'Нақшаи инфиродӣ бо ёрии wizard бисозед ва PDF-ро боргирӣ кунед.'}
             </p>
             <Button asChild className="btn-hero">
               <Link to="/#wizard">
-                {language === 'de' ? 'Plan erstellen' : 'Создать план'}
+                {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>

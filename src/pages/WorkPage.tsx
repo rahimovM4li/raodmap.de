@@ -15,13 +15,20 @@ const WorkPage = () => {
     'Krankenversicherung',
     'Deutsch oder Englisch (B1+)',
     'Lebenslauf auf Deutsch',
-  ] : [
+  ] : language === 'ru' ? [
     'Диплом университета (Bachelor или Master)',
     'Опыт работы в своей сфере',
     'Достаточные средства на 6 месяцев (~5,000€)',
     'Медицинская страховка',
     'Немецкий или английский (B1+)',
     'CV на немецком',
+  ] : [
+    'Дипломи донишгоҳ (Bachelor ё Master)',
+    'Таҷрибаи корӣ дар соҳаи худ',
+    'Маблағҳои кофӣ барои 6 моҳ (~5,000€)',
+    'Суғуртаи тиббӣ',
+    'Забони олмонӣ ё англисӣ (B1+)',
+    'CV ба забони олмонӣ',
   ];
 
   const blueCardRequirements = language === 'de' ? [
@@ -30,17 +37,25 @@ const WorkPage = () => {
     'Für IT/Ingenieurwesen: €41.000/Jahr',
     'Anerkannter Hochschulabschluss',
     'Krankenversicherung',
-  ] : [
+  ] : language === 'ru' ? [
     'Контракт от немецкого работодателя',
     'Минимальная зарплата €45,300/год (2024)',
     'Для IT/инженерии: €41,000/год',
     'Признанный диплом университета',
     'Медицинская страховка',
+  ] : [
+    'Шартномаи корӣ аз корфармои олмонӣ',
+    'Музди ҳадди ақал €45.300/сол (2024)',
+    'Барои IT/муҳандисӣ: €41.000/сол',
+    'Дипломи эътирофшудаи донишгоҳ',
+    'Суғуртаи тиббӣ',
   ];
 
   const seoTitle = language === 'de' 
     ? 'Arbeiten in Deutschland | Job Seeker Visa, Blue Card' 
-    : 'Работа в Германии | Job Seeker Visa, Blue Card';
+    : language === 'ru'
+    ? 'Работа в Германии | Job Seeker Visa, Blue Card'
+    : 'Кор дар Олмон | Job Seeker Visa, Blue Card';
 
   return (
     <>
@@ -62,7 +77,7 @@ const WorkPage = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-work/20 backdrop-blur-sm mb-6">
                 <Briefcase className="w-4 h-4 text-primary-foreground" />
                 <span className="text-sm text-primary-foreground/80">
-                  {language === 'de' ? '3-12 Monate Vorbereitung' : '3-12 месяцев подготовки'}
+                  {language === 'de' ? '3-12 Monate Vorbereitung' : language === 'ru' ? '3-12 месяцев подготовки' : '3-12 моҳ тайёргарӣ'}
                 </span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
@@ -90,7 +105,7 @@ const WorkPage = () => {
                       {t.work.paths.jobseeker.title}
                     </h2>
                     <p className="text-sm text-muted-foreground">
-                      {language === 'de' ? '6 Monate zur Jobsuche' : '6 месяцев для поиска'}
+                      {language === 'de' ? '6 Monate zur Jobsuche' : language === 'ru' ? '6 месяцев для поиска' : '6 моҳ барои ҷустуҷӯи кор'}
                     </p>
                   </div>
                 </div>
@@ -118,7 +133,7 @@ const WorkPage = () => {
                       {t.work.paths.bluecard.title}
                     </h2>
                     <p className="text-sm text-muted-foreground">
-                      {language === 'de' ? 'Für Fachkräfte' : 'Для специалистов'}
+                      {language === 'de' ? 'Für Fachkräfte' : language === 'ru' ? 'Для специалистов' : 'Барои мутахассисон'}
                     </p>
                   </div>
                 </div>
@@ -142,7 +157,7 @@ const WorkPage = () => {
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container-main">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-              {language === 'de' ? 'Wo nach Jobs suchen?' : 'Где искать работу?'}
+              {language === 'de' ? 'Wo nach Jobs suchen?' : language === 'ru' ? 'Где искать работу?' : 'Кор дар куҷо ҷустуҷӯ кунем?'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {[
@@ -176,7 +191,7 @@ const WorkPage = () => {
                 className="inline-flex items-center gap-2 text-info hover:underline font-medium"
               >
                 <ExternalLink className="w-5 h-5" />
-                Make it in Germany — {language === 'de' ? 'Offizielles Portal' : 'Официальный портал'}
+                Make it in Germany — {language === 'de' ? 'Offizielles Portal' : language === 'ru' ? 'Официальный портал' : 'Портали расмӣ'}
               </a>
             </div>
           </div>
@@ -187,7 +202,7 @@ const WorkPage = () => {
           <div className="container-main">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-                {language === 'de' ? 'Lebenslauf-Vorlage' : 'Шаблон CV'}
+                {language === 'de' ? 'Lebenslauf-Vorlage' : language === 'ru' ? 'Шаблон CV' : 'Намунаи CV'}
               </h2>
               <div className="card-elevated p-6 md:p-8">
                 <div className="space-y-4 text-sm">
@@ -236,7 +251,7 @@ const WorkPage = () => {
           <div className="container-main text-center">
             <Button asChild className="btn-hero">
               <Link to="/#wizard">
-                {language === 'de' ? 'Plan erstellen' : 'Создать план'}
+                {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>

@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/CookieBanner";
 import Index from "./pages/Index";
 import StudyPage from "./pages/StudyPage";
 import WorkPage from "./pages/WorkPage";
@@ -16,6 +17,9 @@ import RoadmapPage from "./pages/RoadmapPage";
 import FAQPage from "./pages/FAQPage";
 import ResourcesPage from "./pages/ResourcesPage";
 import CVGeneratorPage from "./pages/CVGeneratorPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import CookiesPage from "./pages/CookiesPage";
+import ImprintPage from "./pages/ImprintPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,10 +45,14 @@ const App = () => (
                   <Route path="/faq" element={<FAQPage />} />
                   <Route path="/resources" element={<ResourcesPage />} />
                   <Route path="/cv-generator" element={<CVGeneratorPage />} />
+                  <Route path="/privacy" element={<PrivacyPage />} />
+                  <Route path="/cookies" element={<CookiesPage />} />
+                  <Route path="/imprint" element={<ImprintPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>
               <Footer />
+              <CookieBanner />
             </div>
           </BrowserRouter>
         </TooltipProvider>

@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 import { Hero } from '@/components/Hero';
 import { Wizard } from '@/components/Wizard';
 import { ResourcesSection } from '@/components/ResourcesSection';
@@ -6,6 +5,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { HomePageSEO } from '@/components/SEOHead';
+import { WebsiteStructuredData, OrganizationStructuredData } from '@/components/StructuredData';
 
 const Index = () => {
   const { language, t } = useLanguage();
@@ -30,14 +31,12 @@ const Index = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle[language]}</title>
-        <meta name="description" content={seoDescription[language]} />
-        <meta property="og:title" content={seoTitle[language]} />
-        <meta property="og:description" content={seoDescription[language]} />
-        <meta name="keywords" content="Germany, visa, study, work, Ausbildung, immigration, Blue Card, DAAD, Tajikistan" />
-        <html lang={language} />
-      </Helmet>
+      {/* SEO Meta Tags */}
+      <HomePageSEO />
+      
+      {/* Structured Data */}
+      <WebsiteStructuredData />
+      <OrganizationStructuredData />
 
       <main>
         <Hero />

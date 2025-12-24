@@ -189,7 +189,13 @@ const ResourcesPage = () => {
                     variant="outline" 
                     size="sm" 
                     className="shrink-0"
-                    onClick={() => generateChecklistPDF(checklist.type, language)}
+                    onClick={async () => {
+                      try {
+                        await generateChecklistPDF(checklist.type, language);
+                      } catch (error) {
+                        console.error('PDF-Generierung fehlgeschlagen:', error);
+                      }
+                    }}
                   >
                     <Download className="w-4 h-4" />
                   </Button>

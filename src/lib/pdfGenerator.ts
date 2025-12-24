@@ -1,5 +1,7 @@
 import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import { Language } from '@/lib/i18n';
+import { generatePDFFromHTML, createChecklistHTML, createPersonalizedHTML } from './pdfHelper';
 
 interface ChecklistItem {
   text: string;
@@ -482,237 +484,82 @@ const getLabel = (language: Language, tj: string, ru: string, de: string) => {
   return de;
 };
 
-export function generateChecklistPDF(type: 'study' | 'jobseeker' | 'bluecard' | 'ausbildung', language: Language): void {
+export async function generateChecklistPDF(
+  type: 'study' | 'jobseeker' | 'bluecard' | 'ausbildung',
+  language: Language
+): Promise<void> {
   const data = checklists[type][language];
-  const doc = new jsPDF();
   
-  let y = 20;
-  const marginLeft = 20;
-  const pageWidth = 170;
-  
-  // Title
-  doc.setFontSize(18);
-  doc.setFont('helvetica', 'bold');
-  doc.text(data.title, marginLeft, y);
-  y += 10;
-  
-  // Subtitle
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'normal');
-  doc.text(data.subtitle, marginLeft, y);
-  y += 8;
-  
-  // Timeline
-  doc.setFontSize(10);
-  doc.setTextColor(100, 100, 100);
-  doc.text(data.timeline, marginLeft, y);
-  doc.setTextColor(0, 0, 0);
-  y += 15;
-  
-  // Documents section
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(getLabel(language, 'ҲУҶҶАТҲО:', 'ДОКУМЕНТЫ:', 'DOKUMENTE:'), marginLeft, y);
-  y += 8;
-  
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  
-  data.documents.forEach((item) => {
-    const checkbox = '[ ] ';
-    const requiredMark = item.required ? ' *' : '';
-    const text = checkbox + item.text + requiredMark;
-    
-    const lines = doc.splitTextToSize(text, pageWidth);
-    lines.forEach((line: string) => {
-      if (y > 270) {
-        doc.addPage();
-        y = 20;
-      }
-      doc.text(line, marginLeft, y);
-      y += 6;
-    });
+  // Erstelle HTML mit schönem Design
+  const htmlElement = createChecklistHTML({
+    title: data.title,
+    subtitle: data.subtitle,
+    timeline: data.timeline,
+    documents: data.documents,
+    steps: data.steps,
+    embassy: data.embassy,
+    sources: data.sources,
+    labels: {
+      documents: getLabel(language, 'ҲУҶҶАТҲО', 'ДОКУМЕНТЫ', 'DOKUMENTE'),
+      required: getLabel(language, '* = ҳатмӣ', '* = обязательно', '* = erforderlich'),
+      steps: getLabel(language, 'ҚАДАМҲО', 'ШАГИ', 'SCHRITTE'),
+      sources: getLabel(language, 'МАНБАЪҲО', 'ИСТОЧНИКИ', 'QUELLEN'),
+    },
   });
+
+  // Füge Element temporär zum DOM hinzu (für Rendering)
+  document.body.appendChild(htmlElement);
+  htmlElement.style.position = 'absolute';
+  htmlElement.style.left = '-9999px';
   
-  y += 5;
-  doc.setFontSize(8);
-  doc.setTextColor(100, 100, 100);
-  doc.text(getLabel(language, '* = ҳатмӣ', '* = обязательно', '* = erforderlich'), marginLeft, y);
-  doc.setTextColor(0, 0, 0);
-  y += 15;
-  
-  // Steps section
-  if (y > 200) {
-    doc.addPage();
-    y = 20;
+  try {
+    // Generiere PDF mit perfekter Unicode-Unterstützung
+    await generatePDFFromHTML(htmlElement, `checklist-${type}-${language}.pdf`);
+  } finally {
+    // Entferne Element wieder
+    document.body.removeChild(htmlElement);
   }
-  
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(getLabel(language, 'ҚАДАМҲО:', 'ШАГИ:', 'SCHRITTE:'), marginLeft, y);
-  y += 8;
-  
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  
-  data.steps.forEach((step) => {
-    const lines = doc.splitTextToSize(step, pageWidth);
-    lines.forEach((line: string) => {
-      if (y > 270) {
-        doc.addPage();
-        y = 20;
-      }
-      doc.text(line, marginLeft, y);
-      y += 6;
-    });
-  });
-  
-  y += 15;
-  
-  // Embassy section
-  if (y > 220) {
-    doc.addPage();
-    y = 20;
-  }
-  
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(data.embassy.title.toUpperCase(), marginLeft, y);
-  y += 8;
-  
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  doc.text(data.embassy.address, marginLeft, y);
-  y += 6;
-  doc.text(data.embassy.phone, marginLeft, y);
-  y += 6;
-  doc.text(data.embassy.website, marginLeft, y);
-  y += 15;
-  
-  // Sources
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'bold');
-  doc.text(getLabel(language, 'МАНБАЪҲО:', 'ИСТОЧНИКИ:', 'QUELLEN:'), marginLeft, y);
-  y += 8;
-  
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  data.sources.forEach((source) => {
-    doc.text('• ' + source, marginLeft, y);
-    y += 5;
-  });
-  
-  // Footer
-  y = 285;
-  doc.setFontSize(8);
-  doc.setTextColor(150, 150, 150);
-  doc.text('Germany Roadmap — germanyroad.map | ' + new Date().toLocaleDateString(), marginLeft, y);
-  
-  // Save
-  const filename = `checklist-${type}-${language}.pdf`;
-  doc.save(filename);
 }
 
-export function generatePersonalizedPDF(
+export async function generatePersonalizedPDF(
   pathType: 'study' | 'work' | 'ausbildung',
   language: Language,
   steps: { title: string; description: string }[],
   documents: string[],
   duration: string
-): void {
-  const doc = new jsPDF();
-  
-  let y = 20;
-  const marginLeft = 20;
-  const pageWidth = 170;
-  
+): Promise<void> {
   const titles = {
     study: { tj: 'НАҚШАИ ТАҲСИЛ ДАР ОЛМОН', ru: 'ПЛАН УЧЁБЫ В ГЕРМАНИИ', de: 'STUDIENPLAN FÜR DEUTSCHLAND' },
-    work: { tj: 'НАҚШАИ КОР ДАР ОЛМОН', ru: 'ПЛАН РАБОТЫ В ГЕРМАНИИ', de: 'ARBEITSPLAN FÜR DEUTSCHLAND' },
+    work: { tj: 'НАҚШАИ КОР ДАР ОЛМОН', ru: 'ПЛАН РАБОТЫ В ГЕРМАНИИ', de: 'ARBEITSPLAN FÜР DEUTSCHLAND' },
     ausbildung: { tj: 'НАҚШАИ AUSBILDUNG', ru: 'ПЛАН AUSBILDUNG', de: 'AUSBILDUNGSPLAN' },
   };
+
+  const durationLabel = getLabel(language, 'Вақти тахминӣ', 'Примерное время', 'Geschätzte Zeit');
+  const durationUnit = getLabel(language, 'моҳ', 'месяцев', 'Monate');
   
-  // Title
-  doc.setFontSize(18);
-  doc.setFont('helvetica', 'bold');
-  doc.text(titles[pathType][language], marginLeft, y);
-  y += 10;
-  
-  // Duration
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(100, 100, 100);
-  const durationText = getLabel(
-    language,
-    `Вақти тахминӣ: ${duration} моҳ`,
-    `Примерное время: ${duration} месяцев`,
-    `Geschätzte Zeit: ${duration} Monate`
-  );
-  doc.text(durationText, marginLeft, y);
-  doc.setTextColor(0, 0, 0);
-  y += 15;
-  
-  // Steps
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(getLabel(language, 'ҚАДАМҲО:', 'ШАГИ:', 'SCHRITTE:'), marginLeft, y);
-  y += 10;
-  
-  doc.setFontSize(10);
-  steps.forEach((step, i) => {
-    doc.setFont('helvetica', 'bold');
-    const stepTitle = `${i + 1}. ${step.title}`;
-    doc.text(stepTitle, marginLeft, y);
-    y += 6;
-    
-    doc.setFont('helvetica', 'normal');
-    const lines = doc.splitTextToSize(step.description, pageWidth - 10);
-    lines.forEach((line: string) => {
-      doc.text('   ' + line, marginLeft, y);
-      y += 5;
-    });
-    y += 4;
-    
-    if (y > 270) {
-      doc.addPage();
-      y = 20;
-    }
+  // Erstelle HTML mit schönem Design
+  const htmlElement = createPersonalizedHTML({
+    title: titles[pathType][language],
+    duration: `${duration} ${durationUnit}`,
+    steps,
+    documents,
+    labels: {
+      steps: getLabel(language, 'ҚАДАМҲО', 'ШАГИ', 'SCHRITTE'),
+      documents: getLabel(language, 'ҲУҶҶАТҲО', 'ДОКУМЕНТЫ', 'DOKUMENTE'),
+      duration: durationLabel,
+    },
   });
+
+  // Füge Element temporär zum DOM hinzu
+  document.body.appendChild(htmlElement);
+  htmlElement.style.position = 'absolute';
+  htmlElement.style.left = '-9999px';
   
-  y += 10;
-  
-  // Documents
-  if (y > 200) {
-    doc.addPage();
-    y = 20;
+  try {
+    // Generiere PDF mit perfekter Unicode-Unterstützung
+    await generatePDFFromHTML(htmlElement, `my-plan-${pathType}-${language}.pdf`);
+  } finally {
+    // Entferne Element wieder
+    document.body.removeChild(htmlElement);
   }
-  
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text(getLabel(language, 'ҲУҶҶАТҲО:', 'ДОКУМЕНТЫ:', 'DOKUMENTE:'), marginLeft, y);
-  y += 10;
-  
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'normal');
-  documents.forEach((doc_item) => {
-    const text = '[ ] ' + doc_item;
-    const lines = doc.splitTextToSize(text, pageWidth);
-    lines.forEach((line: string) => {
-      if (y > 270) {
-        doc.addPage();
-        y = 20;
-      }
-      doc.text(line, marginLeft, y);
-      y += 6;
-    });
-  });
-  
-  // Footer
-  y = 285;
-  doc.setFontSize(8);
-  doc.setTextColor(150, 150, 150);
-  doc.text('Germany Roadmap | ' + new Date().toLocaleDateString(), marginLeft, y);
-  
-  const filename = `my-plan-${pathType}-${language}.pdf`;
-  doc.save(filename);
 }

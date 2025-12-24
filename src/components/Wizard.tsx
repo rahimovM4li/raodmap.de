@@ -238,15 +238,19 @@ export function Wizard() {
 
   const currentRoadmap = selectedPath ? roadmaps[selectedPath][language] : null;
 
-  const handleDownloadPDF = () => {
+  const handleDownloadPDF = async () => {
     if (!selectedPath || !currentRoadmap) return;
-    generatePersonalizedPDF(
-      selectedPath,
-      language,
-      currentRoadmap.steps,
-      currentRoadmap.documents,
-      currentRoadmap.duration
-    );
+    try {
+      await generatePersonalizedPDF(
+        selectedPath,
+        language,
+        currentRoadmap.steps,
+        currentRoadmap.documents,
+        currentRoadmap.duration
+      );
+    } catch (error) {
+      console.error('PDF-Generierung fehlgeschlagen:', error);
+    }
   };
 
   return (

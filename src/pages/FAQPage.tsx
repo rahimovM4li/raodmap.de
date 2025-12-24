@@ -48,7 +48,7 @@ const FAQPage = () => {
       question: 'Wie lange kann ich nach dem Studium in Deutschland bleiben?',
       answer: 'Nach dem Studium können Sie 18 Monate zur Jobsuche in Deutschland bleiben. Nach Erhalt einer Stelle erhalten Sie ein Arbeitsvisum.',
     },
-  ] : [
+  ] : language === 'ru' ? [
     {
       question: 'Сколько денег нужно для учебной визы?',
       answer: 'Для учебной визы нужно показать ~11,208€ на блокированном счету в Германии (Sperrkonto). Это сумма на год обучения. Каждый месяц вы получаете 934€ с этого счёта.',
@@ -89,6 +89,47 @@ const FAQPage = () => {
       question: 'Сколько времени на поиск работы после учёбы?',
       answer: 'После окончания учёбы вы можете остаться в Германии 18 месяцев для поиска работы. После нахождения работы получите рабочую визу.',
     },
+  ] : [
+    {
+      question: 'Барои визаи донишҷӯӣ чанд пул лозим аст?',
+      answer: 'Барои визаи донишҷӯӣ шумо бояд дар ҳисоби блокшуда (Sperrkonto) тақрибан €11,208 нишон диҳед. Ин маблағ барои як соли таҳсил аст. Ҳар моҳ шумо €934 аз ин ҳисоб мегиред.',
+    },
+    {
+      question: 'Барои таҳсил кадом забон лозим аст?',
+      answer: 'Барои аксари барномаҳо забони олмонӣ (B2-C1) лозим аст. Сертификатҳои қабулшаванда: TestDaF, DSH, Goethe-Zertifikat. Барномаҳои ба забони англисӣ низ ҳастанд (IELTS 6.0+, TOEFL 80+).',
+    },
+    {
+      question: 'Чанд вақт визаро интизор шудан лозим аст?',
+      answer: 'Ҷараёни гирифтани виза 4 то 12 ҳафта вақт мегирад. Вақт аз мавсим ва навъи виза вобаста аст. Дар тобистон бештар вақт мегирад.',
+    },
+    {
+      question: 'Оё ман метавонам дар давраи таҳсил кор кунам?',
+      answer: 'Бале! Донишҷӯёни хориҷӣ метавонанд 120 рӯзи пурра ё 240 рӯзи нимрӯза дар сол кор кунанд. Музди ҳаддиаққал €12 дар соат.',
+    },
+    {
+      question: 'Ausbildung чист?',
+      answer: 'Ausbildung таълими касбӣ дар Олмон аст. Шумо 2-3.5 сол дар корхона кор мекунед ва дар мактаб меомӯзед. Дар ҳамон вақт музди 800-1200€/моҳ мегиред. Пас аз хатм — диплом ва имкони кор.',
+    },
+    {
+      question: 'Blue Card чист ва чӣ тавр онро гирифтан мумкин аст?',
+      answer: 'EU Blue Card визаи корӣ барои мутахассисони баландихтисос аст. Шартҳо: дипломи эътирофшуда, шартномаи кор, музди ҳаддиаққал €45,300/сол (2024). Барои IT/муҳандисӣ €41,000/сол.',
+    },
+    {
+      question: 'Чӣ тавр дипломро эътироф кардан мумкин аст?',
+      answer: 'Аввал дипломро дар anabin.kmk.org санҷед. Агар "H+" бошад — хуб. Баъд дар anerkennung-in-deutschland.de ариза пешниҳод намоед. Ҷараён 3-6 моҳ.',
+    },
+    {
+      question: 'Оё таҳсил дар Олмон ройгон аст?',
+      answer: 'Дар аксари донишгоҳҳои давлатӣ таҳсил ройгон аст! Танҳо маблағи семестрӣ (150-350€). Харҷи зиндагӣ 850-1200€/моҳ.',
+    },
+    {
+      question: 'Кадом стипендияҳо мавҷуданд?',
+      answer: 'Стипендияҳои асосӣ: DAAD (700-1200€/моҳ), Deutschlandstipendium (300€/моҳ), Erasmus+, фонди Конрад Аденауэр, фонди Фридрих Эберт. Дар daad.de ҷустуҷӯ кунед.',
+    },
+    {
+      question: 'Пас аз таҳсил чанд вақт метавон дар Олмон монд?',
+      answer: 'Пас аз хатми таҳсил шумо метавонед 18 моҳ дар Олмон барои ҷустуҷӯи кор монед. Пас аз ёфтани кор визаи корӣ мегиред.',
+    },
   ];
 
   const glossary = language === 'de' ? [
@@ -98,24 +139,33 @@ const FAQPage = () => {
     { term: 'Anabin', definition: 'Datenbank zur Anerkennung von Abschlüssen' },
     { term: 'Aufenthaltstitel', definition: 'Aufenthaltserlaubnis in Deutschland' },
     { term: 'Studienkolleg', definition: 'Vorbereitungskurs für die Universität' },
-  ] : [
+  ] : language === 'ru' ? [
     { term: 'Sperrkonto', definition: 'Блокированный банковский счёт для визы' },
     { term: 'TestDaF', definition: 'Экзамен по немецкому для иностранцев' },
     { term: 'uni-assist', definition: 'Служба оценки документов для вузов' },
     { term: 'Anabin', definition: 'База данных для признания дипломов' },
     { term: 'Aufenthaltstitel', definition: 'Разрешение на пребывание в Германии' },
     { term: 'Studienkolleg', definition: 'Подготовительный курс для университета' },
+  ] : [
+    { term: 'Sperrkonto', definition: 'Ҳисоби блокшудаи банкӣ барои виза' },
+    { term: 'TestDaF', definition: 'Имтиҳон аз забони олмонӣ барои хориҷиён' },
+    { term: 'uni-assist', definition: 'Хидмати арзёбии ҳуҷҷатҳо барои донишгоҳҳо' },
+    { term: 'Anabin', definition: 'Пойгоҳи додаҳо барои эътирофи дипломҳо' },
+    { term: 'Aufenthaltstitel', definition: 'Иҷозаи истиқомат дар Олмон' },
+    { term: 'Studienkolleg', definition: 'Курси тайёрӣ барои донишгоҳ' },
   ];
 
   const seoTitle = language === 'de' 
     ? 'Häufige Fragen zur Einwanderung nach Deutschland | FAQ' 
-    : 'Вопросы об эмиграции в Германию | FAQ';
+    : language === 'ru'
+    ? 'Вопросы об эмиграции в Германию | FAQ'
+    : 'Саволҳо дар бораи муҳоҷират ба Олмон | FAQ';
 
   return (
     <>
       <Helmet>
         <title>{seoTitle}</title>
-        <meta name="description" content={language === 'de' ? 'Häufige Fragen zu Visum, Studium, Arbeit in Deutschland' : 'Частые вопросы о визе, учёбе, работе в Германии'} />
+        <meta name="description" content={language === 'de' ? 'Häufige Fragen zu Visum, Studium, Arbeit in Deutschland' : language === 'ru' ? 'Частые вопросы о визе, учёбе, работе в Германии' : 'Саволҳои зиёд дар бораи виза, таҳсил, кор дар Олмон'} />
       </Helmet>
 
       <main className="min-h-screen">
@@ -130,12 +180,14 @@ const FAQPage = () => {
             >
               <HelpCircle className="w-16 h-16 text-accent mx-auto mb-6" />
               <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
-                {language === 'de' ? 'Häufige Fragen' : 'Частые вопросы'}
+                {language === 'de' ? 'Häufige Fragen' : language === 'ru' ? 'Частые вопросы' : 'Саволҳои зиёд'}
               </h1>
               <p className="text-xl text-primary-foreground/70">
                 {language === 'de' 
                   ? 'Antworten auf häufige Fragen zur Einwanderung nach Deutschland' 
-                  : 'Ответы на частые вопросы об эмиграции в Германию'}
+                  : language === 'ru'
+                  ? 'Ответы на частые вопросы об эмиграции в Германию'
+                  : 'Ҷавобҳо ба саволҳои зиёд дар бораи муҳоҷират ба Олмон'}
               </p>
             </motion.div>
           </div>
@@ -171,7 +223,7 @@ const FAQPage = () => {
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container-main">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-              {language === 'de' ? 'Glossar' : 'Глоссарий'}
+              {language === 'de' ? 'Glossar' : language === 'ru' ? 'Глоссарий' : 'Луғат'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
               {glossary.map((item, i) => (

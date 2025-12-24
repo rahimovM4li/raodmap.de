@@ -13,7 +13,9 @@ const ResourcesPage = () => {
       name: 'DAAD',
       description: language === 'de' 
         ? 'Deutscher Akademischer Austauschdienst' 
-        : 'Германская служба академических обменов',
+        : language === 'ru'
+        ? 'Германская служба академических обменов'
+        : 'Хидмати академии мубодилаи олмонӣ',
       url: 'https://www.daad.de',
       icon: BookOpen,
     },
@@ -21,7 +23,9 @@ const ResourcesPage = () => {
       name: 'Make it in Germany',
       description: language === 'de'
         ? 'Offizielles Portal für Fachkräfte'
-        : 'Официальный портал для специалистов',
+        : language === 'ru'
+        ? 'Официальный портал для специалистов'
+        : 'Портали расмӣ барои мутахассисон',
       url: 'https://www.make-it-in-germany.com',
       icon: Building2,
     },
@@ -29,7 +33,9 @@ const ResourcesPage = () => {
       name: 'Anerkennung in Deutschland',
       description: language === 'de'
         ? 'Anerkennung von Dokumenten'
-        : 'Признание документов',
+        : language === 'ru'
+        ? 'Признание документов'
+        : 'Эътирофи ҳуҷҷатҳо',
       url: 'https://www.anerkennung-in-deutschland.de',
       icon: Award,
     },
@@ -37,7 +43,9 @@ const ResourcesPage = () => {
       name: 'Anabin',
       description: language === 'de'
         ? 'Datenbank für Abschlüsse'
-        : 'База данных дипломов',
+        : language === 'ru'
+        ? 'База данных дипломов'
+        : 'Пойгоҳи додаҳои дипломҳо',
       url: 'https://anabin.kmk.org',
       icon: FileText,
     },
@@ -45,7 +53,9 @@ const ResourcesPage = () => {
       name: 'uni-assist',
       description: language === 'de'
         ? 'Dokumentenbewertung für Universitäten'
-        : 'Оценка документов для вузов',
+        : language === 'ru'
+        ? 'Оценка документов для вузов'
+        : 'Арзёбии ҳуҷҷатҳо барои донишгоҳҳо',
       url: 'https://www.uni-assist.de',
       icon: FileText,
     },
@@ -53,7 +63,9 @@ const ResourcesPage = () => {
       name: 'ausbildung.de',
       description: language === 'de'
         ? 'Suche nach Berufsausbildung'
-        : 'Поиск профобучения',
+        : language === 'ru'
+        ? 'Поиск профобучения'
+        : 'Ҷустуҷӯи таълими касбӣ',
       url: 'https://www.ausbildung.de',
       icon: BookOpen,
     },
@@ -64,16 +76,23 @@ const ResourcesPage = () => {
     { name: 'Checkliste Job Seeker Visa', description: 'Zur Jobsuche', type: 'jobseeker' as const },
     { name: 'Checkliste Blue Card', description: 'Für Fachkräfte', type: 'bluecard' as const },
     { name: 'Checkliste Ausbildung', description: 'Für Berufsausbildung', type: 'ausbildung' as const },
-  ] : [
+  ] : language === 'ru' ? [
     { name: 'Чеклист учебной визы', description: 'Все документы для визы', type: 'study' as const },
     { name: 'Чеклист Job Seeker Visa', description: 'Для поиска работы', type: 'jobseeker' as const },
     { name: 'Чеклист Blue Card', description: 'Для специалистов', type: 'bluecard' as const },
     { name: 'Чеклист Ausbildung', description: 'Для профобучения', type: 'ausbildung' as const },
+  ] : [
+    { name: 'Рӯйхати визаи донишҷӯӣ', description: 'Ҳамаи ҳуҷҷатҳо барои виза', type: 'study' as const },
+    { name: 'Рӯйхати Job Seeker Visa', description: 'Барои ҷустуҷӯи кор', type: 'jobseeker' as const },
+    { name: 'Рӯйхати Blue Card', description: 'Барои мутахассисон', type: 'bluecard' as const },
+    { name: 'Рӯйхати Ausbildung', description: 'Барои таълими касбӣ', type: 'ausbildung' as const },
   ];
 
   const seoTitle = language === 'de'
     ? 'Ressourcen & Links | Botschaft, DAAD, Make it in Germany' 
-    : 'Ресурсы и ссылки | Посольство, DAAD, Make it in Germany';
+    : language === 'ru'
+    ? 'Ресурсы и ссылки | Посольство, DAAD, Make it in Germany'
+    : 'Манбаъҳо ва истиноҳо | Сафорат, DAAD, Make it in Germany';
 
   return (
     <>
@@ -98,7 +117,9 @@ const ResourcesPage = () => {
               <p className="text-xl text-primary-foreground/70">
                 {language === 'de' 
                   ? 'Offizielle Webseiten und nützliche Dokumente' 
-                  : 'Официальные сайты и полезные документы'}
+                  : language === 'ru'
+                  ? 'Официальные сайты и полезные документы'
+                  : 'Сомонаҳои расмӣ ва ҳуҷҷатҳои муфид'}
               </p>
             </motion.div>
           </div>
@@ -117,14 +138,14 @@ const ResourcesPage = () => {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium text-foreground">{language === 'de' ? 'Adresse' : 'Адрес'}</p>
+                      <p className="font-medium text-foreground">{language === 'de' ? 'Adresse' : language === 'ru' ? 'Адрес' : 'Суроға'}</p>
                       <p className="text-muted-foreground">{t.resources.embassy.address}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium text-foreground">{language === 'de' ? 'Telefon' : 'Телефон'}</p>
+                      <p className="font-medium text-foreground">{language === 'de' ? 'Telefon' : language === 'ru' ? 'Телефон' : 'Телефон'}</p>
                       <p className="text-muted-foreground">{t.resources.embassy.phone}</p>
                     </div>
                   </div>
@@ -136,7 +157,7 @@ const ResourcesPage = () => {
                       className="inline-flex items-center gap-2 text-info hover:underline font-medium"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      {language === 'de' ? 'Offizielle Webseite' : 'Официальный сайт'}
+                      {language === 'de' ? 'Offizielle Webseite' : language === 'ru' ? 'Официальный сайт' : 'Сомонаи расмӣ'}
                     </a>
                   </div>
                 </div>
@@ -176,7 +197,7 @@ const ResourcesPage = () => {
         <section className="py-16 md:py-24">
           <div className="container-main">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-              {language === 'de' ? 'Checklisten' : 'Чеклисты'}
+              {language === 'de' ? 'Checklisten' : language === 'ru' ? 'Чеклисты' : 'Рӯйхатҳои санҷиш'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {checklists.map((checklist, i) => (
@@ -221,7 +242,7 @@ const ResourcesPage = () => {
                 <li>• German Embassy Dushanbe — duschanbe.diplo.de</li>
               </ul>
               <p className="mt-6 text-xs text-muted-foreground">
-                {t.common.lastUpdated}: {language === 'de' ? 'Dezember 2025' : 'Декабрь 2025'}
+                {t.common.lastUpdated}: {language === 'de' ? 'Dezember 2025' : language === 'ru' ? 'Декабрь 2025' : 'Декабри 2025'}
               </p>
             </div>
           </div>

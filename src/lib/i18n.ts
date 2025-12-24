@@ -24,9 +24,9 @@ export const translations = {
       faq: 'Саволҳо',
       resources: 'Захираҳо',
       contact: 'Тамос',
-      privacy: 'Сиёсати махфият',
-      cookies: 'Сиёсати cookies',
-      imprint: 'Imprint',
+      privacy: 'Сиёсати ҳифзи маълумот',
+      cookies: 'Сиёсати Cookie',
+      imprint: 'Маълумоти ҳуқуқӣ',
     },
     hero: {
       title: 'Роҳи шумо ба Олмон',
@@ -408,8 +408,8 @@ export const translations = {
       resources: 'Ресурсы',
       contact: 'Контакты',
       privacy: 'Политика конфиденциальности',
-      cookies: 'Политика cookies',
-      imprint: 'Imprint',
+      cookies: 'Политика файлов Cookie',
+      imprint: 'Выходные данные',
     },
     hero: {
       title: 'Ваш путь в Германию',

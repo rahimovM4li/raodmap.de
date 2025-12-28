@@ -1,6 +1,12 @@
 /**
- * CV Generator - Premium PDF Generation
- * Bulletproof PDF generation with proper typography and layout
+ * CV Generator - SCREENSHOT-BASED PDF Generation
+ * 
+ * STRATEGY: Preview is the SINGLE source of truth
+ * PDF = Screenshot of preview (pixel-perfect, WYSIWYG)
+ * 
+ * NO HTML rendering inside jsPDF
+ * NO layout calculations
+ * ONLY: Screenshot → Image → PDF
  */
 
 import jsPDF from 'jspdf';
@@ -18,8 +24,8 @@ export interface PDFGenerationOptions {
 }
 
 const defaultOptions: PDFGenerationOptions = {
-  quality: 0.98,
-  scale: 3, // Higher resolution for premium quality
+  quality: 1.0, // Maximum quality
+  scale: 3, // High resolution for crisp output
   useCORS: true,
   logging: false,
 };
@@ -39,7 +45,15 @@ function generatePdfFilename(cvData: CVData): string {
 }
 
 /**
- * Generate PDF from CV data - BULLETPROOF VERSION
+ * Generate PDF from CV data - SCREENSHOT-BASED (PIXEL-PERFECT)
+ * 
+ * FLOW:
+ * 1. Capture preview element using html2canvas
+ * 2. Convert canvas to PNG image
+ * 3. Create jsPDF document (A4)
+ * 4. Calculate image dimensions proportionally
+ * 5. If multi-page: slice canvas vertically, add multiple pages
+ * 6. Download PDF
  */
 export async function generatePDF(
   cvData: CVData,
@@ -54,37 +68,98 @@ export async function generatePDF(
       throw new Error('CV-Vorschau nicht gefunden. Bitte aktualisieren Sie die Seite.');
     }
 
-    // Wait for all images to load
-    await waitForImages(element);
-
-    // Create PDF
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-      compress: true,
-    });
-
-    // Capture pages
-    const pages = await capturePages(element, opts);
-
-    if (pages.length === 0) {
-      throw new Error('Keine Inhalte zum Exportieren gefunden.');
+    // Check if element has content
+    if (element.offsetHeight === 0 || element.offsetWidth === 0) {
+      throw new Error('CV-Vorschau ist nicht sichtbar. Bitte wechseln Sie zur Vorschau-Ansicht.');
     }
 
-    // Add pages to PDF
-    for (let i = 0; i < pages.length; i++) {
-      if (i > 0) {
+    // Store and remove any CSS transforms from parent elements (they break html2canvas)
+    const transforms: Array<{ element: HTMLElement; transform: string }> = [];
+    let currentElement: HTMLElement | null = element;
+    while (currentElement && currentElement !== document.body) {
+      if (currentElement.style.transform) {
+        transforms.push({ 
+          element: currentElement, 
+          transform: currentElement.style.transform 
+        });
+        currentElement.style.transform = 'none';
+      }
+      currentElement = currentElement.parentElement;
+    }
+
+    // Temporarily make element visible if hidden (for mobile)
+    const parentHidden = element.closest('.hidden');
+    let originalDisplay = '';
+    if (parentHidden && parentHidden instanceof HTMLElement) {
+      originalDisplay = parentHidden.style.display;
+      parentHidden.style.display = 'block';
+      
+      // Wait for layout to update
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    try {
+      // Wait for all images (photos, logos) to load
+      await waitForImages(element);
+
+      // STEP 1: Capture preview as high-resolution canvas
+      const canvas = await html2canvas(element, {
+        scale: opts.scale,
+        useCORS: opts.useCORS,
+        logging: opts.logging,
+        backgroundColor: '#ffffff',
+        scrollY: -window.scrollY,
+        scrollX: -window.scrollX,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight,
+      });
+
+      // STEP 2: Convert canvas to PNG image
+      const imgData = canvas.toDataURL('image/png', opts.quality);
+
+      // STEP 3: Create PDF document (A4 portrait)
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+        compress: true,
+      });
+
+      // STEP 4: Calculate image dimensions proportionally to fit A4
+      const imgWidth = A4_WIDTH;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const pageHeight = A4_HEIGHT;
+
+      // STEP 5: Multi-page support - slice vertically if needed
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      // Add first page
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      // Add additional pages if content is longer than A4
+      while (heightLeft > 0) {
+        position -= pageHeight;
         pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
       }
 
-      const imgData = pages[i];
-      pdf.addImage(imgData, 'PNG', 0, 0, A4_WIDTH, A4_HEIGHT, undefined, 'FAST');
-    }
+      // STEP 6: Generate filename and save
+      const filename = generatePdfFilename(cvData);
+      pdf.save(filename);
+    } finally {
+      // Restore CSS transforms
+      transforms.forEach(({ element, transform }) => {
+        element.style.transform = transform;
+      });
 
-    // Generate filename and save
-    const filename = generatePdfFilename(cvData);
-    pdf.save(filename);
+      // Restore original visibility
+      if (parentHidden && parentHidden instanceof HTMLElement) {
+        parentHidden.style.display = originalDisplay;
+      }
+    }
   } catch (error) {
     console.error('PDF-Generierung fehlgeschlagen:', error);
     throw new Error(
@@ -93,60 +168,6 @@ export async function generatePDF(
         : 'PDF-Export fehlgeschlagen. Bitte versuchen Sie es erneut.'
     );
   }
-}
-
-/**
- * Capture pages as images with proper handling
- */
-async function capturePages(
-  element: HTMLElement,
-  options: PDFGenerationOptions
-): Promise<string[]> {
-  const pages: HTMLElement[] = [];
-
-  // Look for .cv-page elements
-  const pageElements = element.querySelectorAll('.cv-page');
-  if (pageElements.length > 0) {
-    pageElements.forEach((page) => {
-      if (page instanceof HTMLElement) {
-        pages.push(page);
-      }
-    });
-  } else {
-    // If no pages found, use the element itself
-    pages.push(element);
-  }
-
-  const images: string[] = [];
-
-  for (const page of pages) {
-    // Ensure page is visible and has dimensions
-    if (page.offsetHeight === 0 || page.offsetWidth === 0) {
-      console.warn('Page has no dimensions, skipping');
-      continue;
-    }
-
-    const canvas = await html2canvas(page, {
-      scale: options.scale,
-      useCORS: options.useCORS,
-      logging: options.logging,
-      backgroundColor: '#ffffff',
-      imageTimeout: 15000,
-      removeContainer: false,
-      onclone: (clonedDoc) => {
-        // Ensure fonts are loaded in cloned document
-        const clonedElement = clonedDoc.getElementById(page.id || 'cv-preview');
-        if (clonedElement) {
-          clonedElement.style.display = 'block';
-          clonedElement.style.visibility = 'visible';
-        }
-      },
-    });
-
-    images.push(canvas.toDataURL('image/png', options.quality));
-  }
-
-  return images;
 }
 
 /**
@@ -171,6 +192,8 @@ export async function getPDFPreview(
       useCORS: opts.useCORS,
       logging: opts.logging,
       backgroundColor: '#ffffff',
+      scrollY: -window.scrollY,
+      scrollX: -window.scrollX,
     });
 
     return canvas.toDataURL('image/png', opts.quality);
@@ -212,7 +235,6 @@ export function waitForImages(
     const totalImages = images.length;
     
     const timer = setTimeout(() => {
-      // Don't reject, just resolve - some images might have failed to load
       console.warn(`Image loading timeout: ${loadedCount}/${totalImages} loaded`);
       resolve();
     }, timeout);
@@ -230,20 +252,22 @@ export function waitForImages(
         checkComplete();
       } else {
         img.addEventListener('load', checkComplete);
-        img.addEventListener('error', checkComplete); // Count errors as "loaded"
+        img.addEventListener('error', checkComplete);
       }
     });
   });
 }
 
 /**
- * Generate PDF with progress callback
+ * Generate PDF with progress callback - SCREENSHOT-BASED
  */
 export async function generatePDFWithProgress(
   cvData: CVData,
   previewElementId: string = 'cv-preview',
   onProgress?: (progress: number, message: string) => void
 ): Promise<void> {
+  const opts = defaultOptions;
+
   try {
     onProgress?.(10, 'Vorbereitung...');
 
@@ -252,46 +276,109 @@ export async function generatePDFWithProgress(
       throw new Error('CV-Vorschau nicht gefunden');
     }
 
-    onProgress?.(20, 'Bilder werden geladen...');
-    await waitForImages(element);
-
-    onProgress?.(40, 'PDF wird erstellt...');
-
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-      compress: true,
-    });
-
-    onProgress?.(60, 'Seiten werden erfasst...');
-
-    const pages = await capturePages(element, defaultOptions);
-
-    if (pages.length === 0) {
-      throw new Error('Keine Inhalte gefunden');
+    // Check if element has content
+    if (element.offsetHeight === 0 || element.offsetWidth === 0) {
+      throw new Error('CV-Vorschau ist nicht sichtbar. Bitte wechseln Sie zur Vorschau-Ansicht.');
     }
 
-    onProgress?.(80, 'Seiten werden hinzugefügt...');
+    // Store and remove any CSS transforms from parent elements
+    const transforms: Array<{ element: HTMLElement; transform: string }> = [];
+    let currentElement: HTMLElement | null = element;
+    while (currentElement && currentElement !== document.body) {
+      if (currentElement.style.transform) {
+        transforms.push({ 
+          element: currentElement, 
+          transform: currentElement.style.transform 
+        });
+        currentElement.style.transform = 'none';
+      }
+      currentElement = currentElement.parentElement;
+    }
 
-    for (let i = 0; i < pages.length; i++) {
-      if (i > 0) {
+    // Temporarily make element visible if hidden (for mobile)
+    const parentHidden = element.closest('.hidden');
+    let originalDisplay = '';
+    if (parentHidden && parentHidden instanceof HTMLElement) {
+      originalDisplay = parentHidden.style.display;
+      parentHidden.style.display = 'block';
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    try {
+      onProgress?.(20, 'Bilder werden geladen...');
+      await waitForImages(element);
+
+      onProgress?.(40, 'Screenshot wird erstellt...');
+
+      // Capture preview as canvas
+      const canvas = await html2canvas(element, {
+        scale: opts.scale,
+        useCORS: opts.useCORS,
+        logging: opts.logging,
+        backgroundColor: '#ffffff',
+        scrollY: -window.scrollY,
+        scrollX: -window.scrollX,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight,
+      });
+
+      onProgress?.(60, 'PNG-Bild wird erstellt...');
+
+      // Convert to PNG
+      const imgData = canvas.toDataURL('image/png', opts.quality);
+
+      onProgress?.(70, 'PDF-Dokument wird erstellt...');
+
+      // Create PDF
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+        compress: true,
+      });
+
+      // Calculate dimensions
+      const imgWidth = A4_WIDTH;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const pageHeight = A4_HEIGHT;
+
+      onProgress?.(80, 'Seiten werden hinzugefügt...');
+
+      // Multi-page support
+      let heightLeft = imgHeight;
+      let position = 0;
+      let pageCount = 1;
+
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft > 0) {
+        position -= pageHeight;
         pdf.addPage();
+        pageCount++;
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        
+        onProgress?.(80 + (pageCount * 5), `Seite ${pageCount} wird hinzugefügt...`);
       }
 
-      const imgData = pages[i];
-      pdf.addImage(imgData, 'PNG', 0, 0, A4_WIDTH, A4_HEIGHT, undefined, 'FAST');
-      
-      const progress = 80 + ((i + 1) / pages.length) * 15;
-      onProgress?.(progress, `Seite ${i + 1} von ${pages.length}...`);
+      onProgress?.(95, 'PDF wird gespeichert...');
+
+      const filename = generatePdfFilename(cvData);
+      pdf.save(filename);
+
+      onProgress?.(100, 'Fertig!');
+    } finally {
+      // Restore CSS transforms
+      transforms.forEach(({ element, transform }) => {
+        element.style.transform = transform;
+      });
+
+      // Restore original visibility
+      if (parentHidden && parentHidden instanceof HTMLElement) {
+        parentHidden.style.display = originalDisplay;
+      }
     }
-
-    onProgress?.(95, 'Speichern...');
-
-    const filename = generatePdfFilename(cvData);
-    pdf.save(filename);
-
-    onProgress?.(100, 'Fertig!');
   } catch (error) {
     console.error('PDF generation with progress failed:', error);
     throw error;

@@ -21,6 +21,8 @@ import PrivacyPage from "./pages/PrivacyPage";
 import CookiesPage from "./pages/CookiesPage";
 import ImprintPage from "./pages/ImprintPage";
 import NotFound from "./pages/NotFound";
+import FSJBFDPage from "./pages/FSJBFDPage";
+import AuPairPage from "./pages/AuPairPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,8 @@ const App = () => (
                   <Route path="/study" element={<StudyPage />} />
                   <Route path="/work" element={<WorkPage />} />
                   <Route path="/ausbildung" element={<AusbildungPage />} />
+                  <Route path="/fsj-bfd" element={<FSJBFDPage />} />
+                  <Route path="/au-pair" element={<AuPairPage />} />
                   <Route path="/living" element={<LivingPage />} />
                   <Route path="/roadmap" element={<RoadmapPage />} />
                   <Route path="/faq" element={<FAQPage />} />

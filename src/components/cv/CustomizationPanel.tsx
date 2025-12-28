@@ -18,12 +18,8 @@ export default function CustomizationPanel({ customization, onUpdate }: Customiz
   };
 
   return (
-    <div className="space-y-6 p-4 bg-muted/30 rounded-lg">
-      <div className="flex items-center gap-2 mb-4">
-        <Palette className="w-5 h-5 text-primary" />
-        <h3 className="font-semibold text-lg">Anpassungen</h3>
-      </div>
-
+    <div className="space-y-4 md:space-y-6 p-4 md:p-6">
+      
       {/* Accent Color */}
       <div className="space-y-3">
         <Label className="text-sm font-medium flex items-center gap-2">
@@ -34,7 +30,7 @@ export default function CustomizationPanel({ customization, onUpdate }: Customiz
           value={customization.accentColor}
           onValueChange={(value) => updateField('accentColor', value as AccentColor)}
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="blue" id="color-blue" />
               <Label htmlFor="color-blue" className="flex items-center gap-2 cursor-pointer">

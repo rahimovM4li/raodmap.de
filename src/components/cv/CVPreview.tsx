@@ -60,7 +60,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
 
   if (!hasContent) {
     return (
-      <div className={`bg-white ${className}`} style={styleVars}>
+      <div id="cv-preview" className={`bg-white ${className}`} style={styleVars}>
         <div className="flex items-center justify-center h-full min-h-[297mm] text-muted-foreground text-sm">
           Füllen Sie die Felder aus, um die Vorschau zu sehen.
         </div>

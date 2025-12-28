@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import FAQComments from '@/components/faq/FAQComments';
 
 const FAQPage = () => {
   const { language } = useLanguage();
@@ -216,6 +217,13 @@ const FAQPage = () => {
                 ))}
               </Accordion>
             </div>
+          </div>
+        </section>
+
+        {/* Comments Section */}
+        <section className="py-16 md:py-24">
+          <div className="container-main max-w-4xl">
+            <FAQComments />
           </div>
         </section>
 

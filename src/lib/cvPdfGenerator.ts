@@ -68,11 +68,6 @@ export async function generatePDF(
       throw new Error('CV-Vorschau nicht gefunden. Bitte aktualisieren Sie die Seite.');
     }
 
-    // Check if element has content
-    if (element.offsetHeight === 0 || element.offsetWidth === 0) {
-      throw new Error('CV-Vorschau ist nicht sichtbar. Bitte wechseln Sie zur Vorschau-Ansicht.');
-    }
-
     // Store and remove any CSS transforms from parent elements (they break html2canvas)
     const transforms: Array<{ element: HTMLElement; transform: string }> = [];
     let currentElement: HTMLElement | null = element;
@@ -94,8 +89,24 @@ export async function generatePDF(
       originalDisplay = parentHidden.style.display;
       parentHidden.style.display = 'block';
       
+      // Force reflow
+      void element.offsetHeight;
+      
       // Wait for layout to update
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+
+    // Check if CVData has actual content
+    const hasPersonalInfo = cvData.personalInfo?.firstName || cvData.personalInfo?.lastName;
+    const hasContent = hasPersonalInfo || 
+                      cvData.summary || 
+                      cvData.experience?.length > 0 || 
+                      cvData.education?.length > 0 || 
+                      cvData.skills?.length > 0 ||
+                      cvData.languages?.length > 0;
+    
+    if (!hasContent) {
+      throw new Error('Bitte füllen Sie mindestens einige Felder aus (Name, Beruf, etc.), bevor Sie das PDF erstellen.');
     }
 
     try {
@@ -276,11 +287,6 @@ export async function generatePDFWithProgress(
       throw new Error('CV-Vorschau nicht gefunden');
     }
 
-    // Check if element has content
-    if (element.offsetHeight === 0 || element.offsetWidth === 0) {
-      throw new Error('CV-Vorschau ist nicht sichtbar. Bitte wechseln Sie zur Vorschau-Ansicht.');
-    }
-
     // Store and remove any CSS transforms from parent elements
     const transforms: Array<{ element: HTMLElement; transform: string }> = [];
     let currentElement: HTMLElement | null = element;
@@ -301,7 +307,24 @@ export async function generatePDFWithProgress(
     if (parentHidden && parentHidden instanceof HTMLElement) {
       originalDisplay = parentHidden.style.display;
       parentHidden.style.display = 'block';
-      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      // Force reflow
+      void element.offsetHeight;
+      
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+
+    // Check if CVData has actual content
+    const hasPersonalInfo = cvData.personalInfo?.firstName || cvData.personalInfo?.lastName;
+    const hasContent = hasPersonalInfo || 
+                      cvData.summary || 
+                      cvData.experience?.length > 0 || 
+                      cvData.education?.length > 0 || 
+                      cvData.skills?.length > 0 ||
+                      cvData.languages?.length > 0;
+    
+    if (!hasContent) {
+      throw new Error('Bitte füllen Sie mindestens einige Felder aus (Name, Beruf, etc.), bevor Sie das PDF erstellen.');
     }
 
     try {

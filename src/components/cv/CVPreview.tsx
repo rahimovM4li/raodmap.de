@@ -5,7 +5,14 @@
  */
 import { memo, CSSProperties } from 'react';
 import type { CVData, CVCustomization } from '@/types/cv';
-import { accentColors, typographyScales, sectionSpacings } from '@/types/cv';
+import { 
+  accentColors, 
+  fontFamilies, 
+  calculateTypographyScale, 
+  sectionSpacings, 
+  pageMargins,
+  photoSizes 
+} from '@/types/cv';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 interface CVPreviewProps {
@@ -32,31 +39,72 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
     languages.length
   );
 
+  // Calculate typography scale from font size
+  const typoScale = calculateTypographyScale(customization.fontSize);
+
   // Generate CSS variables from customization
   const styleVars: CSSProperties = {
     '--cv-accent': accentColors[customization.accentColor],
-    '--cv-font-base': typographyScales[customization.typographyScale].base,
-    '--cv-font-heading': typographyScales[customization.typographyScale].heading,
-    '--cv-font-large': typographyScales[customization.typographyScale].large,
+    '--cv-secondary-accent': customization.secondaryAccentColor 
+      ? accentColors[customization.secondaryAccentColor] 
+      : accentColors[customization.accentColor],
+    '--cv-font-family': fontFamilies[customization.fontFamily],
+    '--cv-font-base': typoScale.base,
+    '--cv-font-small': typoScale.small,
+    '--cv-font-heading': typoScale.heading,
+    '--cv-font-large': typoScale.large,
+    '--cv-line-spacing': customization.lineSpacing,
     '--cv-section-spacing': sectionSpacings[customization.sectionSpacing],
+    '--cv-page-margin': pageMargins[customization.pageMargin],
+    '--cv-photo-size': `${photoSizes[customization.photoSize]}px`,
   } as CSSProperties;
 
   // Section separator styles
   const getSeparatorClass = () => {
     switch (customization.sectionSeparator) {
       case 'line':
-        return 'border-b-2';
-      case 'soft':
-        return 'border-b';
+        return 'border-b-2 border-[var(--cv-accent)]';
+      case 'dot':
+        return 'border-b border-dotted border-[var(--cv-accent)]';
       case 'none':
         return '';
       default:
-        return 'border-b-2';
+        return 'border-b-2 border-[var(--cv-accent)]';
     }
   };
 
   const separatorClass = getSeparatorClass();
-  const separatorColorClass = customization.sectionSeparator !== 'none' ? 'border-[var(--cv-accent)]' : '';
+
+  // Section header style
+  const getHeaderClass = () => {
+    switch (customization.sectionHeaderStyle) {
+      case 'uppercase':
+        return 'uppercase tracking-wide';
+      case 'smallcaps':
+        return 'font-variant-small-caps';
+      case 'normal':
+      default:
+        return '';
+    }
+  };
+
+  const headerClass = getHeaderClass();
+
+  // Photo shape classes
+  const getPhotoShapeClass = () => {
+    switch (customization.photoShape) {
+      case 'circle':
+        return 'rounded-full';
+      case 'rounded':
+        return 'rounded-lg';
+      case 'square':
+        return 'rounded-none';
+      default:
+        return 'rounded-full';
+    }
+  };
+
+  const photoShapeClass = getPhotoShapeClass();
 
   if (!hasContent) {
     return (
@@ -72,10 +120,18 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
     <div 
       id="cv-preview" 
       className={`bg-white ${className}`} 
-      style={styleVars}
+      style={{
+        ...styleVars,
+        fontFamily: 'var(--cv-font-family)',
+        lineHeight: 'var(--cv-line-spacing)',
+      }}
     >
       {/* Seite 1 Wrapper (Multi-Page-Vorbereitung) */}
-      <div className="cv-page p-8" data-page="1">
+      <div 
+        className="cv-page" 
+        data-page="1"
+        style={{ padding: 'var(--cv-page-margin)' }}
+      >
         {/* Kopfbereich */}
         <div className="flex items-start justify-between gap-6 pb-6 mb-[var(--cv-section-spacing)]">
           {/* Personal Info */}
@@ -101,7 +157,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
             <div className="grid grid-cols-1 gap-2 text-gray-700" style={{ fontSize: 'var(--cv-font-base)' }}>
               {personal.email && (
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-gray-500" />
+                  <Mail className="w-4 h-4" style={{ color: 'var(--cv-accent)' }} />
                   <a href={`mailto:${personal.email}`} className="hover:underline">
                     {personal.email}
                   </a>
@@ -109,7 +165,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
               )}
               {personal.phone && (
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-gray-500" />
+                  <Phone className="w-4 h-4" style={{ color: 'var(--cv-accent)' }} />
                   <a href={`tel:${personal.phone}`} className="hover:underline">
                     {personal.phone}
                   </a>
@@ -117,21 +173,26 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
               )}
               {personal.city && (
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gray-500" />
+                  <MapPin className="w-4 h-4" style={{ color: 'var(--cv-accent)' }} />
                   <span>{personal.city}</span>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Photo (Top Right - German Standard) */}
+          {/* Photo */}
           {personal.photo && (
             <div className="flex-shrink-0">
               <img
                 src={personal.photo}
                 alt={`${personal.firstName || ''} ${personal.lastName || ''}`}
-                className="w-32 h-40 object-cover rounded-md shadow-sm border-2"
-                style={{ borderColor: 'var(--cv-accent)' }}
+                className={`object-cover ${photoShapeClass}`}
+                style={{
+                  width: 'var(--cv-photo-size)',
+                  height: 'var(--cv-photo-size)',
+                  borderWidth: '2px',
+                  borderColor: 'var(--cv-accent)',
+                }}
               />
             </div>
           )}
@@ -141,7 +202,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
         {summary && (
           <section className="mb-[var(--cv-section-spacing)]">
             <h2 
-              className={`font-bold text-gray-900 pb-2 mb-3 ${separatorClass} ${separatorColorClass}`}
+              className={`font-bold text-gray-900 pb-2 mb-3 ${headerClass} ${separatorClass}`}
               style={{ 
                 fontSize: 'var(--cv-font-heading)',
                 color: 'var(--cv-accent)'
@@ -162,7 +223,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
         {experience.length > 0 && (
           <section className="mb-[var(--cv-section-spacing)]">
             <h2 
-              className={`font-bold text-gray-900 pb-2 mb-3 ${separatorClass} ${separatorColorClass}`}
+              className={`font-bold text-gray-900 pb-2 mb-3 ${headerClass} ${separatorClass}`}
               style={{ 
                 fontSize: 'var(--cv-font-heading)',
                 color: 'var(--cv-accent)'
@@ -181,7 +242,8 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
                       {exp.position}
                     </h3>
                     <span 
-                      className="text-gray-600 whitespace-nowrap ml-4 text-sm"
+                      className="text-gray-600 whitespace-nowrap ml-4"
+                      style={{ fontSize: 'var(--cv-font-small)' }}
                     >
                       {exp.startDate} - {exp.endDate || 'heute'}
                     </span>
@@ -194,7 +256,8 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
                   </p>
                   {exp.description && (
                     <p 
-                      className="text-gray-700 leading-relaxed whitespace-pre-line text-sm"
+                      className="text-gray-700 leading-relaxed whitespace-pre-line"
+                      style={{ fontSize: 'var(--cv-font-small)' }}
                     >
                       {exp.description}
                     </p>
@@ -209,7 +272,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
         {education.length > 0 && (
           <section className="mb-[var(--cv-section-spacing)]">
             <h2 
-              className={`font-bold text-gray-900 pb-2 mb-3 ${separatorClass} ${separatorColorClass}`}
+              className={`font-bold text-gray-900 pb-2 mb-3 ${headerClass} ${separatorClass}`}
               style={{ 
                 fontSize: 'var(--cv-font-heading)',
                 color: 'var(--cv-accent)'
@@ -228,7 +291,8 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
                       {edu.degree}
                     </h3>
                     <span 
-                      className="text-gray-600 whitespace-nowrap ml-4 text-sm"
+                      className="text-gray-600 whitespace-nowrap ml-4"
+                      style={{ fontSize: 'var(--cv-font-small)' }}
                     >
                       {edu.startDate} - {edu.endDate || 'heute'}
                     </span>
@@ -249,7 +313,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
         {skills.length > 0 && (
           <section className="mb-[var(--cv-section-spacing)]">
             <h2 
-              className={`font-bold text-gray-900 pb-2 mb-3 ${separatorClass} ${separatorColorClass}`}
+              className={`font-bold text-gray-900 pb-2 mb-3 ${headerClass} ${separatorClass}`}
               style={{ 
                 fontSize: 'var(--cv-font-heading)',
                 color: 'var(--cv-accent)'
@@ -261,8 +325,9 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
               {skills.map((skill, index) => (
                 <span 
                   key={index} 
-                  className="px-3 py-1 text-gray-800 text-sm rounded-full border"
+                  className="px-3 py-1 text-gray-800 rounded-full border"
                   style={{ 
+                    fontSize: 'var(--cv-font-small)',
                     backgroundColor: `${accentColors[customization.accentColor]}10`,
                     borderColor: 'var(--cv-accent)'
                   }}
@@ -278,7 +343,7 @@ const CVPreview = memo(({ cvData, customization, className = '' }: CVPreviewProp
         {languages.length > 0 && (
           <section className="mb-[var(--cv-section-spacing)]">
             <h2 
-              className={`font-bold text-gray-900 pb-2 mb-3 ${separatorClass} ${separatorColorClass}`}
+              className={`font-bold text-gray-900 pb-2 mb-3 ${headerClass} ${separatorClass}`}
               style={{ 
                 fontSize: 'var(--cv-font-heading)',
                 color: 'var(--cv-accent)'

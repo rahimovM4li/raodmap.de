@@ -125,16 +125,6 @@ const CVGeneratorPage = () => {
       setIsExporting(true);
       setExportProgress({ progress: 0, message: 'Starte PDF-Export...' });
       
-      // Check if preview element exists and has content
-      const previewElement = document.getElementById('cv-preview');
-      if (!previewElement) {
-        throw new Error('Vorschau nicht gefunden. Bitte laden Sie die Seite neu.');
-      }
-      
-      if (previewElement.offsetHeight === 0 || previewElement.offsetWidth === 0) {
-        throw new Error('Vorschau ist nicht sichtbar. Bitte füllen Sie mindestens einige Felder aus.');
-      }
-      
       await generatePDFWithProgress(
         cvData,
         'cv-preview',

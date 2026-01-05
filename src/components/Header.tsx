@@ -83,13 +83,25 @@ export function Header() {
   }, [location.pathname]);
 
   const handleNavigation = (path: string) => {
-    navigate(path);
+    const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
+    const fullPath = path === '/' ? langPrefix : `${langPrefix}${path}`;
+    navigate(fullPath);
     setActiveDropdown(null);
     setIsMenuOpen(false);
   };
 
+  const handleLanguageChange = (newLang: Language) => {
+    // Get current path without language prefix
+    const currentPath = location.pathname.replace(/^\/(tj|ru|de)/, '') || '/';
+    // Build new path with new language prefix
+    const newPrefix = newLang === 'tj' ? '/tj' : `/${newLang}`;
+    const newPath = currentPath === '/' ? newPrefix : `${newPrefix}${currentPath}`;
+    navigate(newPath);
+  };
+
   const isPathActive = (paths: { path: string }[]) => {
-    return paths.some(item => location.pathname === item.path);
+    const currentPathWithoutLang = location.pathname.replace(/^\/(tj|ru|de)/, '');
+    return paths.some(item => currentPathWithoutLang === item.path || location.pathname === item.path);
   };
 
   const currentLang = languages.find(l => l.code === language);
@@ -111,7 +123,7 @@ export function Header() {
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link 
-              to="/" 
+              to={`/${language === 'tj' ? 'tj' : language}`}
               className="flex items-center gap-2 group"
               onClick={() => setActiveDropdown(null)}
             >
@@ -127,16 +139,16 @@ export function Header() {
             <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
               {/* Home */}
               <Link
-                to="/"
+                to={`/${language === 'tj' ? 'tj' : language}`}
                 className={cn(
                   'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative',
-                  location.pathname === '/'
+                  location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj'
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
                 {t.nav.home}
-                {location.pathname === '/' && (
+                {(location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj') && (
                   <motion.div
                     layoutId="activeIndicator"
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
@@ -185,7 +197,7 @@ export function Header() {
                           onClick={() => handleNavigation(item.path)}
                           className={cn(
                             'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
-                            location.pathname === item.path
+                            location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
                               ? 'bg-primary/10 text-primary'
                               : 'text-foreground hover:bg-secondary'
                           )}
@@ -240,7 +252,7 @@ export function Header() {
                           onClick={() => handleNavigation(item.path)}
                           className={cn(
                             'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
-                            location.pathname === item.path
+                            location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
                               ? 'bg-primary/10 text-primary'
                               : 'text-foreground hover:bg-secondary'
                           )}
@@ -262,7 +274,7 @@ export function Header() {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    onClick={() => setLanguage(lang.code)}
+                    onClick={() => handleLanguageChange(lang.code)}
                     className={cn(
                       'w-8 h-8 rounded-full flex items-center justify-center text-lg transition-all duration-200',
                       language === lang.code
@@ -315,7 +327,7 @@ export function Header() {
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-4 border-b border-border">
                 <Link 
-                  to="/" 
+                  to={`/${language === 'tj' ? 'tj' : language}`}
                   className="flex items-center gap-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -333,7 +345,7 @@ export function Header() {
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
-                        onClick={() => setLanguage(lang.code)}
+                        onClick={() => handleLanguageChange(lang.code)}
                         className={cn(
                           'w-7 h-7 rounded-full flex items-center justify-center text-base transition-all duration-200',
                           language === lang.code
@@ -363,7 +375,7 @@ export function Header() {
                   onClick={() => handleNavigation('/')}
                   className={cn(
                     'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors',
-                    location.pathname === '/'
+                    location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj'
                       ? 'bg-primary text-primary-foreground'
                       : 'text-foreground hover:bg-secondary'
                   )}
@@ -407,7 +419,7 @@ export function Header() {
                             onClick={() => handleNavigation(item.path)}
                             className={cn(
                               'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
-                              location.pathname === item.path
+                              location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
                                 ? 'bg-primary text-primary-foreground'
                                 : 'text-foreground hover:bg-secondary'
                             )}
@@ -456,7 +468,7 @@ export function Header() {
                             onClick={() => handleNavigation(item.path)}
                             className={cn(
                               'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
-                              location.pathname === item.path
+                              location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
                                 ? 'bg-primary text-primary-foreground'
                                 : 'text-foreground hover:bg-secondary'
                             )}

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { WorkPageSEO } from "@/components/SEOHead";
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Briefcase, CreditCard, FileCheck, Building2 } from 'lucide-react';
@@ -7,6 +7,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const WorkPage = () => {
   const { language, t } = useLanguage();
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const jobSeekerRequirements = language === 'de' ? [
     'Hochschulabschluss (Bachelor oder Master)',
@@ -51,18 +53,10 @@ const WorkPage = () => {
     'Суғуртаи тиббӣ',
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Arbeiten in Deutschland | Job Seeker Visa, Blue Card' 
-    : language === 'ru'
-    ? 'Работа в Германии | Job Seeker Visa, Blue Card'
-    : 'Кор дар Олмон | Job Seeker Visa, Blue Card';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={t.work.intro} />
-      </Helmet>
+      <WorkPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}
@@ -250,7 +244,7 @@ const WorkPage = () => {
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container-main text-center">
             <Button asChild className="btn-hero">
-              <Link to="/#wizard">
+              <Link to={`${langPrefix}/#wizard`}>
                 {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>

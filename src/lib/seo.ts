@@ -13,7 +13,7 @@ export const SITE_CONFIG = {
   siteName: {
     tj: 'Роҳнамо ба Олмон',
     de: 'Roadmap nach Deutschland',
-    ru: 'Дорожная карта в Германию',
+    ru: 'Roadmap в Германию',
   },
   author: 'Muhammadali Rahimov',
   authorWebsite: 'https://m4li.de',
@@ -335,10 +335,10 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
 export function getHreflangLinks(path: string = ''): string[] {
   const cleanPath = path.replace(/^\//, '');
   return [
-    `<link rel="alternate" hreflang="tg" href="${SITE_CONFIG.domain}/${cleanPath}" />`,
+    `<link rel="alternate" hreflang="tg" href="${SITE_CONFIG.domain}/tj/${cleanPath}" />`,
     `<link rel="alternate" hreflang="de" href="${SITE_CONFIG.domain}/de/${cleanPath}" />`,
     `<link rel="alternate" hreflang="ru" href="${SITE_CONFIG.domain}/ru/${cleanPath}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${SITE_CONFIG.domain}/${cleanPath}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${SITE_CONFIG.domain}/tj/${cleanPath}" />`,
   ];
 }
 
@@ -347,10 +347,11 @@ export function getHreflangLinks(path: string = ''): string[] {
  */
 export function getCanonicalUrl(path: string = '', language: 'tg' | 'de' | 'ru' = 'tg'): string {
   const cleanPath = path.replace(/^\//, '');
-  if (language === 'tg') {
-    return `${SITE_CONFIG.domain}/${cleanPath}`;
+  const langPrefix = language === 'tg' ? 'tj' : language;
+  if (cleanPath === '') {
+    return `${SITE_CONFIG.domain}/${langPrefix}`;
   }
-  return `${SITE_CONFIG.domain}/${language}/${cleanPath}`;
+  return `${SITE_CONFIG.domain}/${langPrefix}/${cleanPath}`;
 }
 
 /**

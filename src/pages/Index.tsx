@@ -11,6 +11,8 @@ import { WebsiteStructuredData, OrganizationStructuredData } from '@/components/
 const Index = () => {
   const { language, t } = useLanguage();
 
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
+
   const seoTitle = {
     tj: 'Роҳнамо ба Олмон | Таҳсил, Кор, Ausbildung',
     ru: 'Roadmap в Германию | Учёба, Работа, Ausbildung',
@@ -57,7 +59,7 @@ const Index = () => {
                    '100% kostenlos, keine Registrierung, volle Privatsphäre'}
                 </p>
               </div>
-              <Link to="/cv-generator">
+              <Link to={`${langPrefix}/cv-generator`}>
                 <Button size="lg" className="btn-hero">
                   <FileText className="w-5 h-5 mr-2" />
                   {cvButtonText[language]}

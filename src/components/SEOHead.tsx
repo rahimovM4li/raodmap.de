@@ -1,27 +1,31 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PAGE_SEO, SITE_CONFIG, getCanonicalUrl, getHreflangLinks, getMetaTags } from '@/lib/seo';
 
 interface SEOHeadProps {
   pageKey: keyof typeof PAGE_SEO;
-  path?: string;
 }
 
 /**
  * SEO Head Component
  * 
  * Automatically generates all necessary meta tags, hreflang, canonical URLs
- * based on current language and page.
+ * based on current language and page from URL.
  * 
  * PRIORITY: Tajik language is PRIMARY for SEO
  */
-export function SEOHead({ pageKey, path = '' }: SEOHeadProps) {
+export function SEOHead({ pageKey }: SEOHeadProps) {
   const { language } = useLanguage();
+  const location = useLocation();
+  
+  // Extract the page path without language prefix
+  const pagePath = location.pathname.replace(/^\/(tj|ru|de)/, '').replace(/^\//, '');
   
   // Convert language code (tj/ru/de) to SEO language (tg/ru/de)
   const seoLang = language === 'tj' ? 'tg' : language;
   
-  const meta = getMetaTags(pageKey, seoLang, path);
+  const meta = getMetaTags(pageKey, seoLang, pagePath);
   const seo = PAGE_SEO[pageKey];
   
   // Language for HTML lang attribute
@@ -44,7 +48,7 @@ export function SEOHead({ pageKey, path = '' }: SEOHeadProps) {
       <link rel="canonical" href={meta.canonical} />
 
       {/* Hreflang Links - Important for multilingual SEO */}
-      {getHreflangLinks(path).map((link, index) => (
+      {getHreflangLinks(pagePath).map((link, index) => (
         <link
           key={index}
           rel="alternate"
@@ -82,82 +86,82 @@ export function SEOHead({ pageKey, path = '' }: SEOHeadProps) {
  * Home Page SEO Component
  */
 export function HomePageSEO() {
-  return <SEOHead pageKey="home" path="" />;
+  return <SEOHead pageKey="home" />;
 }
 
 /**
  * Study Page SEO Component
  */
 export function StudyPageSEO() {
-  return <SEOHead pageKey="study" path="study" />;
+  return <SEOHead pageKey="study" />;
 }
 
 /**
  * Work Page SEO Component
  */
 export function WorkPageSEO() {
-  return <SEOHead pageKey="work" path="work" />;
+  return <SEOHead pageKey="work" />;
 }
 
 /**
  * Ausbildung Page SEO Component
  */
 export function AusbildungPageSEO() {
-  return <SEOHead pageKey="ausbildung" path="ausbildung" />;
+  return <SEOHead pageKey="ausbildung" />;
 }
 
 /**
  * Living Page SEO Component
  */
 export function LivingPageSEO() {
-  return <SEOHead pageKey="living" path="living" />;
+  return <SEOHead pageKey="living" />;
 }
 
 /**
  * Roadmap Page SEO Component
  */
 export function RoadmapPageSEO() {
-  return <SEOHead pageKey="roadmap" path="roadmap" />;
+  return <SEOHead pageKey="roadmap" />;
 }
 
 /**
  * FAQ Page SEO Component
  */
 export function FAQPageSEO() {
-  return <SEOHead pageKey="faq" path="faq" />;
+  return <SEOHead pageKey="faq" />;
 }
 
 /**
  * Resources Page SEO Component
  */
 export function ResourcesPageSEO() {
-  return <SEOHead pageKey="resources" path="resources" />;
+  return <SEOHead pageKey="resources" />;
 }
 
 /**
  * CV Generator Page SEO Component
  */
 export function CVGeneratorPageSEO() {
-  return <SEOHead pageKey="cvGenerator" path="cv-generator" />;
+  return <SEOHead pageKey="cvGenerator" />;
 }
 
 /**
  * Privacy Page SEO Component
  */
 export function PrivacyPageSEO() {
-  return <SEOHead pageKey="privacy" path="privacy" />;
+  return <SEOHead pageKey="privacy" />;
 }
 
 /**
  * Cookies Page SEO Component
  */
 export function CookiesPageSEO() {
-  return <SEOHead pageKey="cookies" path="cookies" />;
+  return <SEOHead pageKey="cookies" />;
 }
 
 /**
  * Imprint Page SEO Component
  */
 export function ImprintPageSEO() {
-  return <SEOHead pageKey="imprint" path="imprint" />;
+  return <SEOHead pageKey="imprint" />;
 }

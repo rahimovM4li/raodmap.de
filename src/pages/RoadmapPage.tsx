@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { RoadmapPageSEO } from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { 
@@ -29,20 +29,12 @@ const RoadmapPage = () => {
     { key: 'longterm', data: t.roadmap.phases.longterm },
   ];
 
-  const seoTitle = {
-    de: 'Detaillierte Roadmap nach Deutschland | Schritt-für-Schritt-Anleitung',
-    ru: 'Подробная Roadmap в Германию | Пошаговое руководство',
-  };
-
   const activePhaseData = phases.find(p => p.key === activePhase)?.data;
   const ActiveIcon = phaseIcons[activePhase as keyof typeof phaseIcons] || FileText;
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle[language]}</title>
-        <meta name="description" content={t.roadmap.subtitle} />
-      </Helmet>
+      <RoadmapPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}

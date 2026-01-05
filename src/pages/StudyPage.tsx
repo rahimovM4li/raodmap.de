@@ -1,13 +1,15 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, GraduationCap, Globe, FileText, CreditCard, Shield, Plane } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StepCard } from '@/components/StepCard';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { StudyPageSEO } from '@/components/SEOHead';
 
 const StudyPage = () => {
   const { language, t } = useLanguage();
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const steps = [
     {
@@ -76,18 +78,10 @@ const StudyPage = () => {
     'Нусхаи мактуби қабулшавӣ',
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Studium in Deutschland | Leitfaden für internationale Studierende' 
-    : language === 'ru'
-    ? 'Учёба в Германии | Руководство для студентов'
-    : 'Таҳсил дар Олмон | Роҳнамо барои донишҷӯён';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={t.study.intro} />
-      </Helmet>
+      <StudyPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}
@@ -235,7 +229,7 @@ const StudyPage = () => {
                 : 'Нақшаи инфиродӣ бо ёрии wizard бисозед ва PDF-ро боргирӣ кунед.'}
             </p>
             <Button asChild className="btn-hero">
-              <Link to="/#wizard">
+              <Link to={`${langPrefix}/#wizard`}>
                 {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>

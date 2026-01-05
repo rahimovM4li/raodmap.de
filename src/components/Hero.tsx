@@ -6,7 +6,9 @@ import { PathCard } from '@/components/PathCard';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   return (
     <section className="relative overflow-hidden">
@@ -52,7 +54,7 @@ export function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-center  sm:flex-row justify-center gap-4">
             <a href="#wizard" className="btn-hero">
               {t.hero.cta}
               <ArrowRight className="w-5 h-5" />
@@ -60,10 +62,10 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20"
+              className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20"            
               asChild
             >
-              <Link to="/study">{t.hero.ctaSecondary}</Link>
+              <Link to={`${langPrefix}/study`}>{t.hero.ctaSecondary}</Link>
             </Button>
           </div>
         </motion.div>

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { FAQPageSEO } from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -156,18 +156,10 @@ const FAQPage = () => {
     { term: 'Studienkolleg', definition: 'Курси тайёрӣ барои донишгоҳ' },
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Häufige Fragen zur Einwanderung nach Deutschland | FAQ' 
-    : language === 'ru'
-    ? 'Вопросы об эмиграции в Германию | FAQ'
-    : 'Саволҳо дар бораи муҳоҷират ба Олмон | FAQ';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={language === 'de' ? 'Häufige Fragen zu Visum, Studium, Arbeit in Deutschland' : language === 'ru' ? 'Частые вопросы о визе, учёбе, работе в Германии' : 'Саволҳои зиёд дар бораи виза, таҳсил, кор дар Олмон'} />
-      </Helmet>
+      <FAQPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}

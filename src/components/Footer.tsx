@@ -4,7 +4,9 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const quickLinks = [
     { path: '/study', label: t.nav.study },
@@ -98,7 +100,7 @@ export function Footer() {
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
-                    to={link.path}
+                    to={`${langPrefix}${link.path}`}
                     className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                   >
                     {link.label}
@@ -148,7 +150,7 @@ export function Footer() {
                 {legalLinks.map((link) => (
                   <li key={link.path}>
                     <Link
-                      to={link.path}
+                      to={`${langPrefix}${link.path}`}
                       className="text-xs text-primary-foreground/50 hover:text-primary-foreground/70 transition-colors"
                     >
                       {link.label}

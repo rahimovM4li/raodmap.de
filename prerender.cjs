@@ -201,6 +201,10 @@ function main() {
     // Update canonical
     html = html.replace(/rel="canonical" href="[^"]*"/, `rel="canonical" href="${url}"`);
     
+    // Update manifest link based on language
+    const manifestUrl = lang === 'tj' ? '/site.webmanifest' : lang === 'de' ? '/site-de.webmanifest' : '/site-ru.webmanifest';
+    html = html.replace(/rel="manifest" href="[^"]*"/, `rel="manifest" href="${manifestUrl}"`);
+    
     // Update hreflang links
     html = html.replace(/rel="alternate" hreflang="tg" href="[^"]*"/, `rel="alternate" hreflang="tg" href="${SITE_CONFIG.domain}/tj${pagePath}"`);
     html = html.replace(/rel="alternate" hreflang="ru" href="[^"]*"/, `rel="alternate" hreflang="ru" href="${SITE_CONFIG.domain}/ru${pagePath}"`);

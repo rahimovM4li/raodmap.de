@@ -115,6 +115,32 @@ export const translations = {
           'Суғуртаи саломатӣ',
         ],
       },
+      faq: [
+        {
+          question: 'Барои виза чӣ қадар пул лозим аст?',
+          answer: 'Барои визаи донишҷӯӣ шумо бояд ҳисоби блокшуда (Sperrkonto) бо ~€11,904 барои як сол доред. Ин маблағ ҳар моҳ €992 озод мешавад барои хароҷот.',
+        },
+        {
+          question: 'Баъд аз хатми таҳсил чӣ мешавад?',
+          answer: 'Шумо метавонед то 18 моҳ иҷозатномаи ҷустуҷӯи кор гиред. Баъди ёфтани кор метавонед ба иҷозатномаи корӣ ё EU Blue Card гузаред ва сипас барои иқомати доимӣ ариза диҳед.',
+        },
+        {
+          question: 'Кадом забон барои донишгоҳ лозим аст?',
+          answer: 'Аксари барномаҳо забони олмонӣ талаб мекунанд (B2-C1 сатҳ). Баъзе барномаҳои байналмилалӣ ба забони англисӣ ҳастанд (IELTS 6.5+ ё TOEFL 90+).',
+        },
+        {
+          question: 'Метавонам ҳангоми таҳсил кор кунам?',
+          answer: 'Ҳа, донишҷӯён метавонанд то 120 рӯзи пурра ё 240 рӯзи нимрӯз дар сол кор кунанд. Дар давраи таътил маҳдудият надорад.',
+        },
+        {
+          question: 'Агар дипломи ман дар Олмон эътироф нашавад чӣ кунам?',
+          answer: 'Anabin.kmk.org-ро санҷед барои эътироф. Агар эътироф нашавад, шояд бояд як сол Studienkolleg (донишкадаи тайёрӣ) гузаронед ё санадҳоро тавассути uni-assist арзёбӣ кунед.',
+        },
+        {
+          question: 'Пардохтҳои донишгоҳӣ чӣ қадар аст?',
+          answer: 'Аксари донишгоҳҳои давлатӣ ройгон ё хеле арзон ҳастанд (€150-350/нимсол барои ҳаққи семестр). Донишгоҳҳои хусусӣ метавонанд €5,000-20,000/сол талаб кунанд.',
+        },
+      ],
     },
     work: {
       title: 'Кор дар Олмон',
@@ -134,12 +160,38 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Барои мутахассисони баландихтисос',
           requirements: [
-            'Музди ҳадди ақал €48,300/сол (2025)',
+            'Музди ҳадди ақал €45,300/сол (2025)',
             'Шартнома аз корфармо',
             'Дипломи эътирофшуда',
           ],
         },
       },
+      faq: [
+        {
+          question: 'Чӣ тавр метавонам кор дар Олмон ёбам?',
+          answer: 'Бо дипломи эътирофшуда: 1) Виз аи ҷустуҷӯи кор гиред (6 моҳ), 2) JobPortal make-it-in-germany.com, LinkedIn, StepStone истифода баред, 3) CV ва мактуби иҷрокунандаи олмониро омода кунед.',
+        },
+        {
+          question: 'EU Blue Card чист ва чӣ гуна метавонам гирам?',
+          answer: 'EU Blue Card визаи махсус барои мутахассисони дипломдоре мебошад, ки шартномаи корӣ бо музди ҳадди ақал €45,300/сол (€41,000 барои соҳаҳои дорои тақозо мисли IT, табобат) доранд. Баъд аз 21-33 моҳ ба иқомати доимӣ оварда метавонад.',
+        },
+        {
+          question: 'Бе дипломи донишгоҳ кор кардан мумкин аст?',
+          answer: 'Ҳа, бо Ausbildung (омӯзиши касбӣ) ё дипломи касбӣ дар соҳаҳои мушаххас. Инчунин мутахассисони IT бо 3 сол таҷриба метавонанд визаи корӣ гиранд.',
+        },
+        {
+          question: 'Кадом соҳаҳо дар Олмон дорои тақозо ҳастанд?',
+          answer: 'IT, муҳандисӣ, тандурустӣ (парастор, духтур), касбҳои дастӣ (сохтмон, техника), омӯзгор, фармацевт. Ин соҳаҳо раванди визаро осонтар мекунанд.',
+        },
+        {
+          question: 'Музди миёнаи минималӣ барои иқомат чӣ қадар аст?',
+          answer: 'Барои визаи корӣ ҳадди ақал ~€2,000 брутто/моҳ лозим аст. Барои EU Blue Card: €45,300/сол (€41,000 дар соҳаҳои дорои тақозо).',
+        },
+        {
+          question: 'Чӣ тавр дипломи худро дар Олмон эътироф кунам?',
+          answer: 'Anabin.kmk.org санҷед ва сипас тавассути anerkennung-in-deutschland.de ариза диҳед. Раванд 3-6 моҳ давом мекунад. Баъзан курсҳои иловагӣ лозим аст.',
+        },
+      ],
     },
     ausbildung: {
       title: 'Ausbildung — Омӯзиши касбӣ',
@@ -154,6 +206,28 @@ export const translations = {
         title: 'Касбҳои маъмул',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
       },
+      faq: [
+        {
+          question: 'Барои Ausbildung кадом синну сол лозим аст?',
+          answer: 'Ҳадди расмии синну сол вуҷуд надорад. Одатан аз 16-18 сол (барои хориҷиҳо 18) то 30 сол маъмулӣ аст. Вале ҳатто одамони калонсолтар метавонанд ариза диҳанд, махсусан дар соҳаҳои дорои тақозо (тандурустӣ, IT, касбҳои дастӣ).',
+        },
+        {
+          question: 'Барои Ausbildung кадом сатҳи забон лозим аст?',
+          answer: 'Ҳадди ақал B1 забони олмонӣ лозим аст. Барои баъзе соҳаҳои техникӣ ва тиббӣ B2 тавсия дода мешавад. Бе забони олмонӣ кор дар корхона ва дарсҳо дар мактаби касбӣ хеле душвор аст.',
+        },
+        {
+          question: 'Баъд аз хатми Ausbildung чӣ мешавад?',
+          answer: 'Шумо мутахассиси тасдиқшудаи олмонӣ мешавед. Метавонед иҷозатномаи корӣ гиред, корро идома диҳед ва баъд аз якчанд сол барои иқомати доимӣ (Niederlassungserlaubnis) ариза диҳед.',
+        },
+        {
+          question: 'Метавонон хонаводамро оварам?',
+          answer: 'Ҳа, баъд аз якчанд моҳ ва агар музд ва манзили кофӣ дошта бошед, метавонед барои иттиҳоди хонавода ариза диҳед. Ҳамсари шумо метавонад бе маҳдудият кор кунад.',
+        },
+        {
+          question: 'Агар Ausbildung-ро тамом накунам чӣ мешавад?',
+          answer: 'Агар Ausbildung-ро тарк кунед, иҷозатномаи шумо беэътибор мешавад. Шумо бояд Олмонро тарк кунед ё барои визаи дигар ариза диҳед. Аз ин рӯ, танҳо агар мутмаин бошед, ки ин роҳи дурует ариза диҳед.',
+        },
+      ],
     },
     financing: {
       title: 'Маблағгузорӣ ва стипендияҳо',
@@ -498,6 +572,32 @@ export const translations = {
           'Медицинская страховка',
         ],
       },
+      faq: [
+        {
+          question: 'Сколько денег нужно для студенческой визы?',
+          answer: 'Для студенческой визы нужен блокированный счёт (Sperrkonto) с ~€11,904 на год. Эта сумма ежемесячно разблокируется по €992 для покрытия расходов.',
+        },
+        {
+          question: 'Что происходит после окончания учёбы?',
+          answer: 'Вы можете получить разрешение на поиск работы на 18 месяцев. После трудоустройства можно перейти на рабочую визу или EU Blue Card, а затем подать на ПМЖ.',
+        },
+        {
+          question: 'Какой язык нужен для университета?',
+          answer: 'Большинство программ требуют немецкий (уровень B2-C1). Некоторые международные программы на английском (IELTS 6.5+ или TOEFL 90+).',
+        },
+        {
+          question: 'Могу ли я работать во время учёбы?',
+          answer: 'Да, студенты могут работать до 120 полных дней или 240 неполных дней в год. Во время каникул ограничений нет.',
+        },
+        {
+          question: 'Что делать, если мой диплом не признан в Германии?',
+          answer: 'Проверьте на anabin.kmk.org статус признания. Если диплом не признан, возможно, нужно год отучиться в Studienkolleg (подготовительный колледж) или пройти оценку через uni-assist.',
+        },
+        {
+          question: 'Сколько стоит обучение в университете?',
+          answer: 'Большинство государственных университетов бесплатны или очень дешёвые (€150-350/семестр семестровый взнос). Частные университеты могут стоить €5,000-20,000/год.',
+        },
+      ],
     },
     work: {
       title: 'Работа в Германии',
@@ -517,12 +617,38 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Для высококвалифицированных специалистов',
           requirements: [
-            'Минимальная зарплата €48,300/год (2025)',
+            'Минимальная зарплата €45,300/год (2025)',
             'Контракт от работодателя',
             'Признанный диплом',
           ],
         },
       },
+      faq: [
+        {
+          question: 'Как найти работу в Германии?',
+          answer: 'С признанным дипломом: 1) Получите визу для поиска работы (6 месяцев), 2) Используйте JobPortal make-it-in-germany.com, LinkedIn, StepStone, 3) Подготовьте немецкое CV и сопроводительное письмо.',
+        },
+        {
+          question: 'Что такое EU Blue Card и как её получить?',
+          answer: 'EU Blue Card — специальная виза для дипломированных специалистов с контрактом и зарплатой минимум €45,300/год (€41,000 для дефицитных профессий: IT, медицина). Через 21-33 месяца можно подать на ПМЖ.',
+        },
+        {
+          question: 'Можно ли работать без университетского диплома?',
+          answer: 'Да, с Ausbildung (профессиональное обучение) или профессиональным дипломом в определённых областях. Также IT-специалисты с 3 годами опыта могут получить рабочую визу.',
+        },
+        {
+          question: 'Какие профессии востребованы в Германии?',
+          answer: 'IT, инженерия, здравоохранение (медсёстры, врачи), ремесленные профессии (строительство, техника), учителя, фармацевты. Эти сферы упрощают визовый процесс.',
+        },
+        {
+          question: 'Какая минимальная зарплата нужна для проживания?',
+          answer: 'Для рабочей визы минимум ~€2,000 брутто/месяц. Для EU Blue Card: €45,300/год (€41,000 в дефицитных профессиях).',
+        },
+        {
+          question: 'Как признать диплом в Германии?',
+          answer: 'Проверьте на anabin.kmk.org, затем подайте через anerkennung-in-deutschland.de. Процесс занимает 3-6 месяцев. Иногда требуются дополнительные курсы.',
+        },
+      ],
     },
     ausbildung: {
       title: 'Ausbildung — Профессиональное обучение',
@@ -537,6 +663,28 @@ export const translations = {
         title: 'Популярные профессии',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
       },
+      faq: [
+        {
+          question: 'Какой возраст нужен для Ausbildung?',
+          answer: 'Официального максимального возраста нет. Обычно 16-18 лет (для иностранцев 18) до 30 лет наиболее распространено. Но даже старшие кандидаты могут подавать, особенно в дефицитных профессиях (здравоохранение, IT, ремесла).',
+        },
+        {
+          question: 'Какой уровень языка нужен для Ausbildung?',
+          answer: 'Минимум B1 немецкого требуется. Для некоторых технических и медицинских профессий рекомендуется B2. Без немецкого языка работа на предприятии и занятия в профшколе очень сложны.',
+        },
+        {
+          question: 'Что происходит после окончания Ausbildung?',
+          answer: 'Вы становитесь сертифицированным специалистом в Германии. Можете получить рабочую визу, продолжить работу и через несколько лет подать на ПМЖ (Niederlassungserlaubnis).',
+        },
+        {
+          question: 'Могу ли я привезти семью?',
+          answer: 'Да, через несколько месяцев, если у вас достаточная зарплата и жильё, можете подать на воссоединение семьи. Супруг может работать без ограничений.',
+        },
+        {
+          question: 'Что будет, если я не закончу Ausbildung?',
+          answer: 'Если вы бросите Ausbildung, ваша виза станет недействительной. Вам нужно будет покинуть Германию или подать на другую визу. Поэтому подавайте только если уверены, что это ваш путь.',
+        },
+      ],
     },
     financing: {
       title: 'Финансирование и стипендии',
@@ -881,6 +1029,32 @@ export const translations = {
           'Krankenversicherung',
         ],
       },
+      faq: [
+        {
+          question: 'Wie viel Geld brauche ich für das Studentenvisum?',
+          answer: 'Für das Studentenvisum benötigen Sie ein Sperrkonto mit ~€11.904 für ein Jahr. Dieser Betrag wird monatlich mit €992 für Ihre Ausgaben freigegeben.',
+        },
+        {
+          question: 'Was passiert nach dem Studienabschluss?',
+          answer: 'Sie können eine Aufenthaltserlaubnis zur Jobsuche für 18 Monate erhalten. Nach der Jobfindung können Sie zur Arbeitserlaubnis oder EU Blue Card wechseln und dann die Niederlassungserlaubnis beantragen.',
+        },
+        {
+          question: 'Welche Sprache wird für die Universität benötigt?',
+          answer: 'Die meisten Programme erfordern Deutsch (B2-C1 Niveau). Einige internationale Programme sind auf Englisch (IELTS 6.5+ oder TOEFL 90+).',
+        },
+        {
+          question: 'Kann ich während des Studiums arbeiten?',
+          answer: 'Ja, Studenten können bis zu 120 volle Tage oder 240 halbe Tage pro Jahr arbeiten. Während der Semesterferien gibt es keine Einschränkungen.',
+        },
+        {
+          question: 'Was tun, wenn mein Abschluss in Deutschland nicht anerkannt wird?',
+          answer: 'Prüfen Sie auf anabin.kmk.org den Anerkennungsstatus. Wenn nicht anerkannt, müssen Sie möglicherweise ein Jahr Studienkolleg absolvieren oder Ihre Unterlagen über uni-assist bewerten lassen.',
+        },
+        {
+          question: 'Wie viel kostet das Studium?',
+          answer: 'Die meisten staatlichen Universitäten sind kostenlos oder sehr günstig (€150-350/Semester Semesterbeitrag). Private Universitäten können €5.000-20.000/Jahr kosten.',
+        },
+      ],
     },
     work: {
       title: 'Arbeiten in Deutschland',
@@ -900,12 +1074,38 @@ export const translations = {
           title: 'EU Blue Card',
           description: 'Für hochqualifizierte Fachkräfte',
           requirements: [
-            'Mindestgehalt €48.300/Jahr (2025)',
+            'Mindestgehalt €45.300/Jahr (2025)',
             'Vertrag vom Arbeitgeber',
             'Anerkannter Abschluss',
           ],
         },
       },
+      faq: [
+        {
+          question: 'Wie finde ich einen Job in Deutschland?',
+          answer: 'Mit anerkanntem Abschluss: 1) Visum zur Jobsuche beantragen (6 Monate), 2) JobPortal make-it-in-germany.com, LinkedIn, StepStone nutzen, 3) Deutschen Lebenslauf und Anschreiben vorbereiten.',
+        },
+        {
+          question: 'Was ist die EU Blue Card und wie bekomme ich sie?',
+          answer: 'Die EU Blue Card ist ein Spezialvisum für Akademiker mit Vertrag und Mindestgehalt €45.300/Jahr (€41.000 für Mangelberufe: IT, Medizin). Nach 21-33 Monaten Antrag auf Niederlassungserlaubnis möglich.',
+        },
+        {
+          question: 'Kann ich ohne Hochschulabschluss arbeiten?',
+          answer: 'Ja, mit Ausbildung oder Berufsabschluss in bestimmten Bereichen. Auch IT-Spezialisten mit 3 Jahren Erfahrung können Arbeitsvisum bekommen.',
+        },
+        {
+          question: 'Welche Berufe sind in Deutschland gefragt?',
+          answer: 'IT, Ingenieurwesen, Gesundheitswesen (Pflegekräfte, Ärzte), Handwerksberufe (Bau, Technik), Lehrer, Apotheker. Diese Bereiche erleichtern das Visumsverfahren.',
+        },
+        {
+          question: 'Welches Mindestgehalt brauche ich zum Leben?',
+          answer: 'Für Arbeitsvisum mindestens ~€2.000 brutto/Monat. Für EU Blue Card: €45.300/Jahr (€41.000 in Mangelberufen).',
+        },
+        {
+          question: 'Wie erkenne ich meinen Abschluss in Deutschland an?',
+          answer: 'Prüfen Sie auf anabin.kmk.org, dann Antrag über anerkennung-in-deutschland.de. Prozess dauert 3-6 Monate. Manchmal sind Zusatzkurse erforderlich.',
+        },
+      ],
     },
     ausbildung: {
       title: 'Ausbildung — Berufsausbildung',
@@ -920,6 +1120,28 @@ export const translations = {
         title: 'Beliebte Berufe',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
       },
+      faq: [
+        {
+          question: 'Welches Alter wird für die Ausbildung benötigt?',
+          answer: 'Es gibt keine offizielle Altersgrenze. Üblicherweise 16-18 Jahre (für Ausländer 18) bis 30 Jahre am häufigsten. Aber auch ältere Bewerber können sich bewerben, besonders in Mangelberufen (Gesundheit, IT, Handwerk).',
+        },
+        {
+          question: 'Welches Sprachniveau wird für die Ausbildung benötigt?',
+          answer: 'Mindestens B1 Deutsch erforderlich. Für einige technische und medizinische Berufe wird B2 empfohlen. Ohne Deutsch ist die Arbeit im Betrieb und Unterricht in der Berufsschule sehr schwierig.',
+        },
+        {
+          question: 'Was passiert nach Abschluss der Ausbildung?',
+          answer: 'Sie werden zertifizierter Facharbeiter in Deutschland. Können Arbeitserlaubnis erhalten, weiterarbeiten und nach ein paar Jahren Niederlassungserlaubnis beantragen.',
+        },
+        {
+          question: 'Kann ich meine Familie mitbringen?',
+          answer: 'Ja, nach einigen Monaten können Sie bei ausreichendem Gehalt und Wohnraum Familiennachzug beantragen. Ehepartner kann ohne Einschränkungen arbeiten.',
+        },
+        {
+          question: 'Was passiert, wenn ich die Ausbildung nicht abschließe?',
+          answer: 'Wenn Sie die Ausbildung abbrechen, wird Ihr Visum ungültig. Sie müssen Deutschland verlassen oder ein anderes Visum beantragen. Bewerben Sie sich daher nur, wenn Sie sicher sind, dass dies Ihr Weg ist.',
+        },
+      ],
     },
     financing: {
       title: 'Finanzierung & Stipendien',

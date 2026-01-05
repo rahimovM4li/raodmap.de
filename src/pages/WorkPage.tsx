@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Briefcase, CreditCard, FileCheck, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const WorkPage = () => {
@@ -239,6 +240,13 @@ const WorkPage = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQSection
+          title={language === 'de' ? 'Häufig gestellte Fragen' : language === 'ru' ? 'Часто задаваемые вопросы' : 'Саволҳои зиёд пурсидашаванда'}
+          subtitle={language === 'de' ? 'Antworten auf wichtige Fragen zum Arbeiten in Deutschland' : language === 'ru' ? 'Ответы на важные вопросы о работе в Германии' : 'Ҷавобҳо ба саволҳои муҳим дар бораи кор дар Олмон'}
+          faqs={t.work.faq || []}
+        />
 
         {/* CTA */}
         <section className="py-16 md:py-24 bg-secondary/30">

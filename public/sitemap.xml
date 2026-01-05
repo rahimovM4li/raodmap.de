@@ -5,16 +5,16 @@
   <!-- 
     Sitemap for Roadmap.m4li.de
     PRIMARY LANGUAGE: Tajik (tg)
-    Last updated: 2025-12-24
+    Last updated: 2026-01-05
   -->
 
   <!-- Homepage - Tajik (DEFAULT) -->
   <url>
-    <loc>https://roadmap.m4li.de/</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/tj</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/" />
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru" />
   </url>
@@ -22,10 +22,10 @@
   <!-- Homepage - German -->
   <url>
     <loc>https://roadmap.m4li.de/de</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/" />
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru" />
   </url>
@@ -33,100 +33,196 @@
   <!-- Homepage - Russian -->
   <url>
     <loc>https://roadmap.m4li.de/ru</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/" />
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru" />
   </url>
 
-  <!-- Study Page -->
+  <!-- Study Pages -->
   <url>
-    <loc>https://roadmap.m4li.de/study</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/tj/study</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/study" />
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/study" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/study" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/study" />
   </url>
-
-  <!-- Work Page -->
   <url>
-    <loc>https://roadmap.m4li.de/work</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/study</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/work" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/study</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Work Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/work</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/work" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/work" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/work" />
   </url>
-
-  <!-- Ausbildung Page -->
   <url>
-    <loc>https://roadmap.m4li.de/ausbildung</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/work</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/ausbildung" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/work</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Ausbildung Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/ausbildung</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/ausbildung" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/ausbildung" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/ausbildung" />
   </url>
-
-  <!-- Living Page -->
   <url>
-    <loc>https://roadmap.m4li.de/living</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/ausbildung</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/living" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/ausbildung</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Living Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/living</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/living" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/living" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/living" />
   </url>
-
-  <!-- Roadmap Page -->
   <url>
-    <loc>https://roadmap.m4li.de/roadmap</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/living</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/roadmap" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/living</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Roadmap Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/roadmap</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/roadmap" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/roadmap" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/roadmap" />
   </url>
-
-  <!-- FAQ Page -->
   <url>
-    <loc>https://roadmap.m4li.de/faq</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/roadmap</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/faq" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/roadmap</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/faq</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/faq" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/faq" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/faq" />
   </url>
-
-  <!-- Resources Page -->
   <url>
-    <loc>https://roadmap.m4li.de/resources</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/faq</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/resources" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/faq</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Resources Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/resources</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/resources" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/resources" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/resources" />
   </url>
-
-  <!-- CV Generator Page -->
   <url>
-    <loc>https://roadmap.m4li.de/cv-generator</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://roadmap.m4li.de/de/resources</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/cv-generator" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/resources</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- CV Generator Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/cv-generator</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/cv-generator" />
     <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/cv-generator" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/cv-generator" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/de/cv-generator</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/cv-generator</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

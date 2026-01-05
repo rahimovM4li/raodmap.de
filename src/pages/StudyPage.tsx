@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, GraduationCap, Globe, FileText, CreditCard, Shield, Plane } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StepCard } from '@/components/StepCard';
+import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { StudyPageSEO } from '@/components/SEOHead';
 
@@ -214,6 +215,13 @@ const StudyPage = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQSection
+          title={language === 'de' ? 'Häufig gestellte Fragen' : language === 'ru' ? 'Часто задаваемые вопросы' : 'Саволҳои зиёд пурсидашаванда'}
+          subtitle={language === 'de' ? 'Antworten auf wichtige Fragen zum Studium in Deutschland' : language === 'ru' ? 'Ответы на важные вопросы об учёбе в Германии' : 'Ҷавобҳо ба саволҳои муҳим дар бораи таҳсил дар Олмон'}
+          faqs={t.study.faq || []}
+        />
 
         {/* CTA */}
         <section className="py-16 md:py-24">

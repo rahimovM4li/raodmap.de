@@ -128,8 +128,8 @@ export function Header() {
               onClick={() => setActiveDropdown(null)}
             >
             <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-              <img src="favicon.ico" alt="Germany Roadmap Logo" />
-            </div>
+<img src="favicon.ico" alt="Germany Roadmap Logo" />            
+</div>
               <span className="hidden sm:block font-semibold text-foreground text-sm">
                 Germany Roadmap
               </span>

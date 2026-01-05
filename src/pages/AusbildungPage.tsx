@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const AusbildungPage = () => {
@@ -223,6 +224,13 @@ const AusbildungPage = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQSection
+          title={language === 'de' ? 'Häufig gestellte Fragen' : language === 'ru' ? 'Часто задаваемые вопросы' : 'Саволҳои зиёд пурсидашаванда'}
+          subtitle={language === 'de' ? 'Antworten auf wichtige Fragen zur Ausbildung in Deutschland' : language === 'ru' ? 'Ответы на важные вопросы об Ausbildung в Германии' : 'Ҷавобҳо ба саволҳои муҳим дар бораи Ausbildung дар Олмон'}
+          faqs={t.ausbildung.faq || []}
+        />
 
         {/* CTA */}
         <section className="py-16 md:py-24">

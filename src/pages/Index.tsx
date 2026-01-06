@@ -14,7 +14,7 @@ const Index = () => {
   const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const seoTitle = {
-    tj: 'Роҳнамо ба Олмон | Таҳсил, Кор, Ausbildung',
+    tj: 'Mаълумот ва роҳҳо ба Олмон | Таҳсил, Кор, Ausbildung',
     ru: 'Roadmap в Германию | Учёба, Работа, Ausbildung',
     de: 'Roadmap nach Deutschland | Studium, Arbeit, Ausbildung',
   };

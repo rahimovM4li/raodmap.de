@@ -23,7 +23,7 @@ const FAQPage = () => {
     },
     {
       question: 'Darf ich während des Studiums arbeiten?',
-      answer: 'Ja! Internationale Studierende dürfen 120 volle oder 240 halbe Tage im Jahr arbeiten. Der Mindestlohn beträgt €12 pro Stunde.',
+      answer: 'Ja! Internationale Studierende dürfen 120 volle oder 240 halbe Tage im Jahr arbeiten. Der Mindestlohn beträgt €13.90 pro Stunde.',
     },
     {
       question: 'Was ist eine Ausbildung?',
@@ -64,7 +64,7 @@ const FAQPage = () => {
     },
     {
       question: 'Могу ли я работать во время учёбы?',
-      answer: 'Да! Иностранные студенты могут работать 120 полных или 240 неполных дней в год. Минимальная почасовая оплата €12.',
+      answer: 'Да! Иностранные студенты могут работать 120 полных или 240 неполных дней в год. Минимальная почасовая оплата €13.90',
     },
     {
       question: 'Что такое Ausbildung?',
@@ -105,7 +105,7 @@ const FAQPage = () => {
     },
     {
       question: 'Оё ман метавонам дар давраи таҳсил кор кунам?',
-      answer: 'Бале! Донишҷӯёни хориҷӣ метавонанд 120 рӯзи пурра ё 240 рӯзи нимрӯза дар сол кор кунанд. Музди ҳаддиаққал €12 дар соат.',
+      answer: 'Бале! Донишҷӯёни хориҷӣ метавонанд 120 рӯзи пурра ё 240 рӯзи нимрӯза дар сол кор кунанд. Музди ҳаддиаққал €13.90 дар соат.',
     },
     {
       question: 'Ausbildung чист?',

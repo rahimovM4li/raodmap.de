@@ -297,7 +297,7 @@ export const translations = {
     },
     living: {
       title: 'Зиндагӣ дар Олмон',
-      subtitle: 'Роҳнамои амалӣ барои навомадагон',
+      subtitle: 'Mаълумоти амалӣ барои навомадагон',
       sections: {
         housing: {
           title: 'Манзил',
@@ -369,7 +369,7 @@ export const translations = {
       },
     },
     roadmap: {
-      title: 'Роҳнамои муфассал',
+      title: 'Mаълумоти муфассал',
       subtitle: 'Сафари пурраи шумо ба Олмон',
       phases: {
         preparation: {

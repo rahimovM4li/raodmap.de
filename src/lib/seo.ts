@@ -11,7 +11,7 @@
 export const SITE_CONFIG = {
   domain: 'https://roadmap.m4li.de',
   siteName: {
-    tj: 'Роҳнамо ба Олмон',
+    tj: 'Mаълумот ва роҳҳо ба Олмон',
     de: 'Roadmap nach Deutschland',
     ru: 'Roadmap в Германию',
   },
@@ -49,12 +49,12 @@ export interface SEOConfig {
 export const PAGE_SEO: Record<string, SEOConfig> = {
   home: {
     title: {
-      tj: 'Роҳнамо ба Олмон – Таҳсил, Кор ва Зиндагӣ дар Олмон',
+      tj: 'Mаълумот ва роҳҳо ба Олмон – Таҳсил, Кор ва Зиндагӣ дар Олмон',
       de: 'Roadmap nach Deutschland – Studium, Arbeit und Leben',
       ru: 'Дорожная карта в Германию – Учёба, Работа и Жизнь',
     },
     description: {
-      tj: 'Роҳнамои пурра барои шаҳрвандони Тоҷикистон: чӣ гуна ба Олмон барои таҳсил, кор ё Ausbildung рафтан. Қадам ба қадам, равшан ва фаҳмо.',
+      tj: 'Mаълумоти пурра барои шаҳрвандони Тоҷикистон: чӣ гуна ба Олмон барои таҳсил, кор ё Ausbildung рафтан. Қадам ба қадам, равшан ва фаҳмо.',
       de: 'Vollständiger Leitfaden für Tadschikistan-Bürger: Wie man nach Deutschland zum Studium, zur Arbeit oder zur Ausbildung kommt. Schritt für Schritt, klar und verständlich.',
       ru: 'Полное руководство для граждан Таджикистана: как приехать в Германию для учёбы, работы или Ausbildung. Шаг за шагом, ясно и понятно.',
     },
@@ -188,7 +188,7 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
 
   roadmap: {
     title: {
-      tj: 'Роҳнамои муфассал – Сафари пурра ба Олмон қадам ба қадам',
+      tj: 'Mаълумоти муфассал – Сафари пурра ба Олмон қадам ба қадам',
       de: 'Detaillierte Roadmap – Komplette Reise nach Deutschland Schritt für Schritt',
       ru: 'Подробная дорожная карта – Полный путь в Германию шаг за шагом',
     },

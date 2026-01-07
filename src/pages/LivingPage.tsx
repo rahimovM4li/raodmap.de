@@ -1,4 +1,5 @@
 import { LivingPageSEO } from "@/components/SEOHead";
+import { PageTransition } from "@/components/PageTransition";
 import { motion } from 'framer-motion';
 import { Home, Briefcase, Heart, Sun, Euro, Languages } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -40,7 +41,8 @@ const LivingPage = () => {
     <>
       <LivingPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -157,6 +159,7 @@ const LivingPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

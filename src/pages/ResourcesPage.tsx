@@ -1,4 +1,5 @@
 import { ResourcesPageSEO } from "@/components/SEOHead";
+import { PageTransition } from "@/components/PageTransition";
 import { motion } from 'framer-motion';
 import { ExternalLink, MapPin, Phone, Download, Building2, BookOpen, Award, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -93,7 +94,8 @@ const ResourcesPage = () => {
     <>
       <ResourcesPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -240,6 +242,7 @@ const ResourcesPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

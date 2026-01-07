@@ -1,4 +1,5 @@
 import { FAQPageSEO } from "@/components/SEOHead";
+import { PageTransition } from "@/components/PageTransition";
 import { motion } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -161,7 +162,8 @@ const FAQPage = () => {
     <>
       <FAQPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -236,6 +238,7 @@ const FAQPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

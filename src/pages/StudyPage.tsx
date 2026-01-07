@@ -4,6 +4,7 @@ import { ArrowRight, Check, ExternalLink, GraduationCap, Globe, FileText, Credit
 import { Button } from '@/components/ui/button';
 import { StepCard } from '@/components/StepCard';
 import { FAQSection } from '@/components/FAQSection';
+import { PageTransition } from '@/components/PageTransition';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { StudyPageSEO } from '@/components/SEOHead';
 
@@ -84,7 +85,8 @@ const StudyPage = () => {
     <>
       <StudyPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -245,6 +247,7 @@ const StudyPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 import Index from "./pages/Index";
 import StudyPage from "./pages/StudyPage";
 import WorkPage from "./pages/WorkPage";
@@ -26,12 +27,18 @@ import AuPairPage from "./pages/AuPairPage";
 
 const queryClient = new QueryClient();
 
+const ScrollManager = () => {
+  useScrollToTop();
+  return null;
+};
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <LanguageProvider>
           <TooltipProvider>
+            <ScrollManager />
             <Toaster />
             <Sonner />
             <div className="flex flex-col min-h-screen">

@@ -272,9 +272,10 @@ export function Header() {
               {/* Language Switcher - Desktop */}
               <div className="hidden sm:flex items-center gap-1 bg-secondary/50 rounded-full p-1">
                 {languages.map((lang) => (
-                  <button
+                  <motion.button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
+                    whileTap={{ scale: 0.9 }}
                     className={cn(
                       'w-8 h-8 rounded-full flex items-center justify-center text-lg transition-all duration-200',
                       language === lang.code
@@ -284,19 +285,29 @@ export function Header() {
                     title={lang.code.toUpperCase()}
                   >
                     {lang.flag}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
 
               {/* Mobile menu button */}
-              <button
-                className="lg:hidden p-2 rounded-lg hover:bg-secondary/80 transition-colors"
+              <motion.button
+                whileTap={{ scale: 0.92 }}
+                className="lg:hidden p-2.5 rounded-lg hover:bg-secondary/80 transition-colors active:bg-secondary"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
                 aria-expanded={isMenuOpen}
               >
-                <Menu className="w-5 h-5 text-foreground" />
-              </button>
+                <motion.div
+                  animate={isMenuOpen ? { rotate: 90 } : { rotate: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isMenuOpen ? (
+                    <X className="w-5 h-5 text-foreground" />
+                  ) : (
+                    <Menu className="w-5 h-5 text-foreground" />
+                  )}
+                </motion.div>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -321,8 +332,8 @@ export function Header() {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-card z-50 lg:hidden shadow-2xl overflow-y-auto"
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-card z-50 lg:hidden shadow-2xl overflow-y-auto overscroll-contain"
             >
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-4 border-b border-border">
@@ -343,9 +354,10 @@ export function Header() {
                   {/* Language Switcher - Mobile */}
                   <div className="flex items-center gap-1 bg-secondary/50 rounded-full p-1">
                     {languages.map((lang) => (
-                      <button
+                      <motion.button
                         key={lang.code}
                         onClick={() => handleLanguageChange(lang.code)}
+                        whileTap={{ scale: 0.85 }}
                         className={cn(
                           'w-7 h-7 rounded-full flex items-center justify-center text-base transition-all duration-200',
                           language === lang.code
@@ -354,7 +366,7 @@ export function Header() {
                         )}
                       >
                         {lang.flag}
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
 
@@ -369,40 +381,42 @@ export function Header() {
               </div>
 
               {/* Mobile Navigation */}
-              <nav className="p-4 space-y-2">
+              <nav className="p-4 space-y-2 pb-24">
                 {/* Home */}
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => handleNavigation('/')}
                   className={cn(
-                    'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors',
+                    'w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-200',
                     location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-foreground hover:bg-secondary'
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'text-foreground hover:bg-secondary active:bg-secondary/80'
                   )}
                 >
                   <Home className="w-5 h-5" />
                   <span className="font-medium">{t.nav.home}</span>
-                </button>
+                </motion.button>
 
                 {/* Ways to Germany Accordion */}
                 <div className="rounded-xl border border-border overflow-hidden">
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setMobileAccordion(mobileAccordion === 'ways' ? null : 'ways')}
                     className={cn(
-                      'w-full flex items-center justify-between px-4 py-3 transition-colors',
+                      'w-full flex items-center justify-between px-4 py-3.5 transition-colors duration-200',
                       isPathActive(waysToGermany)
                         ? 'bg-primary/10 text-primary'
-                        : 'text-foreground hover:bg-secondary/50'
+                        : 'text-foreground hover:bg-secondary/50 active:bg-secondary/70'
                     )}
                   >
                     <span className="font-medium">{dropdownLabels[language].ways}</span>
-                    <ChevronDown 
-                      className={cn(
-                        'w-4 h-4 transition-transform duration-300',
-                        mobileAccordion === 'ways' && 'rotate-180'
-                      )} 
-                    />
-                  </button>
+                    <motion.div
+                      animate={{ rotate: mobileAccordion === 'ways' ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </motion.div>
+                  </motion.button>
                   
                   <AnimatePresence>
                     {mobileAccordion === 'ways' && (
@@ -410,23 +424,27 @@ export function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                         className="overflow-hidden bg-secondary/30"
                       >
-                        {waysToGermany.map((item) => (
-                          <button
+                        {waysToGermany.map((item, idx) => (
+                          <motion.button
                             key={item.path}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.05 }}
+                            whileTap={{ scale: 0.97 }}
                             onClick={() => handleNavigation(item.path)}
                             className={cn(
-                              'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
+                              'w-full flex items-center gap-3 px-6 py-3.5 text-left transition-all duration-200',
                               location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                                ? 'bg-primary text-primary-foreground'
-                                : 'text-foreground hover:bg-secondary'
+                                ? 'bg-primary text-primary-foreground shadow-sm'
+                                : 'text-foreground hover:bg-secondary active:bg-secondary/80'
                             )}
                           >
                             <item.icon className="w-4 h-4" />
                             <span className="text-sm">{item.label}</span>
-                          </button>
+                          </motion.button>
                         ))}
                       </motion.div>
                     )}
@@ -435,23 +453,24 @@ export function Header() {
 
                 {/* Life in Germany Accordion */}
                 <div className="rounded-xl border border-border overflow-hidden">
-                  <button
+                  <motion.button
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setMobileAccordion(mobileAccordion === 'life' ? null : 'life')}
                     className={cn(
-                      'w-full flex items-center justify-between px-4 py-3 transition-colors',
+                      'w-full flex items-center justify-between px-4 py-3.5 transition-colors duration-200',
                       isPathActive(lifeInGermany)
                         ? 'bg-primary/10 text-primary'
-                        : 'text-foreground hover:bg-secondary/50'
+                        : 'text-foreground hover:bg-secondary/50 active:bg-secondary/70'
                     )}
                   >
                     <span className="font-medium">{dropdownLabels[language].life}</span>
-                    <ChevronDown 
-                      className={cn(
-                        'w-4 h-4 transition-transform duration-300',
-                        mobileAccordion === 'life' && 'rotate-180'
-                      )} 
-                    />
-                  </button>
+                    <motion.div
+                      animate={{ rotate: mobileAccordion === 'life' ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </motion.div>
+                  </motion.button>
                   
                   <AnimatePresence>
                     {mobileAccordion === 'life' && (
@@ -459,23 +478,27 @@ export function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                         className="overflow-hidden bg-secondary/30"
                       >
-                        {lifeInGermany.map((item) => (
-                          <button
+                        {lifeInGermany.map((item, idx) => (
+                          <motion.button
                             key={item.path}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.05 }}
+                            whileTap={{ scale: 0.97 }}
                             onClick={() => handleNavigation(item.path)}
                             className={cn(
-                              'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
+                              'w-full flex items-center gap-3 px-6 py-3.5 text-left transition-all duration-200',
                               location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                                ? 'bg-primary text-primary-foreground'
-                                : 'text-foreground hover:bg-secondary'
+                                ? 'bg-primary text-primary-foreground shadow-sm'
+                                : 'text-foreground hover:bg-secondary active:bg-secondary/80'
                             )}
                           >
                             <item.icon className="w-4 h-4" />
                             <span className="text-sm">{item.label}</span>
-                          </button>
+                          </motion.button>
                         ))}
                       </motion.div>
                     )}

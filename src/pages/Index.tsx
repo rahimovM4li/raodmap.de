@@ -1,6 +1,7 @@
 import { Hero } from '@/components/Hero';
 import { Wizard } from '@/components/Wizard';
 import { ResourcesSection } from '@/components/ResourcesSection';
+import { PageTransition } from '@/components/PageTransition';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { FileText } from 'lucide-react';
@@ -40,7 +41,8 @@ const Index = () => {
       <WebsiteStructuredData />
       <OrganizationStructuredData />
 
-      <main>
+      <PageTransition>
+        <main>
         <Hero />
         
         {/* CV Generator CTA */}
@@ -74,6 +76,7 @@ const Index = () => {
         </div>
         <ResourcesSection />
       </main>
+    </PageTransition>
     </>
   );
 };

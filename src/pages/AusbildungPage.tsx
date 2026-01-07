@@ -1,4 +1,5 @@
 import { AusbildungPageSEO } from "@/components/SEOHead";
+import { PageTransition } from "@/components/PageTransition";
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users } from 'lucide-react';
@@ -82,7 +83,8 @@ const AusbildungPage = () => {
     <>
       <AusbildungPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -244,6 +246,7 @@ const AusbildungPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

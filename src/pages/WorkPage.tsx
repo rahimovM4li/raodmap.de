@@ -1,4 +1,5 @@
 import { WorkPageSEO } from "@/components/SEOHead";
+import { PageTransition } from "@/components/PageTransition";
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Briefcase, CreditCard, FileCheck, Building2 } from 'lucide-react';
@@ -59,7 +60,8 @@ const WorkPage = () => {
     <>
       <WorkPageSEO />
 
-      <main className="min-h-screen">
+      <PageTransition>
+        <main className="min-h-screen">
         {/* Hero */}
         <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
@@ -260,6 +262,7 @@ const WorkPage = () => {
           </div>
         </section>
       </main>
+    </PageTransition>
     </>
   );
 };

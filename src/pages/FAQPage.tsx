@@ -1,12 +1,14 @@
-import { FAQPageSEO } from "@/components/SEOHead";
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, Search } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQComments from '@/components/faq/FAQComments';
 
 const FAQPage = () => {
   const { language } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const faqItems = language === 'de' ? [
     {
@@ -163,7 +165,7 @@ const FAQPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -171,11 +173,11 @@ const FAQPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <HelpCircle className="w-16 h-16 text-accent mx-auto mb-6" />
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <HelpCircle className="w-16 h-16 text-accent mx-auto mb-4 md:mb-6" />
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {language === 'de' ? 'Häufige Fragen' : language === 'ru' ? 'Частые вопросы' : 'Саволҳои зиёд'}
               </h1>
-              <p className="text-xl text-primary-foreground/70">
+              <p className="text-base md:text-xl text-primary-foreground/70">
                 {language === 'de' 
                   ? 'Antworten auf häufige Fragen zur Einwanderung nach Deutschland' 
                   : language === 'ru'
@@ -187,27 +189,55 @@ const FAQPage = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-3xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqItems.map((item, i) => (
-                  <AccordionItem 
-                    key={i} 
-                    value={`item-${i}`}
-                    className="card-elevated border-none"
-                  >
-                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
-                      <span className="font-semibold text-foreground pr-4">
-                        {item.question}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 text-muted-foreground">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <div className="mb-6">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={language === 'de' ? 'Frage suchen...' : language === 'ru' ? 'Поиск вопроса...' : 'Ҷустуҷӯи савол...'}
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  />
+                </div>
+              </div>
+              {(() => {
+                const filteredItems = faqItems.filter(item =>
+                  item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  item.answer.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                if (filteredItems.length === 0) {
+                  return (
+                    <div className="text-center py-12 text-muted-foreground">
+                      <Search className="w-10 h-10 mx-auto mb-3 opacity-40" />
+                      <p>{language === 'de' ? 'Keine Ergebnisse gefunden' : language === 'ru' ? 'Ничего не найдено' : 'Натиҷа ёфт нашуд'}</p>
+                    </div>
+                  );
+                }
+                return (
+                  <Accordion type="single" collapsible className="space-y-4">
+                    {filteredItems.map((item, i) => (
+                      <AccordionItem 
+                        key={i} 
+                        value={`item-${i}`}
+                        className="card-elevated border-none"
+                      >
+                        <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
+                          <span className="font-semibold text-foreground pr-4">
+                            {item.question}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-6 pb-4 text-muted-foreground">
+                          {item.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                );
+              })()}
             </div>
           </div>
         </section>
@@ -220,9 +250,9 @@ const FAQPage = () => {
         </section>
 
         {/* Glossary */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Glossar' : language === 'ru' ? 'Глоссарий' : 'Луғат'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">

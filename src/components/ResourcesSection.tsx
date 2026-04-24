@@ -44,13 +44,13 @@ export function ResourcesSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-10 md:py-24">
       <div className="container-main">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
             {getDescription('Захираҳои муфид', 'Полезные ресурсы', 'Nützliche Ressourcen')}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             {getDescription(
               'Сайтҳои расмӣ барои маълумоти дақиқ',
               'Официальные сайты для точной информации',
@@ -59,21 +59,22 @@ export function ResourcesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
           {resources.map((resource) => (
             <a
               key={resource.url}
               href={resource.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-elevated p-6 group hover:shadow-lg transition-all"
+              className="card-elevated p-4 md:p-6 group hover:shadow-lg active:scale-[0.98] transition-all duration-200"
             >
-              <resource.icon className="w-10 h-10 text-accent mb-4" />
+              <resource.icon className="w-8 h-8 md:w-10 md:h-10 text-accent mb-3 md:mb-4" />
               <h3 className="text-lg font-semibold text-foreground mb-2 flex items-center gap-2">
                 {resource.title}
-                <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
+                <ExternalLink className="w-4 h-4 text-accent/50 group-hover:text-accent transition-colors" />
               </h3>
               <p className="text-muted-foreground text-sm">{resource.description}</p>
+              <p className="text-xs text-muted-foreground/60 mt-2 truncate">{resource.url.replace('https://www.', '')}</p>
             </a>
           ))}
         </div>

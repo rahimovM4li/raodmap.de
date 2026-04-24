@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, GraduationCap, Briefcase, Heart, Baby, Wrench, Home, Map, HelpCircle, BookOpen } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
-import { Language } from '@/lib/i18n';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Language, languageFullNames } from '@/lib/i18n';
 
 const languages: { code: Language; flag: string }[] = [
   { code: 'tj', flag: '🇹🇯' },
@@ -13,22 +12,68 @@ const languages: { code: Language; flag: string }[] = [
 ];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
-  const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
-  // Navigation structure
-  const waysToGermany = [
-    { path: '/study', label: t.nav.study, icon: GraduationCap },
-    { path: '/ausbildung', label: t.nav.ausbildung, icon: Wrench },
-    { path: '/work', label: t.nav.work, icon: Briefcase },
-    { path: '/fsj-bfd', label: 'FSJ/BFD', icon: Heart },
-    { path: '/au-pair', label: 'Au-Pair', icon: Baby },
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdowns on outside click (desktop only)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close dropdowns on route change
+  useEffect(() => {
+    setOpenDropdown(null);
+    setIsLangOpen(false);
+  }, [location.pathname]);
+
+  // Close dropdowns on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpenDropdown(null);
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  const pathsToGermany = [
+    { path: '/study', label: t.nav.study },
+    { path: '/ausbildung', label: t.nav.ausbildung },
+    { path: '/work', label: t.nav.work },
+    { path: '/fsj', label: t.nav.fsj },
+    { path: '/aupair', label: t.nav.aupair },
+  ];
+
+  const lifeInGermany = [
+    { path: '/living', label: t.nav.living },
+    { path: '/roadmap', label: t.nav.roadmap },
+    { path: '/resources', label: t.nav.resources },
+    { path: '/faq', label: t.nav.faq },
   ];
 
   const lifeInGermany = [
@@ -106,393 +151,202 @@ export function Header() {
 
   const currentLang = languages.find(l => l.code === language);
 
+  const isPathActive = (paths: string[]) => {
+    return paths.some(path => location.pathname === path);
+  };
+
   return (
-    <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={cn(
-          'sticky top-0 z-50 transition-all duration-300',
-          isScrolled
-            ? 'bg-card/85 backdrop-blur-xl shadow-lg border-b border-border/50'
-            : 'bg-card/60 backdrop-blur-md border-b border-transparent'
-        )}
-      >
-        <div className="container-main">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo */}
-            <Link 
-              to={`/${language === 'tj' ? 'tj' : language}`}
-              className="flex items-center gap-2 group"
-              onClick={() => setActiveDropdown(null)}
+    <header
+      className={cn(
+        'sticky top-0 z-50 transition-all duration-300',
+        isScrolled
+          ? 'bg-card/80 backdrop-blur-xl border-b border-border/50 shadow-lg'
+          : 'bg-card/95 backdrop-blur-lg border-b border-border/30'
+      )}
+    >
+      <div className="container-main">
+        <div className="flex items-center justify-between h-12 md:h-16 lg:h-18">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-info flex items-center justify-center transition-transform group-hover:scale-105">
+              <img src="/favicon.ico" alt="Germany Roadmap Logo" className="w-6 h-6" />
+            </div>
+            <span className="hidden sm:block font-semibold text-foreground transition-colors group-hover:text-primary">
+              Germany Roadmap
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {/* Home */}
+            <Link
+              to="/"
+              className={cn(
+                'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 group',
+                location.pathname === '/'
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
             >
-            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-<img src="favicon.ico" alt="Germany Roadmap Logo" />            
-</div>
-              <span className="hidden sm:block font-semibold text-foreground text-sm">
-                Germany Roadmap
-              </span>
+              {t.nav.home}
+              <span className={cn(
+                'absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-200',
+                location.pathname === '/' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+              )} />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
-              {/* Home */}
-              <Link
-                to={`/${language === 'tj' ? 'tj' : language}`}
+            {/* Paths to Germany Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpenDropdown(openDropdown === 'paths' ? null : 'paths')}
                 className={cn(
-                  'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative',
-                  location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj'
+                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                  isPathActive(pathsToGermany.map(p => p.path))
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
-                {t.nav.home}
-                {(location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj') && (
-                  <motion.div
-                    layoutId="activeIndicator"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                  />
-                )}
-              </Link>
-
-              {/* Ways to Germany Dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setActiveDropdown(activeDropdown === 'ways' ? null : 'ways')}
-                  className={cn(
-                    'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                    isPathActive(waysToGermany) || activeDropdown === 'ways'
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  {dropdownLabels[language].ways}
-                  <ChevronDown 
-                    className={cn(
-                      'w-3.5 h-3.5 transition-transform duration-200',
-                      activeDropdown === 'ways' && 'rotate-180'
-                    )} 
-                  />
-                  {isPathActive(waysToGermany) && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    />
-                  )}
-                </button>
-                
-                <AnimatePresence>
-                  {activeDropdown === 'ways' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                      transition={{ duration: 0.2, ease: 'easeOut' }}
-                      className="absolute top-full left-0 mt-2 py-2 w-56 bg-card rounded-xl border border-border shadow-lg z-50"
-                    >
-                      {waysToGermany.map((item) => (
-                        <button
-                          key={item.path}
-                          onClick={() => handleNavigation(item.path)}
-                          className={cn(
-                            'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
-                            location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                              ? 'bg-primary/10 text-primary'
-                              : 'text-foreground hover:bg-secondary'
-                          )}
-                        >
-                          <item.icon className="w-4 h-4" />
-                          {item.label}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Life in Germany Dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setActiveDropdown(activeDropdown === 'life' ? null : 'life')}
-                  className={cn(
-                    'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                    isPathActive(lifeInGermany) || activeDropdown === 'life'
-                      ? 'text-primary'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  {dropdownLabels[language].life}
-                  <ChevronDown 
-                    className={cn(
-                      'w-3.5 h-3.5 transition-transform duration-200',
-                      activeDropdown === 'life' && 'rotate-180'
-                    )} 
-                  />
-                  {isPathActive(lifeInGermany) && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    />
-                  )}
-                </button>
-                
-                <AnimatePresence>
-                  {activeDropdown === 'life' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                      transition={{ duration: 0.2, ease: 'easeOut' }}
-                      className="absolute top-full left-0 mt-2 py-2 w-56 bg-card rounded-xl border border-border shadow-lg z-50"
-                    >
-                      {lifeInGermany.map((item) => (
-                        <button
-                          key={item.path}
-                          onClick={() => handleNavigation(item.path)}
-                          className={cn(
-                            'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
-                            location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                              ? 'bg-primary/10 text-primary'
-                              : 'text-foreground hover:bg-secondary'
-                          )}
-                        >
-                          <item.icon className="w-4 h-4" />
-                          {item.label}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </nav>
-
-            {/* Right side: Language + Mobile Menu */}
-            <div className="flex items-center gap-2">
-              {/* Language Switcher - Desktop */}
-              <div className="hidden sm:flex items-center gap-1 bg-secondary/50 rounded-full p-1">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => handleLanguageChange(lang.code)}
-                    className={cn(
-                      'w-8 h-8 rounded-full flex items-center justify-center text-lg transition-all duration-200',
-                      language === lang.code
-                        ? 'bg-card shadow-sm scale-110'
-                        : 'hover:bg-card/50 opacity-70 hover:opacity-100'
-                    )}
-                    title={lang.code.toUpperCase()}
-                  >
-                    {lang.flag}
-                  </button>
-                ))}
-              </div>
-
-              {/* Mobile menu button */}
-              <button
-                className="lg:hidden p-2 rounded-lg hover:bg-secondary/80 transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-                aria-expanded={isMenuOpen}
-              >
-                <Menu className="w-5 h-5 text-foreground" />
+                {t.nav.pathsToGermany}
+                <ChevronDown className={cn(
+                  'w-3.5 h-3.5 transition-transform duration-200',
+                  openDropdown === 'paths' && 'rotate-180'
+                )} />
+                <span className={cn(
+                  'absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-200',
+                  isPathActive(pathsToGermany.map(p => p.path)) ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+                )} />
               </button>
-            </div>
-          </div>
-        </div>
-      </motion.header>
-
-      {/* Mobile Fullscreen Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 lg:hidden"
-              onClick={() => setIsMenuOpen(false)}
-            />
-
-            {/* Menu Panel */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-card z-50 lg:hidden shadow-2xl overflow-y-auto"
-            >
-              {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-4 border-b border-border">
-                <Link 
-                  to={`/${language === 'tj' ? 'tj' : language}`}
-                  className="flex items-center gap-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-              <img src="favicon.ico" alt="Germany Roadmap Logo" />
+              {openDropdown === 'paths' && (
+                <div className="absolute top-full left-0 mt-2 w-56 rounded-xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="p-2 space-y-1">
+                    {pathsToGermany.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={cn(
+                          'block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
+                          location.pathname === item.path
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
                   </div>
-                  <span className="font-semibold text-foreground text-sm">
-                    Germany Roadmap
-                  </span>
-                </Link>
+                </div>
+              )}
+            </div>
 
-                <div className="flex items-center gap-2">
-                  {/* Language Switcher - Mobile */}
-                  <div className="flex items-center gap-1 bg-secondary/50 rounded-full p-1">
+            {/* Life in Germany Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpenDropdown(openDropdown === 'life' ? null : 'life')}
+                className={cn(
+                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                  isPathActive(lifeInGermany.map(p => p.path))
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                )}
+              >
+                {t.nav.lifeInGermany}
+                <ChevronDown className={cn(
+                  'w-3.5 h-3.5 transition-transform duration-200',
+                  openDropdown === 'life' && 'rotate-180'
+                )} />
+                <span className={cn(
+                  'absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-200',
+                  isPathActive(lifeInGermany.map(p => p.path)) ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+                )} />
+              </button>
+              {openDropdown === 'life' && (
+                <div className="absolute top-full left-0 mt-2 w-56 rounded-xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="p-2 space-y-1">
+                    {lifeInGermany.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className={cn(
+                          'block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
+                          location.pathname === item.path
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </nav>
+
+          {/* Language Switcher & Mobile Menu */}
+          <div className="flex items-center gap-2">
+            {/* Language Switcher - Desktop */}
+            <div className="hidden lg:block relative" ref={langRef}>
+              <button
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-200 border border-border/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="Change language"
+              >
+                <span className="text-lg">{currentLang?.flag}</span>
+                <span className="hidden sm:inline text-xs font-medium text-muted-foreground">
+                  {language.toUpperCase()}
+                </span>
+              </button>
+              {isLangOpen && (
+                <div className="absolute top-full right-0 mt-2 w-40 rounded-xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="p-2 space-y-1">
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
-                        onClick={() => handleLanguageChange(lang.code)}
+                        onClick={() => {
+                          setLanguage(lang.code);
+                          setIsLangOpen(false);
+                        }}
                         className={cn(
-                          'w-7 h-7 rounded-full flex items-center justify-center text-base transition-all duration-200',
+                          'w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150',
                           language === lang.code
-                            ? 'bg-card shadow-sm scale-110'
-                            : 'opacity-60'
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
                         )}
                       >
-                        {lang.flag}
+                        <span className="text-base">{lang.flag}</span>
+                        <span>{languageFullNames[lang.code]}</span>
+                        {language === lang.code && (
+                          <span className="ml-auto text-primary text-xs">✓</span>
+                        )}
                       </button>
                     ))}
                   </div>
-
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-secondary transition-colors"
-                    aria-label="Close menu"
-                  >
-                    <X className="w-5 h-5 text-foreground" />
-                  </button>
                 </div>
-              </div>
+              )}
+            </div>
 
-              {/* Mobile Navigation */}
-              <nav className="p-4 space-y-2">
-                {/* Home */}
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center gap-1 lg:hidden">
+              {languages.map((lang) => (
                 <button
-                  onClick={() => handleNavigation('/')}
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
                   className={cn(
-                    'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors',
-                    location.pathname === `/${language}` || location.pathname === '/tj' && language === 'tj'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-foreground hover:bg-secondary'
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-base transition-all active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                    language === lang.code
+                      ? 'bg-primary/10 ring-1.5 ring-primary/30'
+                      : 'hover:bg-secondary/50'
                   )}
+                  aria-label={`Switch to ${languageFullNames[lang.code]}`}
                 >
-                  <Home className="w-5 h-5" />
-                  <span className="font-medium">{t.nav.home}</span>
+                  {lang.flag}
                 </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
-                {/* Ways to Germany Accordion */}
-                <div className="rounded-xl border border-border overflow-hidden">
-                  <button
-                    onClick={() => setMobileAccordion(mobileAccordion === 'ways' ? null : 'ways')}
-                    className={cn(
-                      'w-full flex items-center justify-between px-4 py-3 transition-colors',
-                      isPathActive(waysToGermany)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground hover:bg-secondary/50'
-                    )}
-                  >
-                    <span className="font-medium">{dropdownLabels[language].ways}</span>
-                    <ChevronDown 
-                      className={cn(
-                        'w-4 h-4 transition-transform duration-300',
-                        mobileAccordion === 'ways' && 'rotate-180'
-                      )} 
-                    />
-                  </button>
-                  
-                  <AnimatePresence>
-                    {mobileAccordion === 'ways' && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden bg-secondary/30"
-                      >
-                        {waysToGermany.map((item) => (
-                          <button
-                            key={item.path}
-                            onClick={() => handleNavigation(item.path)}
-                            className={cn(
-                              'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
-                              location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                                ? 'bg-primary text-primary-foreground'
-                                : 'text-foreground hover:bg-secondary'
-                            )}
-                          >
-                            <item.icon className="w-4 h-4" />
-                            <span className="text-sm">{item.label}</span>
-                          </button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Life in Germany Accordion */}
-                <div className="rounded-xl border border-border overflow-hidden">
-                  <button
-                    onClick={() => setMobileAccordion(mobileAccordion === 'life' ? null : 'life')}
-                    className={cn(
-                      'w-full flex items-center justify-between px-4 py-3 transition-colors',
-                      isPathActive(lifeInGermany)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground hover:bg-secondary/50'
-                    )}
-                  >
-                    <span className="font-medium">{dropdownLabels[language].life}</span>
-                    <ChevronDown 
-                      className={cn(
-                        'w-4 h-4 transition-transform duration-300',
-                        mobileAccordion === 'life' && 'rotate-180'
-                      )} 
-                    />
-                  </button>
-                  
-                  <AnimatePresence>
-                    {mobileAccordion === 'life' && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden bg-secondary/30"
-                      >
-                        {lifeInGermany.map((item) => (
-                          <button
-                            key={item.path}
-                            onClick={() => handleNavigation(item.path)}
-                            className={cn(
-                              'w-full flex items-center gap-3 px-6 py-3 text-left transition-all active:scale-98',
-                              location.pathname === `/${language}${item.path}` || location.pathname === `/tj${item.path}` && language === 'tj'
-                                ? 'bg-primary text-primary-foreground'
-                                : 'text-foreground hover:bg-secondary'
-                            )}
-                          >
-                            <item.icon className="w-4 h-4" />
-                            <span className="text-sm">{item.label}</span>
-                          </button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </nav>
-
-              {/* Mobile Menu Footer */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-card">
-                <p className="text-xs text-muted-foreground text-center">
-                  © 2026 Germany Roadmap
-                </p>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+      </div>
+    </header>
   );
 }

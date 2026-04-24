@@ -42,7 +42,7 @@ const LivingPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,16 +50,16 @@ const LivingPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-4 md:mb-6">
                 <Home className="w-4 h-4 text-accent" />
                 <span className="text-sm text-primary-foreground/80">
                   {language === 'de' ? 'Wichtige Informationen' : language === 'ru' ? 'Важная информация' : 'Маълумоти муҳим'}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {t.living.title}
               </h1>
-              <p className="text-xl text-primary-foreground/70">
+              <p className="text-base md:text-xl text-primary-foreground/70">
                 {t.living.subtitle}
               </p>
             </motion.div>
@@ -67,7 +67,7 @@ const LivingPage = () => {
         </section>
 
         {/* Sections Grid */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {sections.map((section, idx) => {
@@ -117,9 +117,9 @@ const LivingPage = () => {
         </section>
 
         {/* Quick Tips */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Schnelle Tipps für Neuankömmlinge' : language === 'ru' ? 'Быстрые советы для новичков' : 'Машваратҳои тез барои наворасидагон'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">

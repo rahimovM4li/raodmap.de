@@ -1,13 +1,16 @@
-import { AusbildungPageSEO } from "@/components/SEOHead";
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users } from 'lucide-react';
+import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { cn } from '@/lib/utils';
 
 const AusbildungPage = () => {
   const { language, t } = useLanguage();
+  const [showAllReqs, setShowAllReqs] = useState(false);
 
   const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
@@ -84,7 +87,7 @@ const AusbildungPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -92,16 +95,16 @@ const AusbildungPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ausbildung/20 backdrop-blur-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ausbildung/20 backdrop-blur-sm mb-4 md:mb-6">
                 <Wrench className="w-4 h-4 text-primary-foreground" />
                 <span className="text-sm text-primary-foreground/80">
                   {language === 'de' ? '6-18 Monate Vorbereitung' : language === 'ru' ? '6-18 месяцев подготовки' : '6-18 моҳ тайёргарӣ'}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {t.ausbildung.title}
               </h1>
-              <p className="text-xl text-primary-foreground/70 mb-8">
+              <p className="text-base md:text-xl text-primary-foreground/70 mb-6 md:mb-8">
                 {t.ausbildung.intro}
               </p>
             </motion.div>
@@ -109,9 +112,9 @@ const AusbildungPage = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Vorteile der Ausbildung' : language === 'ru' ? 'Преимущества Ausbildung' : 'Бартариҳои Ausbildung'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -126,9 +129,9 @@ const AusbildungPage = () => {
         </section>
 
         {/* Popular Trades */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {t.ausbildung.popularTrades.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -155,30 +158,42 @@ const AusbildungPage = () => {
         </section>
 
         {/* Requirements */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
                 {language === 'de' ? 'Voraussetzungen' : language === 'ru' ? 'Требования' : 'Шартҳо'}
               </h2>
-              <div className="card-elevated p-6 md:p-8">
+              <div className="card-elevated p-4 md:p-6 lg:p-8">
                 <ul className="space-y-4">
-                  {requirements.map((req, i) => (
+                  {(showAllReqs ? requirements : requirements.slice(0, 5)).map((req, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
                       <span className="text-foreground">{req}</span>
                     </li>
                   ))}
                 </ul>
+                {requirements.length > 5 && (
+                  <button
+                    onClick={() => setShowAllReqs(!showAllReqs)}
+                    className="mt-3 text-sm text-primary font-medium flex items-center gap-1 md:hidden"
+                  >
+                    {showAllReqs 
+                      ? (language === 'de' ? 'Weniger anzeigen' : language === 'ru' ? 'Показать меньше' : 'Камтар нишон диҳед')
+                      : (language === 'de' ? `+${requirements.length - 5} weitere anzeigen` : language === 'ru' ? `+${requirements.length - 5} ещё` : `+${requirements.length - 5} бештар`)
+                    }
+                    <ChevronDown className={cn('w-4 h-4 transition-transform', showAllReqs && 'rotate-180')} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </section>
 
         {/* Process */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Prozess der Ausbildung' : language === 'ru' ? 'Процесс получения Ausbildung' : 'Ҷараёни гирифтани Ausbildung'}
             </h2>
             <div className="max-w-3xl mx-auto">
@@ -233,7 +248,7 @@ const AusbildungPage = () => {
         />
 
         {/* CTA */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main text-center">
             <Button asChild className="btn-hero">
               <Link to={`${langPrefix}/#wizard`}>

@@ -19,12 +19,12 @@ export function StepCard({
   isLast = false,
 }: StepCardProps) {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-3 md:gap-4 active:scale-[0.98] transition-transform">
       {/* Step indicator and line */}
       <div className="flex flex-col items-center">
         <div
           className={cn(
-            'w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-all',
+            'w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-all',
             isCompleted
               ? 'bg-success text-success-foreground'
               : isActive
@@ -37,7 +37,7 @@ export function StepCard({
         {!isLast && (
           <div
             className={cn(
-              'step-line flex-grow my-2',
+              'step-line flex-grow my-1.5 md:my-2',
               isCompleted && 'step-line-active'
             )}
           />
@@ -45,10 +45,10 @@ export function StepCard({
       </div>
 
       {/* Content */}
-      <div className={cn('pb-8', isLast && 'pb-0')}>
+      <div className={cn('pb-6 md:pb-8', isLast && 'pb-0')}>
         <h4
           className={cn(
-            'font-semibold text-lg mb-1',
+            'font-semibold text-base md:text-lg mb-1',
             isActive ? 'text-foreground' : 'text-muted-foreground'
           )}
         >

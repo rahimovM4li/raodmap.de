@@ -4,6 +4,7 @@ import { X, Cookie } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
 
 const CONSENT_KEY = 'cookie-consent';
 
@@ -35,6 +36,7 @@ const updateGoogleConsent = (analytics: boolean) => {
 
 export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const { language } = useLanguage();
   const [legalContent, setLegalContent] = useState<any>(null);
 
@@ -105,7 +107,7 @@ export function CookieBanner() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-        className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6"
+        className="fixed bottom-16 left-0 right-0 z-[45] p-3 sm:bottom-0 sm:p-6 sm:z-50"
         role="dialog"
         aria-labelledby="cookie-banner-title"
         aria-describedby="cookie-banner-description"
@@ -114,12 +116,12 @@ export function CookieBanner() {
           <motion.div
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
-            className="relative rounded-lg border border-border bg-background/95 p-6 shadow-2xl backdrop-blur-sm"
+            className="relative rounded-lg border border-border bg-background/95 p-4 sm:p-6 shadow-2xl backdrop-blur-sm"
           >
             {/* Close button for accessibility */}
             <button
               onClick={handleRejectOptional}
-              className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              className="absolute right-3 top-3 sm:right-4 sm:top-4 p-1 rounded-md opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
               aria-label="Закрыть и принять только необходимые cookies"
             >
               <X className="h-4 w-4" />
@@ -134,20 +136,31 @@ export function CookieBanner() {
               </div>
 
               {/* Content */}
-              <div className="flex-1 space-y-4">
+              <div className="flex-1 space-y-3 sm:space-y-4">
                 <div>
                   <h2
                     id="cookie-banner-title"
-                    className="text-lg font-semibold leading-tight"
+                    className="text-base sm:text-lg font-semibold leading-tight"
                   >
                     {banner.title}
                   </h2>
                   <p
                     id="cookie-banner-description"
-                    className="mt-2 text-sm text-muted-foreground"
+                    className={cn(
+                      "mt-1 sm:mt-2 text-sm text-muted-foreground transition-all",
+                      !expanded && "line-clamp-2 sm:line-clamp-none"
+                    )}
                   >
                     {banner.description}
                   </p>
+                  {!expanded && (
+                    <button
+                      onClick={() => setExpanded(true)}
+                      className="text-xs text-primary mt-1 sm:hidden"
+                    >
+                      {language === 'de' ? 'Mehr lesen' : language === 'ru' ? 'Подробнее' : 'Бештар'}
+                    </button>
+                  )}
                 </div>
 
                 {/* Buttons */}

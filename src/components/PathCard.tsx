@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, GraduationCap, Briefcase, Wrench } from 'lucide-react';
+import { ArrowRight, GraduationCap, Briefcase, Wrench, Heart, Baby } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PathCardProps {
-  type: 'study' | 'work' | 'ausbildung';
+  type: 'study' | 'work' | 'ausbildung' | 'fsj' | 'aupair';
   title: string;
   description: string;
   duration: string;
@@ -14,6 +14,8 @@ const iconMap = {
   study: GraduationCap,
   work: Briefcase,
   ausbildung: Wrench,
+  fsj: Heart,
+  aupair: Baby,
 };
 
 const colorMap = {
@@ -35,6 +37,18 @@ const colorMap = {
     icon: 'bg-ausbildung text-ausbildung-foreground',
     iconBg: 'bg-ausbildung',
   },
+  fsj: {
+    bg: 'bg-info-light',
+    border: 'border-info/30 hover:border-info',
+    icon: 'bg-info text-info-foreground',
+    iconBg: 'bg-info',
+  },
+  aupair: {
+    bg: 'bg-accent-light',
+    border: 'border-accent/30 hover:border-accent',
+    icon: 'bg-accent text-accent-foreground',
+    iconBg: 'bg-accent',
+  },
 };
 
 export function PathCard({ type, title, description, duration, href }: PathCardProps) {
@@ -45,7 +59,7 @@ export function PathCard({ type, title, description, duration, href }: PathCardP
     <Link
       to={href}
       className={cn(
-        'card-path group p-6 md:p-8 flex flex-col',
+        'card-path group p-4 md:p-6 lg:p-8 flex flex-col active:scale-[0.98] transition-transform',
         colors.bg,
         colors.border
       )}
@@ -53,18 +67,18 @@ export function PathCard({ type, title, description, duration, href }: PathCardP
       {/* Icon */}
       <div
         className={cn(
-          'w-14 h-14 rounded-2xl flex items-center justify-center mb-6',
+          'w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-3 md:mb-6',
           colors.iconBg
         )}
       >
-        <Icon className="w-7 h-7 text-card" />
+        <Icon className="w-5 h-5 md:w-7 md:h-7 text-card" />
       </div>
 
       {/* Content */}
-      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+      <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-foreground mb-2">
         {title}
       </h3>
-      <p className="text-muted-foreground mb-4 flex-grow">
+      <p className="text-muted-foreground mb-3 md:mb-4 flex-grow">
         {description}
       </p>
 

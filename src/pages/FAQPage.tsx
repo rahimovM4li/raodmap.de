@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, Search } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const FAQPage = () => {
   const { language } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const faqItems = language === 'de' ? [
     {
@@ -170,7 +172,7 @@ const FAQPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -194,27 +196,55 @@ const FAQPage = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-3xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqItems.map((item, i) => (
-                  <AccordionItem 
-                    key={i} 
-                    value={`item-${i}`}
-                    className="card-elevated border-none"
-                  >
-                    <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
-                      <span className="font-semibold text-foreground pr-4">
-                        {item.question}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 text-muted-foreground">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <div className="mb-6">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={language === 'de' ? 'Frage suchen...' : language === 'ru' ? 'Поиск вопроса...' : 'Ҷустуҷӯи савол...'}
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                  />
+                </div>
+              </div>
+              {(() => {
+                const filteredItems = faqItems.filter(item =>
+                  item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  item.answer.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                if (filteredItems.length === 0) {
+                  return (
+                    <div className="text-center py-12 text-muted-foreground">
+                      <Search className="w-10 h-10 mx-auto mb-3 opacity-40" />
+                      <p>{language === 'de' ? 'Keine Ergebnisse gefunden' : language === 'ru' ? 'Ничего не найдено' : 'Натиҷа ёфт нашуд'}</p>
+                    </div>
+                  );
+                }
+                return (
+                  <Accordion type="single" collapsible className="space-y-4">
+                    {filteredItems.map((item, i) => (
+                      <AccordionItem 
+                        key={i} 
+                        value={`item-${i}`}
+                        className="card-elevated border-none"
+                      >
+                        <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
+                          <span className="font-semibold text-foreground pr-4">
+                            {item.question}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-6 pb-4 text-muted-foreground">
+                          {item.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                );
+              })()}
             </div>
           </div>
         </section>

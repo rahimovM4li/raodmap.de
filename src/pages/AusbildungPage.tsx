@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users } from 'lucide-react';
+import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { cn } from '@/lib/utils';
 
 const AusbildungPage = () => {
   const { language, t } = useLanguage();
+  const [showAllReqs, setShowAllReqs] = useState(false);
 
   const benefits = language === 'de' ? [
     { icon: Euro, text: 'Gehalt 800-1200€/Monat während der Ausbildung' },
@@ -168,13 +171,25 @@ const AusbildungPage = () => {
               </h2>
               <div className="card-elevated p-6 md:p-8">
                 <ul className="space-y-4">
-                  {requirements.map((req, i) => (
+                  {(showAllReqs ? requirements : requirements.slice(0, 5)).map((req, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
                       <span className="text-foreground">{req}</span>
                     </li>
                   ))}
                 </ul>
+                {requirements.length > 5 && (
+                  <button
+                    onClick={() => setShowAllReqs(!showAllReqs)}
+                    className="mt-3 text-sm text-primary font-medium flex items-center gap-1 md:hidden"
+                  >
+                    {showAllReqs 
+                      ? (language === 'de' ? 'Weniger anzeigen' : language === 'ru' ? 'Показать меньше' : 'Камтар нишон диҳед')
+                      : (language === 'de' ? `+${requirements.length - 5} weitere anzeigen` : language === 'ru' ? `+${requirements.length - 5} ещё` : `+${requirements.length - 5} бештар`)
+                    }
+                    <ChevronDown className={cn('w-4 h-4 transition-transform', showAllReqs && 'rotate-180')} />
+                  </button>
+                )}
               </div>
             </div>
           </div>

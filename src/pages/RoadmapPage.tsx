@@ -20,6 +20,16 @@ const phaseIcons = {
 const RoadmapPage = () => {
   const { language, t } = useLanguage();
   const [activePhase, setActivePhase] = useState<string>('preparation');
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const handleSwipe = (direction: 'left' | 'right') => {
+    const currentIdx = phases.findIndex(p => p.key === activePhase);
+    if (direction === 'left' && currentIdx < phases.length - 1) {
+      setActivePhase(phases[currentIdx + 1].key);
+    } else if (direction === 'right' && currentIdx > 0) {
+      setActivePhase(phases[currentIdx - 1].key);
+    }
+  };
 
   const phases = [
     { key: 'preparation', data: t.roadmap.phases.preparation },
@@ -46,7 +56,7 @@ const RoadmapPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -104,7 +114,18 @@ const RoadmapPage = () => {
         </section>
 
         {/* Phase Content */}
-        <section className="py-16 md:py-24">
+        <section
+          className="py-10 md:py-24"
+          onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+          onTouchEnd={(e) => {
+            if (touchStart === null) return;
+            const diff = touchStart - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+              handleSwipe(diff > 0 ? 'left' : 'right');
+            }
+            setTouchStart(null);
+          }}
+        >
           <div className="container-main">
             {activePhaseData && (
               <motion.div
@@ -115,7 +136,7 @@ const RoadmapPage = () => {
                 className="max-w-5xl mx-auto"
               >
                 {/* Phase Header */}
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-12">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8 md:mb-12">
                   <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center">
                     <ActiveIcon className="w-8 h-8 text-primary-foreground" />
                   </div>
@@ -130,7 +151,7 @@ const RoadmapPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                   {/* Steps */}
                   <div className="lg:col-span-2 space-y-4">
                     <h3 className="font-semibold text-lg text-foreground mb-4 flex items-center gap-2">
@@ -143,7 +164,7 @@ const RoadmapPage = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="card-elevated p-5 flex gap-4"
+                        className="card-elevated p-4 md:p-5 flex gap-4"
                       >
                         <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold shrink-0">
                           {i + 1}

@@ -64,16 +64,16 @@ const RoadmapPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-4 md:mb-6">
                 <Calendar className="w-4 h-4 text-accent" />
                 <span className="text-sm text-primary-foreground/80">
                   {language === 'de' ? 'Komplette Reise' : 'Полный путь'}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {t.roadmap.title}
               </h1>
-              <p className="text-xl text-primary-foreground/70">
+              <p className="text-base md:text-xl text-primary-foreground/70">
                 {t.roadmap.subtitle}
               </p>
             </motion.div>
@@ -220,9 +220,9 @@ const RoadmapPage = () => {
         </section>
 
         {/* Progress Overview */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Deine Reise auf einen Blick' : 'Твой путь в обзоре'}
             </h2>
             <div className="max-w-4xl mx-auto">

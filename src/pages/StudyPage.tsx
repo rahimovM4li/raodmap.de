@@ -152,7 +152,7 @@ const StudyPage = () => {
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8">
                   {t.study.requirements.title}
                 </h2>
-                <div className="card-elevated p-6 md:p-8">
+                <div className="card-elevated p-4 md:p-6 lg:p-8">
                   <ul className="space-y-4">
                     {(showAllReqs ? requirements : requirements.slice(0, 5)).map((req, i) => (
                       <li key={i} className="flex items-start gap-3">

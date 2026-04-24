@@ -42,11 +42,11 @@ const Index = () => {
         <Hero />
         
         {/* CV Generator CTA */}
-        <section className="py-12 bg-gradient-to-r from-accent/10 to-primary/10">
+        <section className="py-8 md:py-12 bg-gradient-to-r from-accent/10 to-primary/10">
           <div className="container-main">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 md:p-8 rounded-2xl bg-card border border-border shadow-lg">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-4 md:p-6 lg:p-8 rounded-2xl bg-card border border-border shadow-lg">
               <div className="text-center md:text-left">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
                   {language === 'tj' ? 'Lebenslauf-и касбӣ эҷод кунед' : 
                    language === 'ru' ? 'Создайте профессиональный Lebenslauf' : 
                    'Erstellen Sie Ihren professionellen Lebenslauf'}

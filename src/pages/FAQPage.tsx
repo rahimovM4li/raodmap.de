@@ -180,11 +180,11 @@ const FAQPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto text-center"
             >
-              <HelpCircle className="w-16 h-16 text-accent mx-auto mb-6" />
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <HelpCircle className="w-16 h-16 text-accent mx-auto mb-4 md:mb-6" />
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {language === 'de' ? 'Häufige Fragen' : language === 'ru' ? 'Частые вопросы' : 'Саволҳои зиёд'}
               </h1>
-              <p className="text-xl text-primary-foreground/70">
+              <p className="text-base md:text-xl text-primary-foreground/70">
                 {language === 'de' 
                   ? 'Antworten auf häufige Fragen zur Einwanderung nach Deutschland' 
                   : language === 'ru'
@@ -250,9 +250,9 @@ const FAQPage = () => {
         </section>
 
         {/* Glossary */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Glossar' : language === 'ru' ? 'Глоссарий' : 'Луғат'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">

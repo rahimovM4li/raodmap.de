@@ -24,7 +24,7 @@ const FSJPage = () => {
 
       <main className="min-h-screen">
         {/* Hero */}
-        <section className="py-16 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
+        <section className="py-10 md:py-24" style={{ background: 'var(--gradient-hero)' }}>
           <div className="container-main">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -32,16 +32,16 @@ const FSJPage = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm mb-4 md:mb-6">
                 <Heart className="w-4 h-4 text-primary-foreground" />
                 <span className="text-sm text-primary-foreground/80">
                   {language === 'de' ? '6-18 Monate Freiwilligendienst' : language === 'ru' ? '6-18 месяцев службы' : '6-18 моҳ хидмат'}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
+              <h1 className="text-2xl md:text-5xl font-bold text-primary-foreground mb-4">
                 {t.fsj.title}
               </h1>
-              <p className="text-xl text-primary-foreground/70 mb-8">
+              <p className="text-base md:text-xl text-primary-foreground/70 mb-6 md:mb-8">
                 {t.fsj.intro}
               </p>
             </motion.div>
@@ -49,10 +49,10 @@ const FSJPage = () => {
         </section>
 
         {/* Overview */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
                 {t.fsj.overview.title}
               </h2>
               <div className="card-elevated p-6 md:p-8 space-y-6">
@@ -80,9 +80,9 @@ const FSJPage = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {language === 'de' ? 'Hauptvorteile' : language === 'ru' ? 'Основные преимущества' : 'Бартариҳои асосӣ'}
             </h2>
             <div className="max-w-3xl mx-auto space-y-4">
@@ -97,13 +97,13 @@ const FSJPage = () => {
         </section>
 
         {/* Requirements */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
                 {t.fsj.requirements.title}
               </h2>
-              <div className="card-elevated p-6 md:p-8">
+              <div className="card-elevated p-4 md:p-6 lg:p-8">
                 <ul className="space-y-4">
                   {t.fsj.requirements.items.map((req: string, i: number) => (
                     <li key={i} className="flex items-start gap-3">
@@ -118,9 +118,9 @@ const FSJPage = () => {
         </section>
 
         {/* Roadmap */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {t.fsj.roadmap.title}
             </h2>
             <div className="max-w-4xl mx-auto">
@@ -149,9 +149,9 @@ const FSJPage = () => {
         </section>
 
         {/* Salary & Conditions */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
               {t.fsj.salary.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -189,7 +189,7 @@ const FSJPage = () => {
         </section>
 
         {/* Pros & Cons */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <div>
@@ -223,10 +223,10 @@ const FSJPage = () => {
         </section>
 
         {/* After Completion */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
                 {t.fsj.after.title}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -262,10 +262,10 @@ const FSJPage = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section className="py-10 md:py-24 bg-secondary/30">
           <div className="container-main">
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 md:mb-8 text-center">
                 {t.fsj.faq.title}
               </h2>
               <Accordion type="single" collapsible className="space-y-4">
@@ -288,7 +288,7 @@ const FSJPage = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-16 md:py-24">
+        <section className="py-10 md:py-24">
           <div className="container-main text-center">
             <Button asChild className="btn-hero">
               <Link to="/#wizard">

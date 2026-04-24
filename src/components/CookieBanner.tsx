@@ -14,6 +14,26 @@ interface CookieConsent {
   timestamp: number;
 }
 
+// Google Analytics Consent Mode Helper
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+const updateGoogleConsent = (analytics: boolean) => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      'analytics_storage': analytics ? 'granted' : 'denied',
+      'ad_storage': 'denied', // Keep ads denied
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+    });
+    
+    console.log('Google Consent updated:', { analytics_storage: analytics ? 'granted' : 'denied' });
+  }
+};
+
 export function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -33,9 +53,19 @@ export function CookieBanner() {
 
   useEffect(() => {
     // Check if consent has been given
-    const consent = localStorage.getItem(CONSENT_KEY);
-    if (!consent) {
-      // Show banner after a short delay for better UX
+    const consentStr = localStorage.getItem(CONSENT_KEY);
+    
+    if (consentStr) {
+      try {
+        const consent: CookieConsent = JSON.parse(consentStr);
+        // Update Google Consent based on saved preferences
+        updateGoogleConsent(consent.analytics);
+      } catch {
+        // Invalid stored consent, show banner
+        setShowBanner(true);
+      }
+    } else {
+      // No consent saved, show banner after delay
       const timer = setTimeout(() => setShowBanner(true), 1000);
       return () => clearTimeout(timer);
     }
@@ -47,7 +77,12 @@ export function CookieBanner() {
       analytics,
       timestamp: Date.now(),
     };
+    
     localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+    
+    // Update Google Analytics Consent Mode
+    updateGoogleConsent(analytics);
+    
     setShowBanner(false);
   };
 
@@ -169,7 +204,10 @@ export function useCookieConsent() {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (stored) {
       try {
-        setConsent(JSON.parse(stored));
+        const parsed = JSON.parse(stored);
+        setConsent(parsed);
+        // Update Google Consent on mount
+        updateGoogleConsent(parsed.analytics);
       } catch {
         setConsent(null);
       }
@@ -184,6 +222,8 @@ export function useCookieConsent() {
   const resetConsent = () => {
     localStorage.removeItem(CONSENT_KEY);
     setConsent(null);
+    // Reset Google Consent to denied
+    updateGoogleConsent(false);
     window.location.reload();
   };
 

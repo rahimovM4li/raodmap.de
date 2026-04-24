@@ -1,0 +1,44 @@
+{
+  "name": "Роҳнамо ба Олмон – Таҳсил, Кор ва Зиндагӣ дар Олмон",
+  "short_name": "Роҳнамо ба Олмон",
+  "description": "Роҳнамои пурра барои шаҳрвандони Тоҷикистон: чӣ гуна ба Олмон барои таҳсил, кор ё Ausbildung рафтан. Қадам ба қадам, равшан ва фаҳмо.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/tj",
+  "scope": "/",
+  "orientation": "portrait-primary",
+  "lang": "tg",
+  "dir": "ltr",
+  "categories": ["education", "lifestyle", "travel"],
+  "screenshots": [
+    {
+      "src": "/seo-images/home-tj.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Роҳнамо ба Олмон – Саҳифаи асосӣ"
+    }
+  ]
+}

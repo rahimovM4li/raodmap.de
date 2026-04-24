@@ -5,12 +5,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, GraduationCap, Globe, FileText, CreditCard, Shield, Plane, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { StepCard } from '@/components/StepCard';
+import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 
 const StudyPage = () => {
   const { language, t } = useLanguage();
   const [showAllReqs, setShowAllReqs] = useState(false);
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const steps = [
     {
@@ -79,18 +82,10 @@ const StudyPage = () => {
     'Нусхаи мактуби қабулшавӣ',
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Studium in Deutschland | Leitfaden für internationale Studierende' 
-    : language === 'ru'
-    ? 'Учёба в Германии | Руководство для студентов'
-    : 'Таҳсил дар Олмон | Роҳнамо барои донишҷӯён';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={t.study.intro} />
-      </Helmet>
+      <StudyPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}
@@ -236,6 +231,13 @@ const StudyPage = () => {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <FAQSection
+          title={language === 'de' ? 'Häufig gestellte Fragen' : language === 'ru' ? 'Часто задаваемые вопросы' : 'Саволҳои зиёд пурсидашаванда'}
+          subtitle={language === 'de' ? 'Antworten auf wichtige Fragen zum Studium in Deutschland' : language === 'ru' ? 'Ответы на важные вопросы об учёбе в Германии' : 'Ҷавобҳо ба саволҳои муҳим дар бораи таҳсил дар Олмон'}
+          faqs={t.study.faq || []}
+        />
+
         {/* CTA */}
         <section className="py-10 md:py-24">
           <div className="container-main text-center">
@@ -250,7 +252,7 @@ const StudyPage = () => {
                 : 'Нақшаи инфиродӣ бо ёрии wizard бисозед ва PDF-ро боргирӣ кунед.'}
             </p>
             <Button asChild className="btn-hero">
-              <Link to="/#wizard">
+              <Link to={`${langPrefix}/#wizard`}>
                 {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>

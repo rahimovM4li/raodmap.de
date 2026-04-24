@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { HelpCircle, Search } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import FAQComments from '@/components/faq/FAQComments';
 
 const FAQPage = () => {
   const { language } = useLanguage();
@@ -24,7 +25,7 @@ const FAQPage = () => {
     },
     {
       question: 'Darf ich während des Studiums arbeiten?',
-      answer: 'Ja! Internationale Studierende dürfen 120 volle oder 240 halbe Tage im Jahr arbeiten. Der Mindestlohn beträgt €12 pro Stunde.',
+      answer: 'Ja! Internationale Studierende dürfen 120 volle oder 240 halbe Tage im Jahr arbeiten. Der Mindestlohn beträgt €13.90 pro Stunde.',
     },
     {
       question: 'Was ist eine Ausbildung?',
@@ -65,7 +66,7 @@ const FAQPage = () => {
     },
     {
       question: 'Могу ли я работать во время учёбы?',
-      answer: 'Да! Иностранные студенты могут работать 120 полных или 240 неполных дней в год. Минимальная почасовая оплата €12.',
+      answer: 'Да! Иностранные студенты могут работать 120 полных или 240 неполных дней в год. Минимальная почасовая оплата €13.90',
     },
     {
       question: 'Что такое Ausbildung?',
@@ -106,7 +107,7 @@ const FAQPage = () => {
     },
     {
       question: 'Оё ман метавонам дар давраи таҳсил кор кунам?',
-      answer: 'Бале! Донишҷӯёни хориҷӣ метавонанд 120 рӯзи пурра ё 240 рӯзи нимрӯза дар сол кор кунанд. Музди ҳаддиаққал €12 дар соат.',
+      answer: 'Бале! Донишҷӯёни хориҷӣ метавонанд 120 рӯзи пурра ё 240 рӯзи нимрӯза дар сол кор кунанд. Музди ҳаддиаққал €13.90 дар соат.',
     },
     {
       question: 'Ausbildung чист?',
@@ -157,18 +158,10 @@ const FAQPage = () => {
     { term: 'Studienkolleg', definition: 'Курси тайёрӣ барои донишгоҳ' },
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Häufige Fragen zur Einwanderung nach Deutschland | FAQ' 
-    : language === 'ru'
-    ? 'Вопросы об эмиграции в Германию | FAQ'
-    : 'Саволҳо дар бораи муҳоҷират ба Олмон | FAQ';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={language === 'de' ? 'Häufige Fragen zu Visum, Studium, Arbeit in Deutschland' : language === 'ru' ? 'Частые вопросы о визе, учёбе, работе в Германии' : 'Саволҳои зиёд дар бораи виза, таҳсил, кор дар Олмон'} />
-      </Helmet>
+      <FAQPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}
@@ -246,6 +239,13 @@ const FAQPage = () => {
                 );
               })()}
             </div>
+          </div>
+        </section>
+
+        {/* Comments Section */}
+        <section className="py-16 md:py-24">
+          <div className="container-main max-w-4xl">
+            <FAQComments />
           </div>
         </section>
 

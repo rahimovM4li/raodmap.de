@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { LivingPageSEO } from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { Home, Briefcase, Heart, Sun, Euro, Languages } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -35,18 +35,10 @@ const LivingPage = () => {
     { key: 'language', color: 'language', data: t.living.sections.language },
   ];
 
-  const seoTitle = {
-    de: 'Leben in Deutschland | Praktischer Leitfaden für Neuankömmlinge',
-    ru: 'Жизнь в Германии | Практическое руководство для новоприбывших',
-    tj: 'Зиндагӣ дар Олмон | Роҳнамои амалӣ барои наворасидагон',
-  };
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle[language]}</title>
-        <meta name="description" content={t.living.subtitle} />
-      </Helmet>
+      <LivingPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}

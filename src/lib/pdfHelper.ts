@@ -273,7 +273,7 @@ export function createPersonalizedHTML(data: {
         Germany Roadmap
       </p>
       <p style="margin: 0; font-size: 12px; color: #9CA3AF;">
-        ${new Date().toLocaleDateString()} | germanyroad.map
+        ${new Date().toLocaleDateString()} | roadmap.m4li.de
       </p>
     </div>
   `;

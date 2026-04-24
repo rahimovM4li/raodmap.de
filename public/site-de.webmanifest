@@ -1,0 +1,44 @@
+{
+  "name": "Roadmap nach Deutschland – Studium, Arbeit und Leben",
+  "short_name": "Roadmap Deutschland",
+  "description": "Vollständiger Leitfaden für Tadschikistan-Bürger: Wie man nach Deutschland zum Studium, zur Arbeit oder zur Ausbildung kommt. Schritt für Schritt, klar und verständlich.",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/de",
+  "scope": "/",
+  "orientation": "portrait-primary",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["education", "lifestyle", "travel"],
+  "screenshots": [
+    {
+      "src": "/seo-images/home-de.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Roadmap nach Deutschland – Startseite"
+    }
+  ]
+}

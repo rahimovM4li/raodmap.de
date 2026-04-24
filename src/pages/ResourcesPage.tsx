@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { ResourcesPageSEO } from "@/components/SEOHead";
 import { motion } from 'framer-motion';
 import { ExternalLink, MapPin, Phone, Download, Building2, BookOpen, Award, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -88,18 +88,10 @@ const ResourcesPage = () => {
     { name: 'Рӯйхати Ausbildung', description: 'Барои таълими касбӣ', type: 'ausbildung' as const },
   ];
 
-  const seoTitle = language === 'de'
-    ? 'Ressourcen & Links | Botschaft, DAAD, Make it in Germany' 
-    : language === 'ru'
-    ? 'Ресурсы и ссылки | Посольство, DAAD, Make it in Germany'
-    : 'Манбаъҳо ва истиноҳо | Сафорат, DAAD, Make it in Germany';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={t.resources.links.title} />
-      </Helmet>
+      <ResourcesPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}

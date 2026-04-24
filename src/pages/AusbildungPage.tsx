@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 
 const AusbildungPage = () => {
   const { language, t } = useLanguage();
   const [showAllReqs, setShowAllReqs] = useState(false);
+
+  const langPrefix = language === 'tj' ? '/tj' : `/${language}`;
 
   const benefits = language === 'de' ? [
     { icon: Euro, text: 'Gehalt 800-1200€/Monat während der Ausbildung' },
@@ -77,18 +80,10 @@ const AusbildungPage = () => {
     'Шиносномаи эътибор',
   ];
 
-  const seoTitle = language === 'de' 
-    ? 'Ausbildung in Deutschland | Berufsausbildung mit Gehalt' 
-    : language === 'ru'
-    ? 'Ausbildung в Германии | Профобучение с зарплатой'
-    : 'Ausbildung дар Олмон | Таълими касбӣ бо музд';
 
   return (
     <>
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={t.ausbildung.intro} />
-      </Helmet>
+      <AusbildungPageSEO />
 
       <main className="min-h-screen">
         {/* Hero */}
@@ -245,11 +240,18 @@ const AusbildungPage = () => {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <FAQSection
+          title={language === 'de' ? 'Häufig gestellte Fragen' : language === 'ru' ? 'Часто задаваемые вопросы' : 'Саволҳои зиёд пурсидашаванда'}
+          subtitle={language === 'de' ? 'Antworten auf wichtige Fragen zur Ausbildung in Deutschland' : language === 'ru' ? 'Ответы на важные вопросы об Ausbildung в Германии' : 'Ҷавобҳо ба саволҳои муҳим дар бораи Ausbildung дар Олмон'}
+          faqs={t.ausbildung.faq || []}
+        />
+
         {/* CTA */}
         <section className="py-10 md:py-24">
           <div className="container-main text-center">
             <Button asChild className="btn-hero">
-              <Link to="/#wizard">
+              <Link to={`${langPrefix}/#wizard`}>
                 {language === 'de' ? 'Plan erstellen' : language === 'ru' ? 'Создать план' : 'Нақша эҷод кардан'}
                 <ArrowRight className="w-5 h-5" />
               </Link>

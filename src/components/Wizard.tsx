@@ -228,7 +228,17 @@ const roadmaps: Record<Exclude<PathType, null>, { tj: RoadmapData; ru: RoadmapDa
 export function Wizard() {
   const [step, setStep] = useState(1);
   const [selectedPath, setSelectedPath] = useState<PathType>(null);
+  const [checkedDocs, setCheckedDocs] = useState<Set<number>>(new Set());
   const { language, t } = useLanguage();
+
+  const toggleDoc = (index: number) => {
+    setCheckedDocs((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   const paths = [
     { id: 'study' as const, icon: GraduationCap, ...t.paths.study },
@@ -254,10 +264,10 @@ export function Wizard() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/30">
+    <section className="py-10 md:py-24 bg-secondary/30">
       <div className="container-main">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
             {t.wizard.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -266,24 +276,24 @@ export function Wizard() {
         </div>
 
         {/* Progress */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8 md:mb-12">
           <div className="flex items-center gap-4">
             {[1, 2].map((s) => (
               <div key={s} className="flex items-center gap-4">
                 <div
                   className={cn(
-                    'w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all',
+                    'w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm md:text-base font-semibold transition-all',
                     step >= s
                       ? 'bg-accent text-accent-foreground'
                       : 'bg-secondary text-muted-foreground'
                   )}
                 >
-                  {step > s ? <Check className="w-5 h-5" /> : s}
+                  {step > s ? <Check className="w-4 h-4 md:w-5 md:h-5" /> : s}
                 </div>
                 {s < 2 && (
                   <div
                     className={cn(
-                      'w-16 md:w-24 h-1 rounded-full transition-all',
+                      'w-12 md:w-24 h-1 rounded-full transition-all',
                       step > s ? 'bg-accent' : 'bg-secondary'
                     )}
                   />
@@ -302,16 +312,16 @@ export function Wizard() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl font-semibold text-center mb-8 text-foreground">
+              <h3 className="text-xl font-semibold text-center mb-6 md:mb-8 text-foreground">
                 {t.wizard.selectPath}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 max-w-4xl mx-auto">
                 {paths.map((path) => (
                   <button
                     key={path.id}
                     onClick={() => setSelectedPath(path.id)}
                     className={cn(
-                      'card-elevated p-6 text-left transition-all',
+                      'card-elevated flex flex-row items-center gap-4 p-4 md:p-6 md:flex-col md:items-start md:text-left text-left transition-all active:scale-[0.98]',
                       selectedPath === path.id
                         ? 'ring-2 ring-accent border-accent'
                         : 'hover:shadow-lg'
@@ -319,12 +329,14 @@ export function Wizard() {
                   >
                     <path.icon
                       className={cn(
-                        'w-10 h-10 mb-4',
+                        'w-8 h-8 md:w-10 md:h-10 shrink-0 md:mb-4',
                         selectedPath === path.id ? 'text-accent' : 'text-muted-foreground'
                       )}
                     />
-                    <h4 className="font-semibold text-foreground mb-2">{path.title}</h4>
-                    <p className="text-sm text-muted-foreground">{path.description}</p>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1 md:mb-2">{path.title}</h4>
+                      <p className="text-sm text-muted-foreground">{path.description}</p>
+                    </div>
                   </button>
                 ))}
               </div>
@@ -333,7 +345,7 @@ export function Wizard() {
                 <Button
                   onClick={() => setStep(2)}
                   disabled={!selectedPath}
-                  className="btn-hero"
+                  className="btn-hero w-full sm:w-auto"
                 >
                   {t.wizard.next}
                   <ArrowRight className="w-5 h-5" />
@@ -352,7 +364,7 @@ export function Wizard() {
               className="max-w-4xl mx-auto"
             >
               {/* Header */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-6 md:mb-8">
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   {t.wizard.yourPlan}: {currentRoadmap.title}
                 </h3>
@@ -361,17 +373,17 @@ export function Wizard() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
                 {/* Steps */}
-                <div className="card-elevated p-6 md:p-8">
+                <div className="card-elevated p-4 md:p-6 lg:p-8">
                   <h4 className="font-semibold text-lg mb-6 text-foreground flex items-center gap-2">
                     <span className="step-indicator text-sm">{currentRoadmap.steps.length}</span>
                     {t.wizard.steps}
                   </h4>
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {currentRoadmap.steps.map((s, i) => (
-                      <div key={i} className="flex gap-4">
-                        <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-sm font-medium text-muted-foreground shrink-0">
+                      <div key={i} className="flex gap-3 md:gap-4">
+                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-secondary flex items-center justify-center text-xs md:text-sm font-medium text-muted-foreground shrink-0">
                           {i + 1}
                         </div>
                         <div>
@@ -384,15 +396,47 @@ export function Wizard() {
                 </div>
 
                 {/* Documents */}
-                <div className="card-elevated p-6 md:p-8">
-                  <h4 className="font-semibold text-lg mb-6 text-foreground">
-                    {t.wizard.documents}
-                  </h4>
+                <div className="card-elevated p-4 md:p-6 lg:p-8">
+                  <div className="flex items-center justify-between mb-6">
+                    <h4 className="font-semibold text-lg text-foreground">
+                      {t.wizard.documents}
+                    </h4>
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {checkedDocs.size}/{currentRoadmap.documents.length}
+                    </span>
+                  </div>
                   <ul className="space-y-3">
                     {currentRoadmap.documents.map((doc, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                        <span className="text-foreground">{doc}</span>
+                      <li
+                        key={i}
+                        onClick={() => toggleDoc(i)}
+                        className="flex items-start gap-3 cursor-pointer select-none active:scale-[0.98] transition-transform"
+                      >
+                        <div
+                          className={cn(
+                            'w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors',
+                            checkedDocs.has(i)
+                              ? 'bg-accent border-accent'
+                              : 'border-muted-foreground/40'
+                          )}
+                        >
+                          <AnimatePresence>
+                            {checkedDocs.has(i) && (
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0 }}
+                                transition={{ duration: 0.15 }}
+                              >
+                                <Check className="w-3 h-3 text-accent-foreground" />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                        <span className={cn(
+                          'text-foreground transition-opacity',
+                          checkedDocs.has(i) && 'line-through opacity-60'
+                        )}>{doc}</span>
                       </li>
                     ))}
                   </ul>
@@ -403,15 +447,15 @@ export function Wizard() {
               <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                 <Button
                   variant="outline"
-                  onClick={() => setStep(1)}
-                  className="flex items-center gap-2"
+                  onClick={() => { setStep(1); setCheckedDocs(new Set()); }}
+                  className="flex items-center gap-2 w-full sm:w-auto"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   {t.wizard.back}
                 </Button>
                 <Button
                   onClick={handleDownloadPDF}
-                  className="btn-hero"
+                  className="btn-hero w-full sm:w-auto"
                 >
                   <Download className="w-5 h-5" />
                   {t.wizard.download}

@@ -59,7 +59,7 @@ export function PathCard({ type, title, description, duration, href }: PathCardP
     <Link
       to={href}
       className={cn(
-        'card-path group p-6 md:p-8 flex flex-col',
+        'card-path group p-4 md:p-6 lg:p-8 flex flex-col active:scale-[0.98] transition-transform',
         colors.bg,
         colors.border
       )}
@@ -67,18 +67,18 @@ export function PathCard({ type, title, description, duration, href }: PathCardP
       {/* Icon */}
       <div
         className={cn(
-          'w-14 h-14 rounded-2xl flex items-center justify-center mb-6',
+          'w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-3 md:mb-6',
           colors.iconBg
         )}
       >
-        <Icon className="w-7 h-7 text-card" />
+        <Icon className="w-5 h-5 md:w-7 md:h-7 text-card" />
       </div>
 
       {/* Content */}
-      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
+      <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-foreground mb-2">
         {title}
       </h3>
-      <p className="text-muted-foreground mb-4 flex-grow">
+      <p className="text-muted-foreground mb-3 md:mb-4 flex-grow">
         {description}
       </p>
 

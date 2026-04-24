@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 import { Language, languageFullNames } from '@/lib/i18n';
@@ -12,11 +12,9 @@ const languages: { code: Language; flag: string }[] = [
 ];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,18 +28,6 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
 
   // Close dropdowns on outside click (desktop only)
   useEffect(() => {
@@ -57,20 +43,18 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on route change
+  // Close dropdowns on route change
   useEffect(() => {
-    setIsMenuOpen(false);
-    setMobileAccordion(null);
+    setOpenDropdown(null);
+    setIsLangOpen(false);
   }, [location.pathname]);
 
-  // Close menu on escape key
+  // Close dropdowns on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setIsMenuOpen(false);
         setOpenDropdown(null);
         setIsLangOpen(false);
-        setMobileAccordion(null);
       }
     };
     document.addEventListener('keydown', handleEscape);
@@ -98,10 +82,6 @@ export function Header() {
     return paths.some(path => location.pathname === path);
   };
 
-  const toggleMobileAccordion = (section: string) => {
-    setMobileAccordion(mobileAccordion === section ? null : section);
-  };
-
   return (
     <header
       className={cn(
@@ -112,7 +92,7 @@ export function Header() {
       )}
     >
       <div className="container-main">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-12 md:h-16 lg:h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-info flex items-center justify-center transition-transform group-hover:scale-105">
@@ -147,7 +127,7 @@ export function Header() {
               <button
                 onClick={() => setOpenDropdown(openDropdown === 'paths' ? null : 'paths')}
                 className={cn(
-                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group',
+                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                   isPathActive(pathsToGermany.map(p => p.path))
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
@@ -190,7 +170,7 @@ export function Header() {
               <button
                 onClick={() => setOpenDropdown(openDropdown === 'life' ? null : 'life')}
                 className={cn(
-                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group',
+                  'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                   isPathActive(lifeInGermany.map(p => p.path))
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
@@ -235,7 +215,7 @@ export function Header() {
             <div className="hidden lg:block relative" ref={langRef}>
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-200 border border-border/50"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-all duration-200 border border-border/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-label="Change language"
               >
                 <span className="text-lg">{currentLang?.flag}</span>
@@ -272,187 +252,27 @@ export function Header() {
               )}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 rounded-lg hover:bg-secondary/50 transition-all duration-200 active:scale-95"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-foreground" />
-              ) : (
-                <Menu className="w-6 h-6 text-foreground" />
-              )}
-            </button>
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center gap-1 lg:hidden">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={cn(
+                    'w-8 h-8 rounded-lg flex items-center justify-center text-base transition-all active:scale-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                    language === lang.code
+                      ? 'bg-primary/10 ring-1.5 ring-primary/30'
+                      : 'hover:bg-secondary/50'
+                  )}
+                  aria-label={`Switch to ${languageFullNames[lang.code]}`}
+                >
+                  {lang.flag}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Mobile Fullscreen Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden fixed inset-0 z-50 animate-in slide-in-from-right duration-300">
-            {/* Glassmorphism Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-card/95 via-card/90 to-background/95 backdrop-blur-2xl" />
-            
-            {/* Content */}
-            <div className="relative flex flex-col h-full">
-              {/* Top Bar with Language Switcher */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-border/30">
-                <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-info flex items-center justify-center">
-                    <img src="/favicon.ico" alt="Logo" className="w-6 h-6" />
-                  </div>
-                  <span className="font-semibold text-foreground">Germany Roadmap</span>
-                </Link>
-                <div className="flex items-center gap-2">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={cn(
-                        'w-10 h-10 rounded-lg flex items-center justify-center text-xl transition-all duration-200 active:scale-90',
-                        language === lang.code
-                          ? 'bg-primary/10 ring-2 ring-primary/30'
-                          : 'bg-secondary/50 hover:bg-secondary'
-                      )}
-                      aria-label={`Switch to ${languageFullNames[lang.code]}`}
-                    >
-                      {lang.flag}
-                    </button>
-                  ))}
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="ml-2 p-2 rounded-lg hover:bg-secondary/50 transition-all duration-200 active:scale-95"
-                    aria-label="Close menu"
-                  >
-                    <X className="w-6 h-6 text-foreground" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Scrollable Navigation */}
-              <nav className="flex-1 overflow-y-auto px-6 py-6" role="menu">
-                <div className="space-y-2">
-                  {/* Home Link */}
-                  <Link
-                    to="/"
-                    className={cn(
-                      'flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 active:scale-98',
-                      location.pathname === '/'
-                        ? 'bg-primary text-primary-foreground shadow-md'
-                        : 'text-foreground hover:bg-secondary/50'
-                    )}
-                    role="menuitem"
-                  >
-                    {t.nav.home}
-                  </Link>
-
-                  {/* Paths to Germany Accordion */}
-                  <div className="space-y-1">
-                    <button
-                      onClick={() => toggleMobileAccordion('paths')}
-                      className={cn(
-                        'w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 active:scale-98',
-                        isPathActive(pathsToGermany.map(p => p.path))
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-foreground hover:bg-secondary/50'
-                      )}
-                      aria-expanded={mobileAccordion === 'paths'}
-                      aria-controls="paths-accordion"
-                    >
-                      <span>{t.nav.pathsToGermany}</span>
-                      <ChevronDown className={cn(
-                        'w-5 h-5 transition-transform duration-300',
-                        mobileAccordion === 'paths' && 'rotate-180'
-                      )} />
-                    </button>
-                    <div
-                      id="paths-accordion"
-                      className={cn(
-                        'grid transition-all duration-300 ease-out',
-                        mobileAccordion === 'paths'
-                          ? 'grid-rows-[1fr] opacity-100'
-                          : 'grid-rows-[0fr] opacity-0'
-                      )}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="space-y-1 pl-4 py-2">
-                          {pathsToGermany.map((item) => (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              className={cn(
-                                'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 active:scale-98 min-h-[48px]',
-                                location.pathname === item.path
-                                  ? 'bg-primary text-primary-foreground shadow-sm'
-                                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
-                              )}
-                              role="menuitem"
-                            >
-                              <ChevronRight className="w-4 h-4 shrink-0" />
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Life in Germany Accordion */}
-                  <div className="space-y-1">
-                    <button
-                      onClick={() => toggleMobileAccordion('life')}
-                      className={cn(
-                        'w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 active:scale-98',
-                        isPathActive(lifeInGermany.map(p => p.path))
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-foreground hover:bg-secondary/50'
-                      )}
-                      aria-expanded={mobileAccordion === 'life'}
-                      aria-controls="life-accordion"
-                    >
-                      <span>{t.nav.lifeInGermany}</span>
-                      <ChevronDown className={cn(
-                        'w-5 h-5 transition-transform duration-300',
-                        mobileAccordion === 'life' && 'rotate-180'
-                      )} />
-                    </button>
-                    <div
-                      id="life-accordion"
-                      className={cn(
-                        'grid transition-all duration-300 ease-out',
-                        mobileAccordion === 'life'
-                          ? 'grid-rows-[1fr] opacity-100'
-                          : 'grid-rows-[0fr] opacity-0'
-                      )}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="space-y-1 pl-4 py-2">
-                          {lifeInGermany.map((item) => (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              className={cn(
-                                'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 active:scale-98 min-h-[48px]',
-                                location.pathname === item.path
-                                  ? 'bg-primary text-primary-foreground shadow-sm'
-                                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/30'
-                              )}
-                              role="menuitem"
-                            >
-                              <ChevronRight className="w-4 h-4 shrink-0" />
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

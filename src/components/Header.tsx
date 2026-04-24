@@ -18,6 +18,7 @@ export function Header() {
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef2 = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect
@@ -32,7 +33,10 @@ export function Header() {
   // Close dropdowns on outside click (desktop only)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+        dropdownRef2.current && !dropdownRef2.current.contains(event.target as Node)
+      ) {
         setOpenDropdown(null);
       }
       if (langRef.current && !langRef.current.contains(event.target as Node)) {
@@ -150,6 +154,7 @@ export function Header() {
                       <Link
                         key={item.path}
                         to={item.path}
+                        onClick={() => setOpenDropdown(null)}
                         className={cn(
                           'block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
                           location.pathname === item.path
@@ -166,7 +171,7 @@ export function Header() {
             </div>
 
             {/* Life in Germany Dropdown */}
-            <div className="relative" ref={dropdownRef}>
+            <div className="relative" ref={dropdownRef2}>
               <button
                 onClick={() => setOpenDropdown(openDropdown === 'life' ? null : 'life')}
                 className={cn(
@@ -193,6 +198,7 @@ export function Header() {
                       <Link
                         key={item.path}
                         to={item.path}
+                        onClick={() => setOpenDropdown(null)}
                         className={cn(
                           'block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150',
                           location.pathname === item.path

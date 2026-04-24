@@ -73,7 +73,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <PathCard
             type="study"
@@ -95,6 +95,20 @@ export function Hero() {
             description={t.paths.ausbildung.description}
             duration={t.paths.ausbildung.duration}
             href="/ausbildung"
+          />
+          <PathCard
+            type="fsj"
+            title={t.paths.fsj.title}
+            description={t.paths.fsj.description}
+            duration={t.paths.fsj.duration}
+            href="/fsj"
+          />
+          <PathCard
+            type="aupair"
+            title={t.paths.aupair.title}
+            description={t.paths.aupair.description}
+            duration={t.paths.aupair.duration}
+            href="/aupair"
           />
         </motion.div>
       </div>

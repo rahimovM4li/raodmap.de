@@ -25,8 +25,6 @@
 ### Legal Owner Info (All Pages)
 ```
 Name: Muhammadali Rahimov
-Address: Firmianstrasse 3, 94036 Passau, Germany
-Phone: +49 992 944424424
 Email: rahimov.muhammadali1704@gmail.com
 ```
 

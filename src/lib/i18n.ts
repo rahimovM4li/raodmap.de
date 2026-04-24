@@ -16,9 +16,13 @@ export const translations = {
   tj: {
     nav: {
       home: 'Саҳифаи асосӣ',
+      pathsToGermany: 'Роҳҳо ба Олмон',
+      lifeInGermany: 'Зиндагӣ дар Олмон',
       study: 'Таҳсил',
       work: 'Кор',
       ausbildung: 'Ausbildung',
+      fsj: 'FSJ / BFD',
+      aupair: 'Au-Pair',
       living: 'Зиндагӣ дар Олмон',
       roadmap: 'Роҳнамо',
       faq: 'Саволҳо',
@@ -49,6 +53,16 @@ export const translations = {
         title: 'Ausbildung',
         description: 'Омӯзиши касбӣ бо музд',
         duration: '6-18 моҳ омодагӣ',
+      },
+      fsj: {
+        title: 'FSJ / BFD',
+        description: 'Хидмати ихтиёрии иҷтимоӣ',
+        duration: '6-18 моҳ барнома',
+      },
+      aupair: {
+        title: 'Au-Pair',
+        description: 'Зиндагӣ бо оила, парастории кӯдакон',
+        duration: '6-12 моҳ барнома',
       },
     },
     wizard: {
@@ -153,6 +167,281 @@ export const translations = {
       popularTrades: {
         title: 'Касбҳои маъмул',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
+      },
+    },
+    fsj: {
+      title: 'FSJ / BFD — Хидмати ихтиёрии иҷтимоӣ',
+      intro: 'Соли ихтиёрӣ дар Олмон: таҷриба, забон ва фарҳанг',
+      overview: {
+        title: 'Шарҳи умумӣ',
+        what: 'FSJ (Freiwilliges Soziales Jahr) ва BFD (Bundesfreiwilligendienst) хидматҳои ихтиёрии иҷтимоӣ дар Олмон мебошанд. Шумо дар соҳаҳои иҷтимоӣ, тиббӣ, фарҳангӣ ё экологӣ кор мекунед ва таҷрибаи беҳбуд меёбед.',
+        forWho: 'FSJ: Синну сол 16-26. BFD: Ҳама синну солҳо (аз 16 сола)',
+        duration: '6-18 моҳ (одатан 12 моҳ)',
+        benefits: [
+          'Забони олмонӣ дар зиндагии рӯзмарра',
+          'Таҷрибаи корӣ дар Олмон',
+          'Шиносоӣ бо фарҳанги олмонӣ',
+          'Пулӣ ҷебӣ ва манзили ройгон',
+          'Суғуртаҳои ҳатмӣ пардохташуда',
+        ],
+      },
+      requirements: {
+        title: 'Шартҳо',
+        items: [
+          'Синну сол: FSJ 16-26, BFD 16+',
+          'Забони олмонӣ: A2-B1 (ҳадди ақал асосӣ)',
+          'Таҳсилот: Хатми мактаб тавсия мешавад',
+          'Суғуртаи тиббӣ: Ҳатмӣ',
+          'Виза: Барои шаҳрвандони ғайриолмонӣ лозим',
+          'Гувоҳномаи сабти ҷиноятӣ: Барои кор бо кӯдакон лозим',
+          'Ангезиш: Хоҳиш барои кӯмак ва омӯхтан',
+        ],
+      },
+      roadmap: {
+        title: 'Қадамҳои иҷро',
+        step1: {
+          title: 'Қадами 1: Омодагӣ',
+          desc: 'Олмониро то сатҳи A2-B1 омӯзед. Ҳуҷҷатҳо ҷамъ кунед: паспорт, сертификати забон, шаҳодатнома, CV, мактуби ангезиш.',
+        },
+        step2: {
+          title: 'Қадами 2: Ёфтани ташкилот',
+          desc: 'Дар сайтҳои bundesfreiwilligendienst.de, freiwilligendienste-kultur-bildung.de, soziale-dienste.de ҷустуҷӯ кунед. Ариза пешниҳод намоед (CV + мактуби ангезиш).',
+        },
+        step3: {
+          title: 'Қадами 3: Шартнома',
+          desc: 'Пас аз қабулшавӣ шартномаро аз ташкилот гиред. Дар шартнома: пулӣ ҷебӣ, манзил, давомнокӣ, вазифаҳо нишон дода мешавад.',
+        },
+        step4: {
+          title: 'Қадами 4: Ариза барои виза',
+          desc: 'Бо шартнома ба сафорати Олмон муроҷиат кунед. Ҳуҷҷатҳо: шартномаи FSJ/BFD, паспорт, сертификати забон, суғурта, акс.',
+        },
+        step5: {
+          title: 'Қадами 5: Омадан ва бақайдгирӣ',
+          desc: 'Дар Олмон дар Bürgeramt дар 14 рӯз бақайд гиред (Anmeldung). Ҳисоби банкӣ кушоед, корти SIM гиред.',
+        },
+        step6: {
+          title: 'Қадами 6: Зиндагӣ дар давраи барнома',
+          desc: 'Кор дар ташкилот, ҳиссагирӣ дар семинарҳои омӯзишӣ (25 рӯз/сол), забон ва маданиятро омӯзед.',
+        },
+      },
+      salary: {
+        title: 'Пулӣ ҷебӣ ва шароит',
+        monthly: 'Пулӣ ҷебӣ: 300-450€/моҳ',
+        accommodation: 'Манзил: Одатан ройгон ё бо нархи арзон',
+        food: 'Ғизо: Дар баъзе ҷойҳо ройгон ё иловагӣ 200-300€',
+        insurance: 'Суғуртаҳо: Тиббӣ, иҷтимоӣ, нафақа — ҳама аз ташкилот',
+        vacation: 'Рухсатӣ: 24-30 рӯз дар сол',
+      },
+      pros: {
+        title: 'Бартариҳо',
+        items: [
+          'Роҳи осон барои омадан ба Олмон',
+          'Омӯхтани забон дар муҳити табиӣ',
+          'Таҷрибаи корӣ ва шабака',
+          'Хароҷоти кам (манзил ва суғурта ройгон)',
+          'Шиносоӣ бо фарҳанг ва одамон',
+        ],
+      },
+      cons: {
+        title: 'Камбудиҳо',
+        items: [
+          'Пулӣ ҷебӣ хеле кам (300-450€)',
+          'Кори физикӣ ё эмоционалӣ душвор',
+          'Вобастагӣ ба ташкилот',
+          'Имконияти маҳдуд барои хароҷот',
+          'Баъзан дар минтақаҳои дурдаст',
+        ],
+      },
+      after: {
+        title: 'Пас аз хатм',
+        study: 'Имконияти ворид шудан ба донишгоҳ',
+        ausbildung: 'Роҳи осон ба Ausbildung',
+        work: 'Имкони кор (бо иҷозатнома)',
+        residence: 'Имкони гирифтани иҷозатномаи иқоматӣ дарозмуддат',
+      },
+      faq: {
+        title: 'Саволҳои маъмул',
+        items: [
+          {
+            q: 'FSJ ва BFD чӣ фарқ доранд?',
+            a: 'FSJ танҳо барои синну соли 16-26. BFD барои ҳама синну солҳо (16+). Шароит шабеҳанд.',
+          },
+          {
+            q: 'Чӣ қадар забон лозим аст?',
+            a: 'Ҳадди ақал A2, вале B1 хеле беҳтар. Бидуни забон кор хеле душвор.',
+          },
+          {
+            q: 'Оё метавон бо оила омад?',
+            a: 'Не, FSJ/BFD барои шахси ягона. Оила бо виза алоҳида омада метавонад.',
+          },
+          {
+            q: 'Оё пас аз FSJ/BFD дар Олмон монда метавон?',
+            a: 'Бале, агар Ausbildung ё таҳсил ёбед. Вале FSJ/BFD худ иқомати доимӣ намедиҳад.',
+          },
+          {
+            q: 'Кай бояд ариза дод?',
+            a: '6-12 моҳ пеш. Ҷойҳо зуд пур мешаванд, пештар беҳтар.',
+          },
+          {
+            q: 'Чӣ гуна манзил?',
+            a: 'Одатан хонаи умумӣ (WG) ё хонаи ташкилот. Камтар квартираи алоҳида.',
+          },
+          {
+            q: 'Оё метавон кори иловагӣ кард?',
+            a: 'Бале, то 20 соат дар ҳафта иловатан, агар ташкилот иҷозат диҳад.',
+          },
+          {
+            q: 'Чӣ гуна кор?',
+            a: 'Кор бо одамони пир, кӯдакон, маъюбон, ё дар музейҳо, боғҳо, лоиҳаҳои экологӣ.',
+          },
+          {
+            q: 'Оё андоз мепардозам?',
+            a: 'Не, пулӣ ҷебӣ одатан аз андоз озод, чунки хеле кам аст.',
+          },
+          {
+            q: 'Оё FSJ/BFD барои донишгоҳ фойда дорад?',
+            a: 'Бале! Забонро беҳтар мекунед, Олмонро мешиносед ва таҷриба мегиред.',
+          },
+        ],
+      },
+    },
+    aupair: {
+      title: 'Au-Pair дар Олмон',
+      intro: 'Зиндагӣ бо оилаи олмонӣ, парастории кӯдакон ва омӯхтани забон',
+      overview: {
+        title: 'Шарҳи умумӣ',
+        what: 'Au-Pair барномаи мубодилаи фарҳангӣ аст, ки дар он шумо бо оилаи олмонӣ мезиед, аз кӯдакон парастор мекунед ва забонро меомӯзед.',
+        forWho: 'Барои ҷавонон 18-26 сола',
+        duration: '6-12 моҳ (одатан 12 моҳ)',
+        benefits: [
+          'Зиндагӣ дар оилаи олмонӣ',
+          'Омӯхтани забон дар амалия',
+          'Хуҷраи шахсӣ ва ғизои ройгон',
+          'Пулӣ ҷебӣ 280€/моҳ',
+          'Курси забонӣ ройгон (50% аз ташкилот)',
+        ],
+      },
+      requirements: {
+        title: 'Шартҳо',
+        items: [
+          'Синну сол: 18-26 сола',
+          'Забони олмонӣ: A1 ҳадди ақал (барои виза)',
+          'Таҷрибаи кор бо кӯдакон: 200+ соат (парастории кӯдакон, огоҳкунӣ, ё худи кӯдакон дар оила)',
+          'Гувоҳномаи сабти ҷиноятӣ: Ҳатмӣ (тоза)',
+          'Гувоҳномаи тандурустӣ: Шумо бояд солим бошед',
+          'Шиносномаи рониндагӣ: Тавсия мешавад (на ҳатмӣ)',
+          'Оилаи ҷавонон бе фарзанд: Одатан Au-Pair намешаванд',
+        ],
+      },
+      roadmap: {
+        title: 'Қадамҳои иҷро',
+        step1: {
+          title: 'Қадами 1: Омодагӣ',
+          desc: 'Олмониро то A1 омӯзед (сертификат лозим). Таҷрибаи кор бо кӯдакон ҷамъ кунед. Ҳуҷҷатҳо: паспорт, CV, мактуби ангезиш, акс, гувоҳномаҳо.',
+        },
+        step2: {
+          title: 'Қадами 2: Ёфтани оила',
+          desc: 'Дар aupair.com, aupairworld.com, greataupair.com ҷустуҷӯ кунед. Профили комил бо акс ва видео созед. Бо оилаҳо суҳбат кунед (Skype).',
+        },
+        step3: {
+          title: 'Қадами 3: Шартнома',
+          desc: 'Пас аз мувофиқа шартномаи Au-Pair имзо кунед. Дар он: вазифаҳо, соатҳо (30 ҳафта), пулӣ ҷебӣ, рухсатӣ муайян карда мешавад.',
+        },
+        step4: {
+          title: 'Қадами 4: Ариза барои виза',
+          desc: 'Бо шартнома ба сафорати Олмон муроҷиат кунед. Ҳуҷҷатҳо: шартнома, сертификати A1, гувоҳномаи тандурустӣ, таҷриба, суғурта.',
+        },
+        step5: {
+          title: 'Қадами 5: Омадан ба Олмон',
+          desc: 'Оила одатан шуморо аз фурудгоҳ мегирад. Дар 14 рӯз дар Bürgeramt бақайд гиред. Ҳисоби банкӣ кушоед.',
+        },
+        step6: {
+          title: 'Қадами 6: Зиндагӣ дар давраи барнома',
+          desc: 'Парастории кӯдакон (30 соат/ҳафта), ҳиссагирӣ дар курси забон, вақти озод барои саёҳат ва шиносоӣ.',
+        },
+      },
+      salary: {
+        title: 'Пулӣ ҷебӣ ва шароит',
+        monthly: 'Пулӣ ҷебӣ: 280€/моҳ (ҳатмӣ)',
+        accommodation: 'Хуҷраи шахсӣ дар хонаи оила: Ройгон',
+        food: 'Ғизо: Пурра ройгон (ҳамроҳи оила)',
+        insurance: 'Суғуртаи тиббӣ: Оила пардохт мекунад ё ба шумо кӯмак мекунад',
+        vacation: 'Рухсатӣ: 4 ҳафта (дар 12 моҳ)',
+        language: 'Курси забонӣ: Оила 50€/моҳ ҳадди ақал медиҳад',
+      },
+      pros: {
+        title: 'Бартариҳо',
+        items: [
+          'Зиндагӣ дар оилаи ҳақиқӣ олмонӣ',
+          'Хуҷра ва ғизои ройгон',
+          'Омӯхтани забон дар амалия',
+          'Таҷрибаи кор бо кӯдакон',
+          'Вақти озод барои саёҳат',
+          'Роҳи осон барои омадан ба Олмон',
+        ],
+      },
+      cons: {
+        title: 'Камбудиҳо',
+        items: [
+          'Пулӣ ҷебӣ кам (280€)',
+          'Вобастагӣ аз оила',
+          'Кор бо кӯдакон метавонад душвор бошад',
+          'Масъулияти калон',
+          'Камтар озодӣ (дар хонаи оила зиндагӣ)',
+          'Мушкилот агар оила бад бошад',
+        ],
+      },
+      after: {
+        title: 'Пас аз хатм',
+        study: 'Имконияти таҳсил (забон аллакай дониста мешавад)',
+        ausbildung: 'Ausbildung (таҷрибаи Олмон дорӣ)',
+        work: 'Кор (бо иҷозатнома)',
+        residence: 'Иқомат (агар раванди навро оғоз кунед)',
+      },
+      faq: {
+        title: 'Саволҳои маъмул',
+        items: [
+          {
+            q: 'Чӣ қадар соат дар рӯз кор мекунам?',
+            a: '30 соат дар ҳафта (тақрибан 6 соат дар рӯз), максимум 6 рӯз. Якшанба озод.',
+          },
+          {
+            q: 'Оё метавон оиларо иваз кард?',
+            a: 'Бале, вале ин раванди душвор. Беҳтар аст аввал оилаи дурустро интихоб кунед.',
+          },
+          {
+            q: 'Чӣ қадар забон лозим аст?',
+            a: 'A1 барои виза ҳатмӣ. Вале B1 хеле беҳтар барои муошират.',
+          },
+          {
+            q: 'Оё бо оила ҳамроҳӣ мехӯрам?',
+            a: 'Бале, шумо ҳамчун узви оила дар суфра менишинед ва ҳамроҳӣ мехӯред.',
+          },
+          {
+            q: 'Вазифаҳои ман чӣ ҳастанд?',
+            a: 'Парастории кӯдакон, бурдан ба мактаб, кӯмак дар хонакорӣ. НА кори калони хонакорӣ.',
+          },
+          {
+            q: 'Оя метавон пас аз Au-Pair дар Олмон монд?',
+            a: 'Бале, агар таҳсил ё Ausbildung ёбед. Au-Pair худ иқомат намедиҳад.',
+          },
+          {
+            q: 'Чӣ хел оилаҳо ҳастанд?',
+            a: 'Гуногун: оилаҳои хурд, калон, ягонаволида, аз шаҳру деҳот.',
+          },
+          {
+            q: 'Оё шиносномаи рониндагӣ лозим аст?',
+            a: 'На ҳатмӣ, вале хеле кӯмак мекунад, махсусан дар деҳот.',
+          },
+          {
+            q: 'Кай бояд оила ҷустуҷӯ кард?',
+            a: '4-8 моҳ пеш оғоз кунед. Оилаҳои хуб зуд пайдо мекунанд.',
+          },
+          {
+            q: 'Оё метавон курси забонӣ рафт?',
+            a: 'Бале, ва оила бояд вақт диҳад ва камаш 50€/моҳ пардохт кунад.',
+          },
+        ],
       },
     },
     financing: {
@@ -399,9 +688,13 @@ export const translations = {
   ru: {
     nav: {
       home: 'Главная',
+      pathsToGermany: 'Пути в Германию',
+      lifeInGermany: 'Жизнь в Германии',
       study: 'Учёба',
       work: 'Работа',
       ausbildung: 'Ausbildung',
+      fsj: 'FSJ / BFD',
+      aupair: 'Au-Pair',
       living: 'Жизнь в Германии',
       roadmap: 'Дорожная карта',
       faq: 'Вопросы',
@@ -432,6 +725,16 @@ export const translations = {
         title: 'Ausbildung',
         description: 'Профессиональное обучение с зарплатой',
         duration: '6-18 месяцев подготовки',
+      },
+      fsj: {
+        title: 'FSJ / BFD',
+        description: 'Добровольная социальная служба',
+        duration: '6-18 месяцев программы',
+      },
+      aupair: {
+        title: 'Au-Pair',
+        description: 'Жизнь с семьёй, уход за детьми',
+        duration: '6-12 месяцев программы',
       },
     },
     wizard: {
@@ -536,6 +839,281 @@ export const translations = {
       popularTrades: {
         title: 'Популярные профессии',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
+      },
+    },
+    fsj: {
+      title: 'FSJ / BFD — Добровольная социальная служба',
+      intro: 'Добровольный год в Германии: опыт, язык и культура',
+      overview: {
+        title: 'Обзор',
+        what: 'FSJ (Freiwilliges Soziales Jahr) и BFD (Bundesfreiwilligendienst) — это программы добровольной социальной службы в Германии. Вы работаете в социальной, медицинской, культурной или экологической сфере и получаете ценный опыт.',
+        forWho: 'FSJ: Возраст 16-26 лет. BFD: Любой возраст (от 16 лет)',
+        duration: '6-18 месяцев (обычно 12 месяцев)',
+        benefits: [
+          'Изучение немецкого в повседневной жизни',
+          'Опыт работы в Германии',
+          'Знакомство с немецкой культурой',
+          'Карманные деньги и бесплатное жильё',
+          'Все обязательные страховки оплачены',
+        ],
+      },
+      requirements: {
+        title: 'Требования',
+        items: [
+          'Возраст: FSJ 16-26 лет, BFD 16+',
+          'Немецкий язык: A2-B1 (минимум базовый)',
+          'Образование: Окончание школы рекомендуется',
+          'Медицинская страховка: Обязательна',
+          'Виза: Необходима для не-граждан ЕС',
+          'Справка о несудимости: Необходима для работы с детьми',
+          'Мотивация: Желание помогать и учиться',
+        ],
+      },
+      roadmap: {
+        title: 'Пошаговый план',
+        step1: {
+          title: 'Шаг 1: Подготовка',
+          desc: 'Выучите немецкий до уровня A2-B1. Соберите документы: паспорт, языковой сертификат, аттестат, CV, мотивационное письмо.',
+        },
+        step2: {
+          title: 'Шаг 2: Поиск организации',
+          desc: 'Ищите на сайтах bundesfreiwilligendienst.de, freiwilligendienste-kultur-bildung.de, soziale-dienste.de. Подавайте заявки (CV + мотивационное письмо).',
+        },
+        step3: {
+          title: 'Шаг 3: Контракт',
+          desc: 'После принятия получите контракт от организации. В контракте: карманные деньги, жильё, продолжительность, обязанности.',
+        },
+        step4: {
+          title: 'Шаг 4: Заявка на визу',
+          desc: 'С контрактом обратитесь в посольство Германии. Документы: контракт FSJ/BFD, паспорт, языковой сертификат, страховка, фото.',
+        },
+        step5: {
+          title: 'Шаг 5: Прибытие и регистрация',
+          desc: 'В Германии зарегистрируйтесь в Bürgeramt в течение 14 дней (Anmeldung). Откройте банковский счёт, купите SIM-карту.',
+        },
+        step6: {
+          title: 'Шаг 6: Жизнь во время программы',
+          desc: 'Работа в организации, участие в образовательных семинарах (25 дней/год), изучение языка и культуры.',
+        },
+      },
+      salary: {
+        title: 'Карманные деньги и условия',
+        monthly: 'Карманные деньги: 300-450€/месяц',
+        accommodation: 'Жильё: Обычно бесплатно или по низкой цене',
+        food: 'Питание: В некоторых местах бесплатно или дополнительно 200-300€',
+        insurance: 'Страховки: Медицинская, социальная, пенсионная — всё от организации',
+        vacation: 'Отпуск: 24-30 дней в год',
+      },
+      pros: {
+        title: 'Преимущества',
+        items: [
+          'Лёгкий способ приехать в Германию',
+          'Изучение языка в естественной среде',
+          'Опыт работы и сетевые контакты',
+          'Низкие расходы (жильё и страховка бесплатно)',
+          'Знакомство с культурой и людьми',
+        ],
+      },
+      cons: {
+        title: 'Недостатки',
+        items: [
+          'Очень низкие карманные деньги (300-450€)',
+          'Физически или эмоционально тяжёлая работа',
+          'Зависимость от организации',
+          'Ограниченные возможности для расходов',
+          'Иногда в отдалённых регионах',
+        ],
+      },
+      after: {
+        title: 'После завершения',
+        study: 'Возможность поступить в университет',
+        ausbildung: 'Лёгкий путь к Ausbildung',
+        work: 'Возможность работы (с разрешением)',
+        residence: 'Возможность получить долгосрочное разрешение на проживание',
+      },
+      faq: {
+        title: 'Часто задаваемые вопросы',
+        items: [
+          {
+            q: 'В чём разница между FSJ и BFD?',
+            a: 'FSJ только для возраста 16-26 лет. BFD для любого возраста (16+). Условия схожи.',
+          },
+          {
+            q: 'Какой уровень языка нужен?',
+            a: 'Минимум A2, но B1 намного лучше. Без языка работа очень сложна.',
+          },
+          {
+            q: 'Можно ли приехать с семьёй?',
+            a: 'Нет, FSJ/BFD для одного человека. Семья может приехать по отдельной визе.',
+          },
+          {
+            q: 'Можно ли остаться в Германии после FSJ/BFD?',
+            a: 'Да, если найдёте Ausbildung или учёбу. Но FSJ/BFD само по себе не даёт ПМЖ.',
+          },
+          {
+            q: 'Когда нужно подавать заявку?',
+            a: 'За 6-12 месяцев. Места быстро заполняются, чем раньше, тем лучше.',
+          },
+          {
+            q: 'Какое жильё?',
+            a: 'Обычно общая квартира (WG) или жильё организации. Реже отдельная квартира.',
+          },
+          {
+            q: 'Можно ли работать дополнительно?',
+            a: 'Да, до 20 часов в неделю дополнительно, если организация разрешит.',
+          },
+          {
+            q: 'Какая работа?',
+            a: 'Работа с пожилыми людьми, детьми, инвалидами, или в музеях, садах, экологических проектах.',
+          },
+          {
+            q: 'Плачу ли я налоги?',
+            a: 'Нет, карманные деньги обычно не облагаются налогом, так как очень малы.',
+          },
+          {
+            q: 'Полезен ли FSJ/BFD для университета?',
+            a: 'Да! Улучшите язык, узнаете Германию и получите опыт.',
+          },
+        ],
+      },
+    },
+    aupair: {
+      title: 'Au-Pair в Германии',
+      intro: 'Жизнь с немецкой семьёй, уход за детьми и изучение языка',
+      overview: {
+        title: 'Обзор',
+        what: 'Au-Pair — это программа культурного обмена, где вы живёте с немецкой семьёй, присматриваете за детьми и изучаете язык.',
+        forWho: 'Для молодых людей 18-26 лет',
+        duration: '6-12 месяцев (обычно 12 месяцев)',
+        benefits: [
+          'Жизнь в немецкой семье',
+          'Изучение языка на практике',
+          'Личная комната и бесплатное питание',
+          'Карманные деньги 280€/месяц',
+          'Бесплатный языковой курс (50% от организации)',
+        ],
+      },
+      requirements: {
+        title: 'Требования',
+        items: [
+          'Возраст: 18-26 лет',
+          'Немецкий язык: минимум A1 (для визы)',
+          'Опыт работы с детьми: 200+ часов (уход за детьми, репетиторство, или свои дети в семье)',
+          'Справка о несудимости: Обязательна (чистая)',
+          'Медицинская справка: Вы должны быть здоровы',
+          'Водительские права: Рекомендуется (не обязательно)',
+          'Молодые семьи без детей: Обычно не становятся Au-Pair',
+        ],
+      },
+      roadmap: {
+        title: 'Пошаговый план',
+        step1: {
+          title: 'Шаг 1: Подготовка',
+          desc: 'Выучите немецкий до A1 (сертификат обязателен). Наберите опыт работы с детьми. Документы: паспорт, CV, мотивационное письмо, фото, справки.',
+        },
+        step2: {
+          title: 'Шаг 2: Поиск семьи',
+          desc: 'Ищите на aupair.com, aupairworld.com, greataupair.com. Создайте полный профиль с фото и видео. Общайтесь с семьями (Skype).',
+        },
+        step3: {
+          title: 'Шаг 3: Контракт',
+          desc: 'После договорённости подпишите контракт Au-Pair. В нём: обязанности, часы (30/неделя), карманные деньги, отпуск.',
+        },
+        step4: {
+          title: 'Шаг 4: Заявка на визу',
+          desc: 'С контрактом обратитесь в посольство Германии. Документы: контракт, сертификат A1, медсправка, опыт, страховка.',
+        },
+        step5: {
+          title: 'Шаг 5: Прибытие в Германию',
+          desc: 'Семья обычно встречает вас в аэропорту. В течение 14 дней зарегистрируйтесь в Bürgeramt. Откройте банковский счёт.',
+        },
+        step6: {
+          title: 'Шаг 6: Жизнь во время программы',
+          desc: 'Уход за детьми (30 часов/неделя), участие в языковом курсе, свободное время для путешествий и знакомств.',
+        },
+      },
+      salary: {
+        title: 'Карманные деньги и условия',
+        monthly: 'Карманные деньги: 280€/месяц (обязательно)',
+        accommodation: 'Личная комната в доме семьи: Бесплатно',
+        food: 'Питание: Полностью бесплатно (с семьёй)',
+        insurance: 'Медицинская страховка: Семья оплачивает или помогает',
+        vacation: 'Отпуск: 4 недели (за 12 месяцев)',
+        language: 'Языковой курс: Семья платит минимум 50€/месяц',
+      },
+      pros: {
+        title: 'Преимущества',
+        items: [
+          'Жизнь в настоящей немецкой семье',
+          'Бесплатные комната и питание',
+          'Изучение языка на практике',
+          'Опыт работы с детьми',
+          'Свободное время для путешествий',
+          'Лёгкий способ приехать в Германию',
+        ],
+      },
+      cons: {
+        title: 'Недостатки',
+        items: [
+          'Низкие карманные деньги (280€)',
+          'Зависимость от семьи',
+          'Работа с детьми может быть сложной',
+          'Большая ответственность',
+          'Меньше свободы (живёте в доме семьи)',
+          'Проблемы, если семья плохая',
+        ],
+      },
+      after: {
+        title: 'После завершения',
+        study: 'Возможность учёбы (язык уже знаете)',
+        ausbildung: 'Ausbildung (опыт Германии есть)',
+        work: 'Работа (с разрешением)',
+        residence: 'Проживание (если начнёте новый процесс)',
+      },
+      faq: {
+        title: 'Часто задаваемые вопросы',
+        items: [
+          {
+            q: 'Сколько часов в день я работаю?',
+            a: '30 часов в неделю (примерно 6 часов в день), максимум 6 дней. Воскресенье свободно.',
+          },
+          {
+            q: 'Можно ли поменять семью?',
+            a: 'Да, но это сложный процесс. Лучше сразу выбрать правильную семью.',
+          },
+          {
+            q: 'Какой уровень языка нужен?',
+            a: 'A1 для визы обязателен. Но B1 намного лучше для общения.',
+          },
+          {
+            q: 'Ем ли я вместе с семьёй?',
+            a: 'Да, вы как член семьи садитесь за стол и едите вместе.',
+          },
+          {
+            q: 'Каковы мои обязанности?',
+            a: 'Уход за детьми, отвозить в школу, помощь по дому. НЕ тяжёлая уборка дома.',
+          },
+          {
+            q: 'Можно ли остаться в Германии после Au-Pair?',
+            a: 'Да, если найдёте учёбу или Ausbildung. Au-Pair само по себе не даёт ПМЖ.',
+          },
+          {
+            q: 'Какие бывают семьи?',
+            a: 'Разные: маленькие семьи, большие, с одним родителем, из города и деревни.',
+          },
+          {
+            q: 'Обязательны ли водительские права?',
+            a: 'Не обязательно, но очень помогают, особенно в деревне.',
+          },
+          {
+            q: 'Когда нужно искать семью?',
+            a: 'Начинайте за 4-8 месяцев. Хорошие семьи находят быстро.',
+          },
+          {
+            q: 'Можно ли ходить на языковой курс?',
+            a: 'Да, и семья должна дать время и заплатить минимум 50€/месяц.',
+          },
+        ],
       },
     },
     financing: {
@@ -782,9 +1360,13 @@ export const translations = {
   de: {
     nav: {
       home: 'Startseite',
+      pathsToGermany: 'Wege nach Deutschland',
+      lifeInGermany: 'Leben in Deutschland',
       study: 'Studium',
       work: 'Arbeit',
       ausbildung: 'Ausbildung',
+      fsj: 'FSJ / BFD',
+      aupair: 'Au-Pair',
       living: 'Leben in Deutschland',
       roadmap: 'Roadmap',
       faq: 'FAQ',
@@ -815,6 +1397,16 @@ export const translations = {
         title: 'Ausbildung',
         description: 'Berufsausbildung mit Gehalt',
         duration: '6-18 Monate Vorbereitung',
+      },
+      fsj: {
+        title: 'FSJ / BFD',
+        description: 'Freiwilliger sozialer Dienst',
+        duration: '6-18 Monate Programm',
+      },
+      aupair: {
+        title: 'Au-Pair',
+        description: 'Leben mit Familie, Kinderbetreuung',
+        duration: '6-12 Monate Programm',
       },
     },
     wizard: {
@@ -919,6 +1511,281 @@ export const translations = {
       popularTrades: {
         title: 'Beliebte Berufe',
         items: ['IT-Fachinformatiker', 'Pflegefachmann/frau', 'Mechatroniker', 'Kaufmann/frau'],
+      },
+    },
+    fsj: {
+      title: 'FSJ / BFD — Freiwilligendienst',
+      intro: 'Ein freiwilliges Jahr in Deutschland: Erfahrung, Sprache und Kultur',
+      overview: {
+        title: 'Überblick',
+        what: 'FSJ (Freiwilliges Soziales Jahr) und BFD (Bundesfreiwilligendienst) sind Freiwilligendienste in Deutschland. Sie arbeiten im sozialen, medizinischen, kulturellen oder ökologischen Bereich und sammeln wertvolle Erfahrungen.',
+        forWho: 'FSJ: Alter 16-26 Jahre. BFD: Jedes Alter (ab 16 Jahren)',
+        duration: '6-18 Monate (normalerweise 12 Monate)',
+        benefits: [
+          'Deutsch im Alltag lernen',
+          'Arbeitserfahrung in Deutschland',
+          'Kennenlernen der deutschen Kultur',
+          'Taschengeld und kostenlose Unterkunft',
+          'Alle Pflichtversicherungen bezahlt',
+        ],
+      },
+      requirements: {
+        title: 'Voraussetzungen',
+        items: [
+          'Alter: FSJ 16-26 Jahre, BFD 16+',
+          'Deutschkenntnisse: A2-B1 (mindestens Grundlagen)',
+          'Bildung: Schulabschluss empfohlen',
+          'Krankenversicherung: Pflicht',
+          'Visum: Erforderlich für Nicht-EU-Bürger',
+          'Führungszeugnis: Erforderlich für Arbeit mit Kindern',
+          'Motivation: Wunsch zu helfen und zu lernen',
+        ],
+      },
+      roadmap: {
+        title: 'Schritt-für-Schritt',
+        step1: {
+          title: 'Schritt 1: Vorbereitung',
+          desc: 'Lernen Sie Deutsch bis A2-B1. Sammeln Sie Dokumente: Pass, Sprachzertifikat, Zeugnis, CV, Motivationsschreiben.',
+        },
+        step2: {
+          title: 'Schritt 2: Organisation finden',
+          desc: 'Suchen Sie auf bundesfreiwilligendienst.de, freiwilligendienste-kultur-bildung.de, soziale-dienste.de. Bewerben Sie sich (CV + Motivationsschreiben).',
+        },
+        step3: {
+          title: 'Schritt 3: Vertrag',
+          desc: 'Nach Annahme erhalten Sie einen Vertrag von der Organisation. Im Vertrag: Taschengeld, Unterkunft, Dauer, Aufgaben.',
+        },
+        step4: {
+          title: 'Schritt 4: Visumsantrag',
+          desc: 'Mit Vertrag zur Deutschen Botschaft. Dokumente: FSJ/BFD-Vertrag, Pass, Sprachzertifikat, Versicherung, Foto.',
+        },
+        step5: {
+          title: 'Schritt 5: Ankunft und Anmeldung',
+          desc: 'In Deutschland beim Bürgeramt innerhalb von 14 Tagen anmelden (Anmeldung). Bankkonto eröffnen, SIM-Karte kaufen.',
+        },
+        step6: {
+          title: 'Schritt 6: Leben während des Programms',
+          desc: 'Arbeit in der Organisation, Teilnahme an Bildungsseminaren (25 Tage/Jahr), Sprache und Kultur lernen.',
+        },
+      },
+      salary: {
+        title: 'Taschengeld und Konditionen',
+        monthly: 'Taschengeld: 300-450€/Monat',
+        accommodation: 'Unterkunft: Normalerweise kostenlos oder günstig',
+        food: 'Verpflegung: An manchen Stellen kostenlos oder zusätzlich 200-300€',
+        insurance: 'Versicherungen: Kranken-, Sozial-, Rentenversicherung — alles von der Organisation',
+        vacation: 'Urlaub: 24-30 Tage pro Jahr',
+      },
+      pros: {
+        title: 'Vorteile',
+        items: [
+          'Einfacher Weg nach Deutschland',
+          'Sprache in natürlicher Umgebung lernen',
+          'Arbeitserfahrung und Netzwerk',
+          'Niedrige Kosten (Unterkunft und Versicherung kostenlos)',
+          'Kultur und Menschen kennenlernen',
+        ],
+      },
+      cons: {
+        title: 'Nachteile',
+        items: [
+          'Sehr niedriges Taschengeld (300-450€)',
+          'Physisch oder emotional anstrengende Arbeit',
+          'Abhängigkeit von der Organisation',
+          'Begrenzte Möglichkeiten für Ausgaben',
+          'Manchmal in abgelegenen Regionen',
+        ],
+      },
+      after: {
+        title: 'Nach Abschluss',
+        study: 'Möglichkeit zum Studium',
+        ausbildung: 'Einfacher Weg zur Ausbildung',
+        work: 'Arbeitsmöglichkeit (mit Erlaubnis)',
+        residence: 'Möglichkeit zur langfristigen Aufenthaltserlaubnis',
+      },
+      faq: {
+        title: 'Häufig gestellte Fragen',
+        items: [
+          {
+            q: 'Was ist der Unterschied zwischen FSJ und BFD?',
+            a: 'FSJ nur für Alter 16-26. BFD für jedes Alter (16+). Bedingungen sind ähnlich.',
+          },
+          {
+            q: 'Welches Sprachniveau wird benötigt?',
+            a: 'Mindestens A2, aber B1 ist viel besser. Ohne Sprache ist die Arbeit sehr schwierig.',
+          },
+          {
+            q: 'Kann man mit Familie kommen?',
+            a: 'Nein, FSJ/BFD für eine Person. Familie kann mit separatem Visum kommen.',
+          },
+          {
+            q: 'Kann man nach FSJ/BFD in Deutschland bleiben?',
+            a: 'Ja, wenn Sie Ausbildung oder Studium finden. Aber FSJ/BFD gibt selbst keine Niederlassung.',
+          },
+          {
+            q: 'Wann sollte man sich bewerben?',
+            a: '6-12 Monate vorher anfangen. Plätze füllen sich schnell, je früher desto besser.',
+          },
+          {
+            q: 'Welche Art von Unterkunft?',
+            a: 'Normalerweise WG oder Unterkunft der Organisation. Seltener eigene Wohnung.',
+          },
+          {
+            q: 'Kann man zusätzlich arbeiten?',
+            a: 'Ja, bis 20 Stunden/Woche zusätzlich, wenn die Organisation es erlaubt.',
+          },
+          {
+            q: 'Welche Art von Arbeit?',
+            a: 'Arbeit mit älteren Menschen, Kindern, Behinderten, oder in Museen, Gärten, Umweltprojekten.',
+          },
+          {
+            q: 'Zahle ich Steuern?',
+            a: 'Nein, Taschengeld ist normalerweise steuerfrei, da es sehr niedrig ist.',
+          },
+          {
+            q: 'Ist FSJ/BFD nützlich für die Uni?',
+            a: 'Ja! Verbessern Sie Ihre Sprache, lernen Sie Deutschland kennen und sammeln Sie Erfahrung.',
+          },
+        ],
+      },
+    },
+    aupair: {
+      title: 'Au-Pair in Deutschland',
+      intro: 'Leben mit einer deutschen Familie, Kinderbetreuung und Sprachenlernen',
+      overview: {
+        title: 'Überblick',
+        what: 'Au-Pair ist ein Kulturaustauschprogramm, bei dem Sie mit einer deutschen Familie leben, sich um Kinder kümmern und die Sprache lernen.',
+        forWho: 'Für junge Menschen 18-26 Jahre',
+        duration: '6-12 Monate (normalerweise 12 Monate)',
+        benefits: [
+          'Leben in einer deutschen Familie',
+          'Sprache in der Praxis lernen',
+          'Eigenes Zimmer und kostenloses Essen',
+          'Taschengeld 280€/Monat',
+          'Kostenloser Sprachkurs (50% von der Organisation)',
+        ],
+      },
+      requirements: {
+        title: 'Voraussetzungen',
+        items: [
+          'Alter: 18-26 Jahre',
+          'Deutschkenntnisse: mindestens A1 (für Visum)',
+          'Erfahrung mit Kindern: 200+ Stunden (Kinderbetreuung, Nachhilfe, oder eigene Kinder in der Familie)',
+          'Führungszeugnis: Pflicht (sauber)',
+          'Gesundheitszeugnis: Sie müssen gesund sein',
+          'Führerschein: Empfohlen (nicht Pflicht)',
+          'Junge Familien ohne Kinder: Werden normalerweise nicht Au-Pair',
+        ],
+      },
+      roadmap: {
+        title: 'Schritt-für-Schritt',
+        step1: {
+          title: 'Schritt 1: Vorbereitung',
+          desc: 'Lernen Sie Deutsch bis A1 (Zertifikat Pflicht). Sammeln Sie Erfahrung mit Kindern. Dokumente: Pass, CV, Motivationsschreiben, Fotos, Zeugnisse.',
+        },
+        step2: {
+          title: 'Schritt 2: Familie finden',
+          desc: 'Suchen Sie auf aupair.com, aupairworld.com, greataupair.com. Erstellen Sie ein vollständiges Profil mit Fotos und Video. Sprechen Sie mit Familien (Skype).',
+        },
+        step3: {
+          title: 'Schritt 3: Vertrag',
+          desc: 'Nach Vereinbarung unterschreiben Sie den Au-Pair-Vertrag. Darin: Aufgaben, Stunden (30/Woche), Taschengeld, Urlaub.',
+        },
+        step4: {
+          title: 'Schritt 4: Visumsantrag',
+          desc: 'Mit Vertrag zur Deutschen Botschaft. Dokumente: Vertrag, A1-Zertifikat, Gesundheitszeugnis, Erfahrung, Versicherung.',
+        },
+        step5: {
+          title: 'Schritt 5: Ankunft in Deutschland',
+          desc: 'Familie holt Sie normalerweise vom Flughafen ab. Innerhalb von 14 Tagen beim Bürgeramt anmelden. Bankkonto eröffnen.',
+        },
+        step6: {
+          title: 'Schritt 6: Leben während des Programms',
+          desc: 'Kinderbetreuung (30 Stunden/Woche), Teilnahme am Sprachkurs, Freizeit für Reisen und Kennenlernen.',
+        },
+      },
+      salary: {
+        title: 'Taschengeld und Konditionen',
+        monthly: 'Taschengeld: 280€/Monat (Pflicht)',
+        accommodation: 'Eigenes Zimmer im Haus der Familie: Kostenlos',
+        food: 'Essen: Komplett kostenlos (mit der Familie)',
+        insurance: 'Krankenversicherung: Familie zahlt oder hilft',
+        vacation: 'Urlaub: 4 Wochen (bei 12 Monaten)',
+        language: 'Sprachkurs: Familie zahlt mindestens 50€/Monat',
+      },
+      pros: {
+        title: 'Vorteile',
+        items: [
+          'Leben in einer echten deutschen Familie',
+          'Kostenloses Zimmer und Essen',
+          'Sprache in der Praxis lernen',
+          'Erfahrung mit Kindern',
+          'Freizeit für Reisen',
+          'Einfacher Weg nach Deutschland',
+        ],
+      },
+      cons: {
+        title: 'Nachteile',
+        items: [
+          'Niedriges Taschengeld (280€)',
+          'Abhängigkeit von der Familie',
+          'Arbeit mit Kindern kann schwierig sein',
+          'Große Verantwortung',
+          'Weniger Freiheit (leben im Haus der Familie)',
+          'Probleme, wenn Familie schlecht ist',
+        ],
+      },
+      after: {
+        title: 'Nach Abschluss',
+        study: 'Möglichkeit zum Studium (Sprache bereits bekannt)',
+        ausbildung: 'Ausbildung (Deutschland-Erfahrung vorhanden)',
+        work: 'Arbeit (mit Erlaubnis)',
+        residence: 'Aufenthalt (wenn neuer Prozess beginnt)',
+      },
+      faq: {
+        title: 'Häufig gestellte Fragen',
+        items: [
+          {
+            q: 'Wie viele Stunden am Tag arbeite ich?',
+            a: '30 Stunden pro Woche (ca. 6 Stunden pro Tag), maximal 6 Tage. Sonntag frei.',
+          },
+          {
+            q: 'Kann man die Familie wechseln?',
+            a: 'Ja, aber es ist ein schwieriger Prozess. Besser gleich die richtige Familie wählen.',
+          },
+          {
+            q: 'Welches Sprachniveau wird benötigt?',
+            a: 'A1 für Visum Pflicht. Aber B1 viel besser für Kommunikation.',
+          },
+          {
+            q: 'Esse ich mit der Familie?',
+            a: 'Ja, Sie sitzen als Familienmitglied am Tisch und essen zusammen.',
+          },
+          {
+            q: 'Was sind meine Aufgaben?',
+            a: 'Kinderbetreuung, zur Schule bringen, Hilfe im Haushalt. NICHT schwere Hausarbeit.',
+          },
+          {
+            q: 'Kann man nach Au-Pair in Deutschland bleiben?',
+            a: 'Ja, wenn Sie Studium oder Ausbildung finden. Au-Pair selbst gibt keine Niederlassung.',
+          },
+          {
+            q: 'Welche Art von Familien gibt es?',
+            a: 'Verschiedene: kleine Familien, große, Alleinerziehende, aus Stadt und Land.',
+          },
+          {
+            q: 'Ist ein Führerschein Pflicht?',
+            a: 'Nicht Pflicht, aber hilft sehr, besonders auf dem Land.',
+          },
+          {
+            q: 'Wann sollte man eine Familie suchen?',
+            a: 'Beginnen Sie 4-8 Monate vorher. Gute Familien finden schnell.',
+          },
+          {
+            q: 'Kann man zum Sprachkurs gehen?',
+            a: 'Ja, und Familie muss Zeit geben und mindestens 50€/Monat zahlen.',
+          },
+        ],
       },
     },
     financing: {

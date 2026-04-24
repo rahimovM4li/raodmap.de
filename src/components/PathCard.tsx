@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, GraduationCap, Briefcase, Wrench } from 'lucide-react';
+import { ArrowRight, GraduationCap, Briefcase, Wrench, Heart, Baby } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PathCardProps {
-  type: 'study' | 'work' | 'ausbildung';
+  type: 'study' | 'work' | 'ausbildung' | 'fsj' | 'aupair';
   title: string;
   description: string;
   duration: string;
@@ -14,6 +14,8 @@ const iconMap = {
   study: GraduationCap,
   work: Briefcase,
   ausbildung: Wrench,
+  fsj: Heart,
+  aupair: Baby,
 };
 
 const colorMap = {
@@ -34,6 +36,18 @@ const colorMap = {
     border: 'border-ausbildung/30 hover:border-ausbildung',
     icon: 'bg-ausbildung text-ausbildung-foreground',
     iconBg: 'bg-ausbildung',
+  },
+  fsj: {
+    bg: 'bg-info-light',
+    border: 'border-info/30 hover:border-info',
+    icon: 'bg-info text-info-foreground',
+    iconBg: 'bg-info',
+  },
+  aupair: {
+    bg: 'bg-accent-light',
+    border: 'border-accent/30 hover:border-accent',
+    icon: 'bg-accent text-accent-foreground',
+    iconBg: 'bg-accent',
   },
 };
 

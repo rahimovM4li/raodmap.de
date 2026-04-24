@@ -41,11 +41,11 @@ function ScrollRestoration() {
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+      <BrowserRouter>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
             <ScrollRestoration />
             <div className="flex flex-col min-h-screen">
               <Header />
@@ -73,9 +73,9 @@ const App = () => (
               <ScrollToTop />
               <BottomNav />
             </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
+          </TooltipProvider>
+        </LanguageProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   </HelmetProvider>
 );

@@ -27,7 +27,6 @@ import CookiesPage from "./pages/CookiesPage";
 import ImprintPage from "./pages/ImprintPage";
 import NotFound from "./pages/NotFound";
 import FSJBFDPage from "./pages/FSJBFDPage";
-import AuPairPage from "./pages/AuPairPage";
 
 const queryClient = new QueryClient();
 
@@ -74,9 +73,9 @@ const App = () => (
               <ScrollToTop />
               <BottomNav />
             </div>
-          </TooltipProvider>
-        </LanguageProvider>
-      </BrowserRouter>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   </HelmetProvider>
 );

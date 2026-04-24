@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Wrench, Euro, Clock, Award, Users, ChevronDown } from 'lucide-react';
+import { AusbildungPageSEO } from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';

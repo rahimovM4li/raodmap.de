@@ -1,0 +1,223 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Germany Roadmap Logo Germany Roadmap" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Germany Roadmap Logo" [ref=e9]
+          - generic [ref=e10]: Germany Roadmap
+        - navigation [ref=e11]:
+          - link "Саҳифаи асосӣ" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - text: Саҳифаи асосӣ
+          - button "Роҳҳо ба Олмон" [ref=e14] [cursor=pointer]:
+            - text: Роҳҳо ба Олмон
+            - img [ref=e15]
+          - button "Зиндагӣ дар Олмон" [ref=e19] [cursor=pointer]:
+            - text: Зиндагӣ дар Олмон
+            - img [ref=e20]
+        - button "Change language" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 🇹🇯
+          - generic [ref=e26]: TJ
+    - main [ref=e28]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e35]: 6-18 моҳ тайёргарӣ
+        - heading "Ausbildung — Омӯзиши касбӣ" [level=1] [ref=e36]
+        - paragraph [ref=e37]: Ҳамзамон омӯзед ва музд гиред
+      - generic [ref=e39]:
+        - heading "Бартариҳои Ausbildung" [level=2] [ref=e40]
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - img [ref=e43]
+            - paragraph [ref=e45]: Музд 800-1200€/моҳ дар давраи таълим
+          - generic [ref=e46]:
+            - img [ref=e47]
+            - paragraph [ref=e50]: 2-3.5 соли таълим (вобаста ба касб)
+          - generic [ref=e51]:
+            - img [ref=e52]
+            - paragraph [ref=e55]: Дипломи расмӣи Олмон
+          - generic [ref=e56]:
+            - img [ref=e57]
+            - paragraph [ref=e62]: Имконияти кор пас аз хатм
+      - generic [ref=e64]:
+        - heading "Касбҳои маъмул" [level=2] [ref=e65]
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "IT-Fachinformatiker" [level=3] [ref=e68]
+            - paragraph [ref=e69]: Мутахассиси IT
+          - generic [ref=e70]:
+            - heading "Pflegefachmann/frau" [level=3] [ref=e71]
+            - paragraph [ref=e72]: Парасторӣ аз беморон
+          - generic [ref=e73]:
+            - heading "Mechatroniker" [level=3] [ref=e74]
+            - paragraph [ref=e75]: Механика ва электроника
+          - generic [ref=e76]:
+            - heading "Kaufmann/frau" [level=3] [ref=e77]
+            - paragraph [ref=e78]: Савдо ва менеҷмент
+          - generic [ref=e79]:
+            - heading "Elektriker" [level=3] [ref=e80]
+            - paragraph [ref=e81]: Барқиятчӣ
+          - generic [ref=e82]:
+            - heading "Koch/Köchin" [level=3] [ref=e83]
+            - paragraph [ref=e84]: Ошпаз
+        - link "ausbildung.de — Ҷустуҷӯи ҷой" [ref=e86] [cursor=pointer]:
+          - /url: https://www.ausbildung.de
+          - img [ref=e87]
+          - text: ausbildung.de — Ҷустуҷӯи ҷой
+      - generic [ref=e93]:
+        - heading "Шартҳо" [level=2] [ref=e94]
+        - list [ref=e96]:
+          - listitem [ref=e97]:
+            - img [ref=e98]
+            - generic [ref=e100]: Синну сол 16+
+          - listitem [ref=e101]:
+            - img [ref=e102]
+            - generic [ref=e104]: Шаҳодатномаи хатми мактаб
+          - listitem [ref=e105]:
+            - img [ref=e106]
+            - generic [ref=e108]: Забони олмонӣ (B1-B2)
+          - listitem [ref=e109]:
+            - img [ref=e110]
+            - generic [ref=e112]: Шартномаи таълим аз корхона
+          - listitem [ref=e113]:
+            - img [ref=e114]
+            - generic [ref=e116]: Тасдиқи маскан дар Олмон
+      - generic [ref=e118]:
+        - heading "Ҷараёни гирифтани Ausbildung" [level=2] [ref=e119]
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - generic [ref=e123]: "1"
+            - generic [ref=e124]:
+              - heading "Интихоби касб" [level=3] [ref=e125]
+              - paragraph [ref=e126]: Касби дилхоҳро интихоб кунед ва маълумот ҷамъ оваред
+          - generic [ref=e127]:
+            - generic [ref=e128]: "2"
+            - generic [ref=e129]:
+              - heading "Омӯхтани забон" [level=3] [ref=e130]
+              - paragraph [ref=e131]: Забони олмонӣро то сатҳи B1-B2 омӯзед
+          - generic [ref=e132]:
+            - generic [ref=e133]: "3"
+            - generic [ref=e134]:
+              - heading "Ҷустуҷӯ ва ариза" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Дар ausbildung.de ҷойҳо ҷустуҷӯ кунед ва ариза пешниҳод намоед
+          - generic [ref=e137]:
+            - generic [ref=e138]: "4"
+            - generic [ref=e139]:
+              - heading "Гирифтани шартнома" [level=3] [ref=e140]
+              - paragraph [ref=e141]: Шартномаи таълимро бо корхона имзо намоед
+          - generic [ref=e142]:
+            - generic [ref=e143]: "5"
+            - generic [ref=e144]:
+              - heading "Гирифтани виза" [level=3] [ref=e145]
+              - paragraph [ref=e146]: Барои визаи Ausbildung ба Сафорат муроҷиат намоед
+      - generic [ref=e149]:
+        - generic [ref=e150]:
+          - generic [ref=e151]:
+            - img [ref=e152]
+            - generic [ref=e155]: FAQ
+          - heading "Саволҳои зиёд пурсидашаванда" [level=2] [ref=e156]
+          - paragraph [ref=e157]: Ҷавобҳо ба саволҳои муҳим дар бораи Ausbildung дар Олмон
+        - generic [ref=e158]:
+          - button "Барои Ausbildung кадом синну сол лозим аст?" [ref=e160] [cursor=pointer]:
+            - heading "Барои Ausbildung кадом синну сол лозим аст?" [level=3] [ref=e161]
+            - img [ref=e162]
+          - button "Барои Ausbildung кадом сатҳи забон лозим аст?" [ref=e165] [cursor=pointer]:
+            - heading "Барои Ausbildung кадом сатҳи забон лозим аст?" [level=3] [ref=e166]
+            - img [ref=e167]
+          - button "Баъд аз хатми Ausbildung чӣ мешавад?" [ref=e170] [cursor=pointer]:
+            - heading "Баъд аз хатми Ausbildung чӣ мешавад?" [level=3] [ref=e171]
+            - img [ref=e172]
+          - button "Метавонон хонаводамро оварам?" [ref=e175] [cursor=pointer]:
+            - heading "Метавонон хонаводамро оварам?" [level=3] [ref=e176]
+            - img [ref=e177]
+          - button "Агар Ausbildung-ро тамом накунам чӣ мешавад?" [ref=e180] [cursor=pointer]:
+            - heading "Агар Ausbildung-ро тамом накунам чӣ мешавад?" [level=3] [ref=e181]
+            - img [ref=e182]
+      - link "Нақша эҷод кардан" [ref=e186] [cursor=pointer]:
+        - /url: /tj/#wizard
+        - text: Нақша эҷод кардан
+        - img
+    - contentinfo [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - img "Germany & Tajikistan Flag" [ref=e193]
+              - generic [ref=e195]: Germany Roadmap
+            - paragraph [ref=e196]: Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - img [ref=e199]
+                - generic [ref=e202]: Сохта шудааст аз ҷониби
+              - paragraph [ref=e203]: Muhammadali Rahimov
+              - paragraph [ref=e204]: Full-Stack Developer
+              - link "Портфолио ва лоиҳаҳо" [ref=e205] [cursor=pointer]:
+                - /url: https://m4li.de
+                - img [ref=e206]
+                - text: Портфолио ва лоиҳаҳо
+                - img [ref=e209]
+          - generic [ref=e213]:
+            - button "Пайвандҳои зуд"
+            - list [ref=e216]:
+              - listitem [ref=e217]:
+                - link "Таҳсил" [ref=e218] [cursor=pointer]:
+                  - /url: /study
+              - listitem [ref=e219]:
+                - link "Кор" [ref=e220] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e221]:
+                - link "Ausbildung" [ref=e222] [cursor=pointer]:
+                  - /url: /ausbildung
+              - listitem [ref=e223]:
+                - link "Зиндагӣ дар Олмон" [ref=e224] [cursor=pointer]:
+                  - /url: /living
+              - listitem [ref=e225]:
+                - link "Роҳнамо" [ref=e226] [cursor=pointer]:
+                  - /url: /roadmap
+              - listitem [ref=e227]:
+                - link "Саволҳо" [ref=e228] [cursor=pointer]:
+                  - /url: /faq
+          - generic [ref=e229]:
+            - button "Захираҳои беруна"
+            - list [ref=e232]:
+              - listitem [ref=e233]:
+                - link "DAAD" [ref=e234] [cursor=pointer]:
+                  - /url: https://www.daad.de
+                  - text: DAAD
+                  - img [ref=e235]
+              - listitem [ref=e239]:
+                - link "Make it in Germany" [ref=e240] [cursor=pointer]:
+                  - /url: https://www.make-it-in-germany.com
+                  - text: Make it in Germany
+                  - img [ref=e241]
+              - listitem [ref=e245]:
+                - link "Anerkennung" [ref=e246] [cursor=pointer]:
+                  - /url: https://www.anerkennung-in-deutschland.de
+                  - text: Anerkennung
+                  - img [ref=e247]
+          - generic [ref=e251]:
+            - button "Сафорати Олмон"
+            - generic [ref=e253]:
+              - list [ref=e254]:
+                - listitem [ref=e255]:
+                  - img [ref=e256]
+                  - generic [ref=e259]: Сафорати Олмонро дар шаҳри худ ёбед
+                - listitem [ref=e260]:
+                  - img [ref=e261]
+                  - generic [ref=e263]: Бо сафорати маҳаллӣ тамос гиред
+              - list [ref=e265]:
+                - listitem [ref=e266]:
+                  - link "Сиёсати ҳифзи маълумот" [ref=e267] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e268]:
+                  - link "Сиёсати Cookie" [ref=e269] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e270]:
+                  - link "Маълумоти ҳуқуқӣ" [ref=e271] [cursor=pointer]:
+                    - /url: /imprint
+        - paragraph [ref=e273]: © 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.

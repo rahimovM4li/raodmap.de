@@ -1,0 +1,209 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Germany Roadmap Logo Germany Roadmap" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Germany Roadmap Logo" [ref=e9]
+          - generic [ref=e10]: Germany Roadmap
+        - navigation [ref=e11]:
+          - link "Саҳифаи асосӣ" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - text: Саҳифаи асосӣ
+          - button "Роҳҳо ба Олмон" [ref=e14] [cursor=pointer]:
+            - text: Роҳҳо ба Олмон
+            - img [ref=e15]
+          - button "Зиндагӣ дар Олмон" [ref=e18] [cursor=pointer]:
+            - text: Зиндагӣ дар Олмон
+            - img [ref=e19]
+        - button "Change language" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 🇹🇯
+          - generic [ref=e26]: TJ
+    - main [ref=e28]:
+      - generic [ref=e31]:
+        - heading "Захираҳо ва пайвандҳо" [level=1] [ref=e32]
+        - paragraph [ref=e33]: Сомонаҳои расмӣ ва ҳуҷҷатҳои муфид
+      - generic [ref=e37]:
+        - heading "Сафорати Олмон" [level=2] [ref=e38]:
+          - img [ref=e39]
+          - text: Сафорати Олмон
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - img [ref=e45]
+            - generic [ref=e48]:
+              - paragraph [ref=e49]: Суроға
+              - paragraph [ref=e50]: Сафорати Олмонро дар шаҳри худ ёбед
+          - generic [ref=e51]:
+            - img [ref=e52]
+            - generic [ref=e54]:
+              - paragraph [ref=e55]: Телефон
+              - paragraph [ref=e56]: Бо сафорати маҳаллӣ тамос гиред
+          - link "Сомонаи расмӣ" [ref=e58] [cursor=pointer]:
+            - /url: https://duschanbe.diplo.de/
+            - img [ref=e59]
+            - text: Сомонаи расмӣ
+      - generic [ref=e64]:
+        - heading "Сайтҳои муфид" [level=2] [ref=e65]
+        - generic [ref=e66]:
+          - link "DAAD Хидмати академии мубодилаи олмонӣ" [ref=e67] [cursor=pointer]:
+            - /url: https://www.daad.de
+            - img [ref=e68]
+            - heading "DAAD" [level=3] [ref=e70]:
+              - text: DAAD
+              - img [ref=e71]
+            - paragraph [ref=e75]: Хидмати академии мубодилаи олмонӣ
+          - link "Make it in Germany Портали расмӣ барои мутахассисон" [ref=e76] [cursor=pointer]:
+            - /url: https://www.make-it-in-germany.com
+            - img [ref=e77]
+            - heading "Make it in Germany" [level=3] [ref=e81]:
+              - text: Make it in Germany
+              - img [ref=e82]
+            - paragraph [ref=e86]: Портали расмӣ барои мутахассисон
+          - link "Anerkennung in Deutschland Эътирофи ҳуҷҷатҳо" [ref=e87] [cursor=pointer]:
+            - /url: https://www.anerkennung-in-deutschland.de
+            - img [ref=e88]
+            - heading "Anerkennung in Deutschland" [level=3] [ref=e91]:
+              - text: Anerkennung in Deutschland
+              - img [ref=e92]
+            - paragraph [ref=e96]: Эътирофи ҳуҷҷатҳо
+          - link "Anabin Пойгоҳи додаҳои дипломҳо" [ref=e97] [cursor=pointer]:
+            - /url: https://anabin.kmk.org
+            - img [ref=e98]
+            - heading "Anabin" [level=3] [ref=e101]:
+              - text: Anabin
+              - img [ref=e102]
+            - paragraph [ref=e106]: Пойгоҳи додаҳои дипломҳо
+          - link "uni-assist Арзёбии ҳуҷҷатҳо барои донишгоҳҳо" [ref=e107] [cursor=pointer]:
+            - /url: https://www.uni-assist.de
+            - img [ref=e108]
+            - heading "uni-assist" [level=3] [ref=e111]:
+              - text: uni-assist
+              - img [ref=e112]
+            - paragraph [ref=e116]: Арзёбии ҳуҷҷатҳо барои донишгоҳҳо
+          - link "ausbildung.de Ҷустуҷӯи таълими касбӣ" [ref=e117] [cursor=pointer]:
+            - /url: https://www.ausbildung.de
+            - img [ref=e118]
+            - heading "ausbildung.de" [level=3] [ref=e120]:
+              - text: ausbildung.de
+              - img [ref=e121]
+            - paragraph [ref=e125]: Ҷустуҷӯи таълими касбӣ
+      - generic [ref=e127]:
+        - heading "Рӯйхатҳои санҷиш" [level=2] [ref=e128]
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - heading "Рӯйхати визаи донишҷӯӣ" [level=3] [ref=e132]
+              - paragraph [ref=e133]: Ҳамаи ҳуҷҷатҳо барои виза
+            - button [ref=e134] [cursor=pointer]:
+              - img
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - heading "Рӯйхати Job Seeker Visa" [level=3] [ref=e137]
+              - paragraph [ref=e138]: Барои ҷустуҷӯи кор
+            - button [ref=e139] [cursor=pointer]:
+              - img
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Рӯйхати Blue Card" [level=3] [ref=e142]
+              - paragraph [ref=e143]: Барои мутахассисон
+            - button [ref=e144] [cursor=pointer]:
+              - img
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - heading "Рӯйхати Ausbildung" [level=3] [ref=e147]
+              - paragraph [ref=e148]: Барои таълими касбӣ
+            - button [ref=e149] [cursor=pointer]:
+              - img
+      - generic [ref=e151]:
+        - heading "Манбаъҳо" [level=2] [ref=e152]
+        - generic [ref=e153]:
+          - list [ref=e154]:
+            - listitem [ref=e155]: • DAAD — daad.de
+            - listitem [ref=e156]: • Auswärtiges Amt — auswaertiges-amt.de
+            - listitem [ref=e157]: • Make it in Germany — make-it-in-germany.com
+            - listitem [ref=e158]: • Anerkennung in Deutschland — anerkennung-in-deutschland.de
+            - listitem [ref=e159]: • Anabin — anabin.kmk.org
+            - listitem [ref=e160]: • German Embassy Dushanbe — duschanbe.diplo.de
+          - paragraph [ref=e161]: "Охирин навсозӣ: Декабри 2025"
+    - contentinfo [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - img "Germany & Tajikistan Flag" [ref=e168]
+              - generic [ref=e170]: Germany Roadmap
+            - paragraph [ref=e171]: Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - img [ref=e174]
+                - generic [ref=e177]: Сохта шудааст аз ҷониби
+              - paragraph [ref=e178]: Muhammadali Rahimov
+              - paragraph [ref=e179]: Full-Stack Developer
+              - link "Портфолио ва лоиҳаҳо" [ref=e180] [cursor=pointer]:
+                - /url: https://m4li.de
+                - img [ref=e181]
+                - text: Портфолио ва лоиҳаҳо
+                - img [ref=e184]
+          - generic [ref=e188]:
+            - button "Пайвандҳои зуд"
+            - list [ref=e191]:
+              - listitem [ref=e192]:
+                - link "Таҳсил" [ref=e193] [cursor=pointer]:
+                  - /url: /study
+              - listitem [ref=e194]:
+                - link "Кор" [ref=e195] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e196]:
+                - link "Ausbildung" [ref=e197] [cursor=pointer]:
+                  - /url: /ausbildung
+              - listitem [ref=e198]:
+                - link "Зиндагӣ дар Олмон" [ref=e199] [cursor=pointer]:
+                  - /url: /living
+              - listitem [ref=e200]:
+                - link "Роҳнамо" [ref=e201] [cursor=pointer]:
+                  - /url: /roadmap
+              - listitem [ref=e202]:
+                - link "Саволҳо" [ref=e203] [cursor=pointer]:
+                  - /url: /faq
+          - generic [ref=e204]:
+            - button "Захираҳои беруна"
+            - list [ref=e207]:
+              - listitem [ref=e208]:
+                - link "DAAD" [ref=e209] [cursor=pointer]:
+                  - /url: https://www.daad.de
+                  - text: DAAD
+                  - img [ref=e210]
+              - listitem [ref=e214]:
+                - link "Make it in Germany" [ref=e215] [cursor=pointer]:
+                  - /url: https://www.make-it-in-germany.com
+                  - text: Make it in Germany
+                  - img [ref=e216]
+              - listitem [ref=e220]:
+                - link "Anerkennung" [ref=e221] [cursor=pointer]:
+                  - /url: https://www.anerkennung-in-deutschland.de
+                  - text: Anerkennung
+                  - img [ref=e222]
+          - generic [ref=e226]:
+            - button "Сафорати Олмон"
+            - generic [ref=e228]:
+              - list [ref=e229]:
+                - listitem [ref=e230]:
+                  - img [ref=e231]
+                  - generic [ref=e234]: Сафорати Олмонро дар шаҳри худ ёбед
+                - listitem [ref=e235]:
+                  - img [ref=e236]
+                  - generic [ref=e238]: Бо сафорати маҳаллӣ тамос гиред
+              - list [ref=e240]:
+                - listitem [ref=e241]:
+                  - link "Сиёсати ҳифзи маълумот" [ref=e242] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e243]:
+                  - link "Сиёсати Cookie" [ref=e244] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e245]:
+                  - link "Маълумоти ҳуқуқӣ" [ref=e246] [cursor=pointer]:
+                    - /url: /imprint
+        - paragraph [ref=e248]: © 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.

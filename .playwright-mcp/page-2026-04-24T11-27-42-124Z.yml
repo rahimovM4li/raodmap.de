@@ -1,0 +1,251 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Germany Roadmap Logo Germany Roadmap" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Germany Roadmap Logo" [ref=e9]
+          - generic [ref=e10]: Germany Roadmap
+        - navigation [ref=e11]:
+          - link "Саҳифаи асосӣ" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - text: Саҳифаи асосӣ
+          - button "Роҳҳо ба Олмон" [ref=e14] [cursor=pointer]:
+            - text: Роҳҳо ба Олмон
+            - img [ref=e15]
+          - button "Зиндагӣ дар Олмон" [ref=e18] [cursor=pointer]:
+            - text: Зиндагӣ дар Олмон
+            - img [ref=e19]
+        - button "Change language" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 🇹🇯
+          - generic [ref=e26]: TJ
+    - main [ref=e28]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e35]: Полный путь
+        - heading "Mаълумоти муфассал" [level=1] [ref=e36]
+        - paragraph [ref=e37]: Сафари пурраи шумо ба Олмон
+      - generic [ref=e40]:
+        - button "1 Омодагӣ дар ватан" [ref=e41] [cursor=pointer]:
+          - generic [ref=e42]: "1"
+          - img [ref=e43]
+          - generic [ref=e46]: Омодагӣ дар ватан
+        - button "2 Виза ва бюрократия" [ref=e47] [cursor=pointer]:
+          - generic [ref=e48]: "2"
+          - img [ref=e49]
+          - generic [ref=e53]: Виза ва бюрократия
+        - button "3 Омадан ба Олмон" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: "3"
+          - img [ref=e56]
+          - generic [ref=e58]: Омадан ба Олмон
+        - button "4 Аввалин 90 рӯз" [ref=e59] [cursor=pointer]:
+          - generic [ref=e60]: "4"
+          - img [ref=e61]
+          - generic [ref=e64]: Аввалин 90 рӯз
+        - button "5 Иқомати дарозмуддат" [ref=e65] [cursor=pointer]:
+          - generic [ref=e66]: "5"
+          - img [ref=e67]
+          - generic [ref=e70]: Иқомати дарозмуддат
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - img [ref=e76]
+          - generic [ref=e79]:
+            - heading "Омодагӣ дар ватан" [level=2] [ref=e80]
+            - generic [ref=e81]:
+              - img [ref=e82]
+              - generic [ref=e85]:
+                - text: "Давомнокӣ:"
+                - strong [ref=e86]: 3-12 моҳ
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - heading "Қадамҳо" [level=3] [ref=e89]:
+              - img [ref=e90]
+              - text: Қадамҳо
+            - generic [ref=e92]:
+              - generic [ref=e93]: "1"
+              - generic [ref=e94]:
+                - heading "Ҳуҷҷатҳо" [level=4] [ref=e95]
+                - paragraph [ref=e96]: "Ҷамъ кунед: паспорт, сертификатҳо, нусхаҳо, CV, мактуби ангезиш, тавсияномаҳо"
+            - generic [ref=e97]:
+              - generic [ref=e98]: "2"
+              - generic [ref=e99]:
+                - heading "Тарҷумаҳо" [level=4] [ref=e100]
+                - paragraph [ref=e101]: Тарҷумаҳои тасдиқшудаи олмонӣ аз тарҷумони савганд. Апостил агар лозим бошад.
+            - generic [ref=e102]:
+              - generic [ref=e103]: "3"
+              - generic [ref=e104]:
+                - heading "Сатҳи забон" [level=4] [ref=e105]
+                - paragraph [ref=e106]: Олмониро барвақт оғоз кунед! A1-B1 ҳадди ақал. B2 идеал.
+            - generic [ref=e107]:
+              - generic [ref=e108]: "4"
+              - generic [ref=e109]:
+                - heading "Нақшаи молиявӣ" [level=4] [ref=e110]
+                - paragraph [ref=e111]: Хароҷоти умумиро ҳисоб кунед. Барои blocked account (~€11,904), сафар, моҳҳои аввал сарфа кунед.
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - heading "Маслиҳатҳо" [level=3] [ref=e114]:
+                - img [ref=e115]
+                - text: Маслиҳатҳо
+              - list [ref=e117]:
+                - listitem [ref=e118]:
+                  - generic [ref=e119]: •
+                  - text: 12+ моҳ пештар оғоз кунед
+                - listitem [ref=e120]:
+                  - generic [ref=e121]: •
+                  - text: Нусхаҳои рақамии ҳама чиз нигоҳ доред
+                - listitem [ref=e122]:
+                  - generic [ref=e123]: •
+                  - text: Талаботи мушаххасро барои роҳи худ таҳқиқ кунед
+            - generic [ref=e124]:
+              - heading "Рӯйхати санҷиш" [level=3] [ref=e125]:
+                - img [ref=e126]
+                - text: Рӯйхати санҷиш
+              - list [ref=e129]:
+                - listitem [ref=e130]:
+                  - generic [ref=e133]: Паспорти эътибордор (6+ моҳ)
+                - listitem [ref=e134]:
+                  - generic [ref=e137]: Аттестат/дипломи мактаб/донишгоҳ
+                - listitem [ref=e138]:
+                  - generic [ref=e141]: Сертификати забон
+                - listitem [ref=e142]:
+                  - generic [ref=e145]: Исботи blocked account
+                - listitem [ref=e146]:
+                  - generic [ref=e149]: Суғуртаи саломатӣ
+                - listitem [ref=e150]:
+                  - generic [ref=e153]: Аксҳои биометрикӣ
+      - generic [ref=e155]:
+        - heading "Твой путь в обзоре" [level=2] [ref=e156]
+        - generic [ref=e158]:
+          - generic [ref=e160]:
+            - img [ref=e162]
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - heading "Омодагӣ дар ватан" [level=3] [ref=e167]
+                - generic [ref=e168]:
+                  - img [ref=e169]
+                  - text: 3-12 моҳ
+              - paragraph [ref=e172]: 4 қадамҳо • 6 рӯйхати санҷиш items
+              - button "Бештар фаҳмед →" [ref=e173] [cursor=pointer]
+          - generic [ref=e174]:
+            - img [ref=e176]
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - heading "Виза ва бюрократия" [level=3] [ref=e182]
+                - generic [ref=e183]:
+                  - img [ref=e184]
+                  - text: 4-12 ҳафта
+              - paragraph [ref=e187]: 4 қадамҳо • 6 рӯйхати санҷиш items
+              - button "Бештар фаҳмед →" [ref=e188] [cursor=pointer]
+          - generic [ref=e189]:
+            - img [ref=e191]
+            - generic [ref=e193]:
+              - generic [ref=e194]:
+                - heading "Омадан ба Олмон" [level=3] [ref=e195]
+                - generic [ref=e196]:
+                  - img [ref=e197]
+                  - text: 1-2 ҳафта
+              - paragraph [ref=e200]: 4 қадамҳо • 5 рӯйхати санҷиш items
+              - button "Бештар фаҳмед →" [ref=e201] [cursor=pointer]
+          - generic [ref=e202]:
+            - img [ref=e204]
+            - generic [ref=e207]:
+              - generic [ref=e208]:
+                - heading "Аввалин 90 рӯз" [level=3] [ref=e209]
+                - generic [ref=e210]:
+                  - img [ref=e211]
+                  - text: 3 моҳ
+              - paragraph [ref=e214]: 4 қадамҳо • 5 рӯйхати санҷиш items
+              - button "Бештар фаҳмед →" [ref=e215] [cursor=pointer]
+          - generic [ref=e216]:
+            - img [ref=e218]
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - heading "Иқомати дарозмуддат" [level=3] [ref=e223]
+                - generic [ref=e224]:
+                  - img [ref=e225]
+                  - text: 1-5+ сол
+              - paragraph [ref=e228]: 4 қадамҳо • 6 рӯйхати санҷиш items
+              - button "Бештар фаҳмед →" [ref=e229] [cursor=pointer]
+    - contentinfo [ref=e230]:
+      - generic [ref=e231]:
+        - generic [ref=e232]:
+          - generic [ref=e233]:
+            - generic [ref=e234]:
+              - img "Germany & Tajikistan Flag" [ref=e236]
+              - generic [ref=e238]: Germany Roadmap
+            - paragraph [ref=e239]: Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.
+            - generic [ref=e240]:
+              - generic [ref=e241]:
+                - img [ref=e242]
+                - generic [ref=e245]: Сохта шудааст аз ҷониби
+              - paragraph [ref=e246]: Muhammadali Rahimov
+              - paragraph [ref=e247]: Full-Stack Developer
+              - link "Портфолио ва лоиҳаҳо" [ref=e248] [cursor=pointer]:
+                - /url: https://m4li.de
+                - img [ref=e249]
+                - text: Портфолио ва лоиҳаҳо
+                - img [ref=e252]
+          - generic [ref=e256]:
+            - button "Пайвандҳои зуд"
+            - list [ref=e259]:
+              - listitem [ref=e260]:
+                - link "Таҳсил" [ref=e261] [cursor=pointer]:
+                  - /url: /study
+              - listitem [ref=e262]:
+                - link "Кор" [ref=e263] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e264]:
+                - link "Ausbildung" [ref=e265] [cursor=pointer]:
+                  - /url: /ausbildung
+              - listitem [ref=e266]:
+                - link "Зиндагӣ дар Олмон" [ref=e267] [cursor=pointer]:
+                  - /url: /living
+              - listitem [ref=e268]:
+                - link "Роҳнамо" [ref=e269] [cursor=pointer]:
+                  - /url: /roadmap
+              - listitem [ref=e270]:
+                - link "Саволҳо" [ref=e271] [cursor=pointer]:
+                  - /url: /faq
+          - generic [ref=e272]:
+            - button "Захираҳои беруна"
+            - list [ref=e275]:
+              - listitem [ref=e276]:
+                - link "DAAD" [ref=e277] [cursor=pointer]:
+                  - /url: https://www.daad.de
+                  - text: DAAD
+                  - img [ref=e278]
+              - listitem [ref=e282]:
+                - link "Make it in Germany" [ref=e283] [cursor=pointer]:
+                  - /url: https://www.make-it-in-germany.com
+                  - text: Make it in Germany
+                  - img [ref=e284]
+              - listitem [ref=e288]:
+                - link "Anerkennung" [ref=e289] [cursor=pointer]:
+                  - /url: https://www.anerkennung-in-deutschland.de
+                  - text: Anerkennung
+                  - img [ref=e290]
+          - generic [ref=e294]:
+            - button "Сафорати Олмон"
+            - generic [ref=e296]:
+              - list [ref=e297]:
+                - listitem [ref=e298]:
+                  - img [ref=e299]
+                  - generic [ref=e302]: Сафорати Олмонро дар шаҳри худ ёбед
+                - listitem [ref=e303]:
+                  - img [ref=e304]
+                  - generic [ref=e306]: Бо сафорати маҳаллӣ тамос гиред
+              - list [ref=e308]:
+                - listitem [ref=e309]:
+                  - link "Сиёсати ҳифзи маълумот" [ref=e310] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e311]:
+                  - link "Сиёсати Cookie" [ref=e312] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e313]:
+                  - link "Маълумоти ҳуқуқӣ" [ref=e314] [cursor=pointer]:
+                    - /url: /imprint
+        - paragraph [ref=e316]: © 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.

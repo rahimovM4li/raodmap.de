@@ -1,0 +1,280 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Germany Roadmap Logo Germany Roadmap" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Germany Roadmap Logo" [ref=e9]
+          - generic [ref=e10]: Germany Roadmap
+        - navigation [ref=e11]:
+          - link "Саҳифаи асосӣ" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - text: Саҳифаи асосӣ
+          - button "Роҳҳо ба Олмон" [ref=e14] [cursor=pointer]:
+            - text: Роҳҳо ба Олмон
+            - img [ref=e15]
+          - button "Зиндагӣ дар Олмон" [ref=e18] [cursor=pointer]:
+            - text: Зиндагӣ дар Олмон
+            - img [ref=e19]
+        - button "Change language" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 🇹🇯
+          - generic [ref=e26]: TJ
+    - main [ref=e28]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e36]: Маълумоти муҳим
+        - heading "Зиндагӣ дар Олмон" [level=1] [ref=e37]
+        - paragraph [ref=e38]: Mаълумоти амалӣ барои навомадагон
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - img [ref=e45]
+            - heading "Манзил" [level=2] [ref=e48]
+          - generic [ref=e50]:
+            - heading "WG ё квартира" [level=3] [ref=e52]:
+              - button "WG ё квартира" [ref=e53] [cursor=pointer]:
+                - generic [ref=e54]: WG ё квартира
+                - img [ref=e55]
+            - heading "Шартномаи иҷора" [level=3] [ref=e58]:
+              - button "Шартномаи иҷора" [ref=e59] [cursor=pointer]:
+                - generic [ref=e60]: Шартномаи иҷора
+                - img [ref=e61]
+            - heading "Депозит (Kaution)" [level=3] [ref=e64]:
+              - button "Депозит (Kaution)" [ref=e65] [cursor=pointer]:
+                - generic [ref=e66]: Депозит (Kaution)
+                - img [ref=e67]
+            - heading "Бақайдгирӣ (Anmeldung)" [level=3] [ref=e70]:
+              - button "Бақайдгирӣ (Anmeldung)" [ref=e71] [cursor=pointer]:
+                - generic [ref=e72]: Бақайдгирӣ (Anmeldung)
+                - img [ref=e73]
+            - heading "Маслиҳатҳо" [level=3] [ref=e76]:
+              - button "Маслиҳатҳо" [ref=e77] [cursor=pointer]:
+                - generic [ref=e78]: Маслиҳатҳо
+                - img [ref=e79]
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - img [ref=e84]
+            - heading "Кор ва фарҳанг" [level=2] [ref=e87]
+          - generic [ref=e89]:
+            - heading "Соатҳои корӣ" [level=3] [ref=e91]:
+              - button "Соатҳои корӣ" [ref=e92] [cursor=pointer]:
+                - generic [ref=e93]: Соатҳои корӣ
+                - img [ref=e94]
+            - heading "Давраи санҷиш" [level=3] [ref=e97]:
+              - button "Давраи санҷиш" [ref=e98] [cursor=pointer]:
+                - generic [ref=e99]: Давраи санҷиш
+                - img [ref=e100]
+            - heading "Андозҳо ва музд" [level=3] [ref=e103]:
+              - button "Андозҳо ва музд" [ref=e104] [cursor=pointer]:
+                - generic [ref=e105]: Андозҳо ва музд
+                - img [ref=e106]
+            - heading "Рӯзҳои рухсатӣ" [level=3] [ref=e109]:
+              - button "Рӯзҳои рухсатӣ" [ref=e110] [cursor=pointer]:
+                - generic [ref=e111]: Рӯзҳои рухсатӣ
+                - img [ref=e112]
+            - heading "Тавозуни кор ва зиндагӣ" [level=3] [ref=e115]:
+              - button "Тавозуни кор ва зиндагӣ" [ref=e116] [cursor=pointer]:
+                - generic [ref=e117]: Тавозуни кор ва зиндагӣ
+                - img [ref=e118]
+            - heading "Хатоҳои маъмул" [level=3] [ref=e121]:
+              - button "Хатоҳои маъмул" [ref=e122] [cursor=pointer]:
+                - generic [ref=e123]: Хатоҳои маъмул
+                - img [ref=e124]
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - img [ref=e129]
+            - heading "Саломатӣ ва суғурта" [level=2] [ref=e131]
+          - generic [ref=e133]:
+            - heading "Давлатӣ ё хусусӣ" [level=3] [ref=e135]:
+              - button "Давлатӣ ё хусусӣ" [ref=e136] [cursor=pointer]:
+                - generic [ref=e137]: Давлатӣ ё хусусӣ
+                - img [ref=e138]
+            - heading "Ӯҳдадории суғурта" [level=3] [ref=e141]:
+              - button "Ӯҳдадории суғурта" [ref=e142] [cursor=pointer]:
+                - generic [ref=e143]: Ӯҳдадории суғурта
+                - img [ref=e144]
+            - heading "Ёфтани духтур" [level=3] [ref=e147]:
+              - button "Ёфтани духтур" [ref=e148] [cursor=pointer]:
+                - generic [ref=e149]: Ёфтани духтур
+                - img [ref=e150]
+            - heading "Барои донишҷӯён ва коргарон" [level=3] [ref=e153]:
+              - button "Барои донишҷӯён ва коргарон" [ref=e154] [cursor=pointer]:
+                - generic [ref=e155]: Барои донишҷӯён ва коргарон
+                - img [ref=e156]
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - img [ref=e161]
+            - heading "Зиндагии рӯзмарра" [level=2] [ref=e167]
+          - generic [ref=e169]:
+            - heading "Нақлиёти ҷамъиятӣ" [level=3] [ref=e171]:
+              - button "Нақлиёти ҷамъиятӣ" [ref=e172] [cursor=pointer]:
+                - generic [ref=e173]: Нақлиёти ҷамъиятӣ
+                - img [ref=e174]
+            - heading "Интернет ва SIM" [level=3] [ref=e177]:
+              - button "Интернет ва SIM" [ref=e178] [cursor=pointer]:
+                - generic [ref=e179]: Интернет ва SIM
+                - img [ref=e180]
+            - heading "Ҳисоби бонкӣ" [level=3] [ref=e183]:
+              - button "Ҳисоби бонкӣ" [ref=e184] [cursor=pointer]:
+                - generic [ref=e185]: Ҳисоби бонкӣ
+                - img [ref=e186]
+            - heading "GEZ / Rundfunkbeitrag" [level=3] [ref=e189]:
+              - button "GEZ / Rundfunkbeitrag" [ref=e190] [cursor=pointer]:
+                - generic [ref=e191]: GEZ / Rundfunkbeitrag
+                - img [ref=e192]
+            - heading "Ҷудокунии партов" [level=3] [ref=e195]:
+              - button "Ҷудокунии партов" [ref=e196] [cursor=pointer]:
+                - generic [ref=e197]: Ҷудокунии партов
+                - img [ref=e198]
+            - heading "Вақтшиносӣ" [level=3] [ref=e201]:
+              - button "Вақтшиносӣ" [ref=e202] [cursor=pointer]:
+                - generic [ref=e203]: Вақтшиносӣ
+                - img [ref=e204]
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - img [ref=e209]
+            - heading "Хароҷот ва буҷет" [level=2] [ref=e211]
+          - generic [ref=e213]:
+            - heading "Хароҷоти миёнаи моҳона" [level=3] [ref=e215]:
+              - button "Хароҷоти миёнаи моҳона" [ref=e216] [cursor=pointer]:
+                - generic [ref=e217]: Хароҷоти миёнаи моҳона
+                - img [ref=e218]
+            - heading "Иҷора" [level=3] [ref=e221]:
+              - button "Иҷора" [ref=e222] [cursor=pointer]:
+                - generic [ref=e223]: Иҷора
+                - img [ref=e224]
+            - heading "Ғизо" [level=3] [ref=e227]:
+              - button "Ғизо" [ref=e228] [cursor=pointer]:
+                - generic [ref=e229]: Ғизо
+                - img [ref=e230]
+            - heading "Нақлиёт" [level=3] [ref=e233]:
+              - button "Нақлиёт" [ref=e234] [cursor=pointer]:
+                - generic [ref=e235]: Нақлиёт
+                - img [ref=e236]
+            - heading "Суғурта" [level=3] [ref=e239]:
+              - button "Суғурта" [ref=e240] [cursor=pointer]:
+                - generic [ref=e241]: Суғурта
+                - img [ref=e242]
+            - heading "Маслиҳатҳои сарфакорӣ" [level=3] [ref=e245]:
+              - button "Маслиҳатҳои сарфакорӣ" [ref=e246] [cursor=pointer]:
+                - generic [ref=e247]: Маслиҳатҳои сарфакорӣ
+                - img [ref=e248]
+        - generic [ref=e250]:
+          - generic [ref=e251]:
+            - img [ref=e253]
+            - heading "Забон ва интеграция" [level=2] [ref=e257]
+          - generic [ref=e259]:
+            - heading "Сатҳҳои олмонӣ A1-B2" [level=3] [ref=e261]:
+              - button "Сатҳҳои олмонӣ A1-B2" [ref=e262] [cursor=pointer]:
+                - generic [ref=e263]: Сатҳҳои олмонӣ A1-B2
+                - img [ref=e264]
+            - heading "Курсҳои интеграция" [level=3] [ref=e267]:
+              - button "Курсҳои интеграция" [ref=e268] [cursor=pointer]:
+                - generic [ref=e269]: Курсҳои интеграция
+                - img [ref=e270]
+            - heading "Сухан гуфтан дар зиндагӣ" [level=3] [ref=e273]:
+              - button "Сухан гуфтан дар зиндагӣ" [ref=e274] [cursor=pointer]:
+                - generic [ref=e275]: Сухан гуфтан дар зиндагӣ
+                - img [ref=e276]
+            - heading "Хатоҳоро қабул кунед" [level=3] [ref=e279]:
+              - button "Хатоҳоро қабул кунед" [ref=e280] [cursor=pointer]:
+                - generic [ref=e281]: Хатоҳоро қабул кунед
+                - img [ref=e282]
+      - generic [ref=e285]:
+        - heading "Машваратҳои тез барои наворасидагон" [level=2] [ref=e286]
+        - generic [ref=e287]:
+          - generic [ref=e288]:
+            - generic [ref=e289]: 📝
+            - heading "Аввал Anmeldung" [level=3] [ref=e290]
+            - paragraph [ref=e291]: Дар давоми 14 рӯз қайд шавед — ин барои қариб ҳама чиз лозим аст!
+          - generic [ref=e292]:
+            - generic [ref=e293]: 🏦
+            - heading "Ҳисоб кушоед" [level=3] [ref=e294]
+            - paragraph [ref=e295]: IBAN-и олмонӣ барои иҷора, музд, шартномаҳо лозим аст
+          - generic [ref=e296]:
+            - generic [ref=e297]: 🇩🇪
+            - heading "Забони олмонӣ омӯзед" [level=3] [ref=e298]
+            - paragraph [ref=e299]: Ҳатто забони асосӣ зиндагиро 10 маротиба осон мекунад
+    - contentinfo [ref=e300]:
+      - generic [ref=e301]:
+        - generic [ref=e302]:
+          - generic [ref=e303]:
+            - generic [ref=e304]:
+              - img "Germany & Tajikistan Flag" [ref=e306]
+              - generic [ref=e308]: Germany Roadmap
+            - paragraph [ref=e309]: Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - img [ref=e312]
+                - generic [ref=e315]: Сохта шудааст аз ҷониби
+              - paragraph [ref=e316]: Muhammadali Rahimov
+              - paragraph [ref=e317]: Full-Stack Developer
+              - link "Портфолио ва лоиҳаҳо" [ref=e318] [cursor=pointer]:
+                - /url: https://m4li.de
+                - img [ref=e319]
+                - text: Портфолио ва лоиҳаҳо
+                - img [ref=e322]
+          - generic [ref=e326]:
+            - button "Пайвандҳои зуд"
+            - list [ref=e329]:
+              - listitem [ref=e330]:
+                - link "Таҳсил" [ref=e331] [cursor=pointer]:
+                  - /url: /study
+              - listitem [ref=e332]:
+                - link "Кор" [ref=e333] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e334]:
+                - link "Ausbildung" [ref=e335] [cursor=pointer]:
+                  - /url: /ausbildung
+              - listitem [ref=e336]:
+                - link "Зиндагӣ дар Олмон" [ref=e337] [cursor=pointer]:
+                  - /url: /living
+              - listitem [ref=e338]:
+                - link "Роҳнамо" [ref=e339] [cursor=pointer]:
+                  - /url: /roadmap
+              - listitem [ref=e340]:
+                - link "Саволҳо" [ref=e341] [cursor=pointer]:
+                  - /url: /faq
+          - generic [ref=e342]:
+            - button "Захираҳои беруна"
+            - list [ref=e345]:
+              - listitem [ref=e346]:
+                - link "DAAD" [ref=e347] [cursor=pointer]:
+                  - /url: https://www.daad.de
+                  - text: DAAD
+                  - img [ref=e348]
+              - listitem [ref=e352]:
+                - link "Make it in Germany" [ref=e353] [cursor=pointer]:
+                  - /url: https://www.make-it-in-germany.com
+                  - text: Make it in Germany
+                  - img [ref=e354]
+              - listitem [ref=e358]:
+                - link "Anerkennung" [ref=e359] [cursor=pointer]:
+                  - /url: https://www.anerkennung-in-deutschland.de
+                  - text: Anerkennung
+                  - img [ref=e360]
+          - generic [ref=e364]:
+            - button "Сафорати Олмон"
+            - generic [ref=e366]:
+              - list [ref=e367]:
+                - listitem [ref=e368]:
+                  - img [ref=e369]
+                  - generic [ref=e372]: Сафорати Олмонро дар шаҳри худ ёбед
+                - listitem [ref=e373]:
+                  - img [ref=e374]
+                  - generic [ref=e376]: Бо сафорати маҳаллӣ тамос гиред
+              - list [ref=e378]:
+                - listitem [ref=e379]:
+                  - link "Сиёсати ҳифзи маълумот" [ref=e380] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e381]:
+                  - link "Сиёсати Cookie" [ref=e382] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e383]:
+                  - link "Маълумоти ҳуқуқӣ" [ref=e384] [cursor=pointer]:
+                    - /url: /imprint
+        - paragraph [ref=e386]: © 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.

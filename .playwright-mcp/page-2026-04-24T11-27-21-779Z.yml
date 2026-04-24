@@ -1,0 +1,226 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Germany Roadmap Logo Germany Roadmap" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Germany Roadmap Logo" [ref=e9]
+          - generic [ref=e10]: Germany Roadmap
+        - navigation [ref=e11]:
+          - link "Саҳифаи асосӣ" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - text: Саҳифаи асосӣ
+          - button "Роҳҳо ба Олмон" [ref=e14] [cursor=pointer]:
+            - text: Роҳҳо ба Олмон
+            - img [ref=e15]
+          - button "Зиндагӣ дар Олмон" [ref=e19] [cursor=pointer]:
+            - text: Зиндагӣ дар Олмон
+            - img [ref=e20]
+        - button "Change language" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 🇹🇯
+          - generic [ref=e26]: TJ
+    - main [ref=e28]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e36]: 6-24 моҳ тайёргарӣ
+        - heading "Таҳсил дар Олмон" [level=1] [ref=e37]
+        - paragraph [ref=e38]: Олмон яке аз беҳтарин мамлакатҳо барои таҳсилоти олӣ аст
+        - link "Ҳозир оғоз кунед" [ref=e39] [cursor=pointer]:
+          - /url: "#steps"
+          - text: Ҳозир оғоз кунед
+          - img
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - heading "Қадамҳои муҳим" [level=2] [ref=e44]
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e48]: "1"
+              - generic [ref=e50]:
+                - heading "Забон омӯзед" [level=4] [ref=e51]
+                - paragraph [ref=e52]: Сертификати олмонӣ (DSH, TestDaF) ё англисӣ (IELTS, TOEFL)
+            - generic [ref=e53]:
+              - generic [ref=e55]: "2"
+              - generic [ref=e57]:
+                - heading "Барномаро ёбед" [level=4] [ref=e58]
+                - paragraph [ref=e59]: Барномаҳоро дар DAAD ё uni-assist ҷустуҷӯ кунед
+            - generic [ref=e60]:
+              - generic [ref=e62]: "3"
+              - generic [ref=e64]:
+                - heading "Ҳуҷҷатҳоро ҷамъ кунед" [level=4] [ref=e65]
+                - paragraph [ref=e66]: Сертификатҳо, тарҷумаҳо, мактуби ангезиш
+            - generic [ref=e67]:
+              - generic [ref=e69]: "4"
+              - generic [ref=e71]:
+                - heading "Кушодани ҳисоби банкӣ" [level=4] [ref=e72]
+                - paragraph [ref=e73]: Ҳисоби блокшуда (Sperrkonto) бо ~11,904€
+            - generic [ref=e74]:
+              - generic [ref=e76]: "5"
+              - generic [ref=e78]:
+                - heading "Виза гиред" [level=4] [ref=e79]
+                - paragraph [ref=e80]: Ҳуҷҷатҳоро ба сафорати Олмон пешниҳод кунед
+            - generic [ref=e81]:
+              - generic [ref=e83]: "6"
+              - generic [ref=e84]:
+                - heading "Ба Олмон биёед" [level=4] [ref=e85]
+                - paragraph [ref=e86]: Таҳсилро оғоз кунед!
+        - generic [ref=e87]:
+          - heading "Талаботҳо" [level=2] [ref=e88]
+          - list [ref=e90]:
+            - listitem [ref=e91]:
+              - img [ref=e92]
+              - generic [ref=e94]: Шиносномаи эътибор (ҳадди ақал 12 моҳ)
+            - listitem [ref=e95]:
+              - img [ref=e96]
+              - generic [ref=e98]: Шаҳодатномаи хатми мактаб (бо тарҷума)
+            - listitem [ref=e99]:
+              - img [ref=e100]
+              - generic [ref=e102]: Дипломи олӣ (агар дошта бошед) бо тарҷумаи тасдиқшуда
+            - listitem [ref=e103]:
+              - img [ref=e104]
+              - generic [ref=e106]: Сертификати забони олмонӣ (TestDaF, DSH) ё англисӣ (IELTS, TOEFL)
+            - listitem [ref=e107]:
+              - img [ref=e108]
+              - generic [ref=e110]: Мактуби мотивационӣ (Motivationsschreiben)
+          - generic [ref=e111]:
+            - heading "Истиноҳои муҳим" [level=3] [ref=e112]
+            - generic [ref=e113]:
+              - link "DAAD — Ҷустуҷӯи барнома" [ref=e114] [cursor=pointer]:
+                - /url: https://www.daad.de/en/study-and-research-in-germany/
+                - img [ref=e115]
+                - text: DAAD — Ҷустуҷӯи барнома
+              - link "uni-assist — Пешниҳоди ариза" [ref=e119] [cursor=pointer]:
+                - /url: https://www.uni-assist.de/
+                - img [ref=e120]
+                - text: uni-assist — Пешниҳоди ариза
+              - link "Sperrkonto — Ҳисоби блокшуда" [ref=e124] [cursor=pointer]:
+                - /url: https://www.coracle.de/
+                - img [ref=e125]
+                - text: Sperrkonto — Ҳисоби блокшуда
+      - generic [ref=e130]:
+        - heading "Стипендияҳо" [level=2] [ref=e131]
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - heading "DAAD" [level=3] [ref=e134]
+            - paragraph [ref=e135]: Стипендияҳои гуногун барои донишҷӯён
+          - generic [ref=e136]:
+            - heading "Deutschlandstipendium" [level=3] [ref=e137]
+            - paragraph [ref=e138]: €300/моҳ барои донишҷӯёни боистеъдод
+          - generic [ref=e139]:
+            - heading "Erasmus+" [level=3] [ref=e140]
+            - paragraph [ref=e141]: Барои мубодилаи донишҷӯён
+      - generic [ref=e144]:
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - img [ref=e147]
+            - generic [ref=e150]: FAQ
+          - heading "Саволҳои зиёд пурсидашаванда" [level=2] [ref=e151]
+          - paragraph [ref=e152]: Ҷавобҳо ба саволҳои муҳим дар бораи таҳсил дар Олмон
+        - generic [ref=e153]:
+          - button "Барои виза чӣ қадар пул лозим аст?" [ref=e155] [cursor=pointer]:
+            - heading "Барои виза чӣ қадар пул лозим аст?" [level=3] [ref=e156]
+            - img [ref=e157]
+          - button "Баъд аз хатми таҳсил чӣ мешавад?" [ref=e160] [cursor=pointer]:
+            - heading "Баъд аз хатми таҳсил чӣ мешавад?" [level=3] [ref=e161]
+            - img [ref=e162]
+          - button "Кадом забон барои донишгоҳ лозим аст?" [ref=e165] [cursor=pointer]:
+            - heading "Кадом забон барои донишгоҳ лозим аст?" [level=3] [ref=e166]
+            - img [ref=e167]
+          - button "Метавонам ҳангоми таҳсил кор кунам?" [ref=e170] [cursor=pointer]:
+            - heading "Метавонам ҳангоми таҳсил кор кунам?" [level=3] [ref=e171]
+            - img [ref=e172]
+          - button "Агар дипломи ман дар Олмон эътироф нашавад чӣ кунам?" [ref=e175] [cursor=pointer]:
+            - heading "Агар дипломи ман дар Олмон эътироф нашавад чӣ кунам?" [level=3] [ref=e176]
+            - img [ref=e177]
+          - button "Пардохтҳои донишгоҳӣ чӣ қадар аст?" [ref=e180] [cursor=pointer]:
+            - heading "Пардохтҳои донишгоҳӣ чӣ қадар аст?" [level=3] [ref=e181]
+            - img [ref=e182]
+      - generic [ref=e185]:
+        - heading "Омодаед оғоз кунед?" [level=2] [ref=e186]
+        - paragraph [ref=e187]: Нақшаи инфиродӣ бо ёрии wizard бисозед ва PDF-ро боргирӣ кунед.
+        - link "Нақша эҷод кардан" [ref=e188] [cursor=pointer]:
+          - /url: /tj/#wizard
+          - text: Нақша эҷод кардан
+          - img
+    - contentinfo [ref=e189]:
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - generic [ref=e193]:
+              - img "Germany & Tajikistan Flag" [ref=e195]
+              - generic [ref=e197]: Germany Roadmap
+            - paragraph [ref=e198]: Ин сайт манбаи расмӣ нест. Барои маълумоти дақиқ бо сафорат тамос гиред.
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - img [ref=e201]
+                - generic [ref=e204]: Сохта шудааст аз ҷониби
+              - paragraph [ref=e205]: Muhammadali Rahimov
+              - paragraph [ref=e206]: Full-Stack Developer
+              - link "Портфолио ва лоиҳаҳо" [ref=e207] [cursor=pointer]:
+                - /url: https://m4li.de
+                - img [ref=e208]
+                - text: Портфолио ва лоиҳаҳо
+                - img [ref=e211]
+          - generic [ref=e215]:
+            - button "Пайвандҳои зуд"
+            - list [ref=e218]:
+              - listitem [ref=e219]:
+                - link "Таҳсил" [ref=e220] [cursor=pointer]:
+                  - /url: /study
+              - listitem [ref=e221]:
+                - link "Кор" [ref=e222] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e223]:
+                - link "Ausbildung" [ref=e224] [cursor=pointer]:
+                  - /url: /ausbildung
+              - listitem [ref=e225]:
+                - link "Зиндагӣ дар Олмон" [ref=e226] [cursor=pointer]:
+                  - /url: /living
+              - listitem [ref=e227]:
+                - link "Роҳнамо" [ref=e228] [cursor=pointer]:
+                  - /url: /roadmap
+              - listitem [ref=e229]:
+                - link "Саволҳо" [ref=e230] [cursor=pointer]:
+                  - /url: /faq
+          - generic [ref=e231]:
+            - button "Захираҳои беруна"
+            - list [ref=e234]:
+              - listitem [ref=e235]:
+                - link "DAAD" [ref=e236] [cursor=pointer]:
+                  - /url: https://www.daad.de
+                  - text: DAAD
+                  - img [ref=e237]
+              - listitem [ref=e241]:
+                - link "Make it in Germany" [ref=e242] [cursor=pointer]:
+                  - /url: https://www.make-it-in-germany.com
+                  - text: Make it in Germany
+                  - img [ref=e243]
+              - listitem [ref=e247]:
+                - link "Anerkennung" [ref=e248] [cursor=pointer]:
+                  - /url: https://www.anerkennung-in-deutschland.de
+                  - text: Anerkennung
+                  - img [ref=e249]
+          - generic [ref=e253]:
+            - button "Сафорати Олмон"
+            - generic [ref=e255]:
+              - list [ref=e256]:
+                - listitem [ref=e257]:
+                  - img [ref=e258]
+                  - generic [ref=e261]: Сафорати Олмонро дар шаҳри худ ёбед
+                - listitem [ref=e262]:
+                  - img [ref=e263]
+                  - generic [ref=e265]: Бо сафорати маҳаллӣ тамос гиред
+              - list [ref=e267]:
+                - listitem [ref=e268]:
+                  - link "Сиёсати ҳифзи маълумот" [ref=e269] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e270]:
+                  - link "Сиёсати Cookie" [ref=e271] [cursor=pointer]:
+                    - /url: /cookies
+                - listitem [ref=e272]:
+                  - link "Маълумоти ҳуқуқӣ" [ref=e273] [cursor=pointer]:
+                    - /url: /imprint
+        - paragraph [ref=e275]: © 2026 Germany Roadmap. Ҳамаи ҳуқуқҳо ҳифз шудаанд.

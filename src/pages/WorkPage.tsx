@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, ExternalLink, Briefcase, CreditCard, FileCheck, Building2, ChevronDown } from 'lucide-react';
+import { WorkPageSEO } from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { FAQSection } from '@/components/FAQSection';
 import { useLanguage } from '@/contexts/LanguageContext';

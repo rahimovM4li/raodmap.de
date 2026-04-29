@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Home,
   Compass,
@@ -15,6 +15,7 @@ import {
   Building,
   FileText,
   FolderOpen,
+  Search,
 } from "lucide-react";
 import {
   Drawer,
@@ -26,37 +27,6 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
-
-const SCROLL_THRESHOLD = 10;
-
-function useScrollDirection() {
-  const [visible, setVisible] = useState(true);
-
-  const handleScroll = useCallback(() => {
-    const currentY = window.scrollY;
-    // Always show near top
-    if (currentY < 50) {
-      setVisible(true);
-      return;
-    }
-    setVisible((prev) => {
-      // Store last scroll in a closure-free way via data attribute
-      const last = Number(document.documentElement.dataset.lastScrollY ?? "0");
-      const delta = currentY - last;
-      document.documentElement.dataset.lastScrollY = String(currentY);
-      if (Math.abs(delta) < SCROLL_THRESHOLD) return prev;
-      return delta < 0; // scrolling up → show
-    });
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.dataset.lastScrollY = String(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  return visible;
-}
 
 interface NavDrawerItem {
   label: string;
@@ -113,7 +83,6 @@ export function BottomNav() {
   const isMobile = useIsMobile();
   const { t } = useLanguage();
   const location = useLocation();
-  const visible = useScrollDirection();
   const [pathsOpen, setPathsOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
 
@@ -131,10 +100,11 @@ export function BottomNav() {
   const moreItems: NavDrawerItem[] = [
     { label: t.nav.resources, path: "/resources", icon: <FolderOpen className="h-5 w-5" /> },
     { label: "CV Generator", path: "/cv-generator", icon: <FileText className="h-5 w-5" /> },
+    { label: "Ausbildung finden", path: "/ausbildung-finden", icon: <Search className="h-5 w-5" /> },
   ];
 
   const pathRoutes = ["/study", "/work", "/ausbildung", "/fsj", "/aupair", "/living"];
-  const moreRoutes = ["/resources", "/cv-generator"];
+  const moreRoutes = ["/resources", "/cv-generator", "/ausbildung-finden"];
   const isPathsActive = pathRoutes.includes(location.pathname);
   const isMoreActive = moreRoutes.includes(location.pathname);
 
@@ -148,20 +118,14 @@ export function BottomNav() {
 
   return (
     <>
-      <AnimatePresence>
-        {visible && (
-          <motion.nav
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            exit={{ y: 100 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
+      <nav
+        className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
+      >
+        <div className="bg-background/95 backdrop-blur-xl border-t border-border/50 shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
+          <div
+            className="flex items-center justify-around"
+            style={{ paddingBottom: "env(safe-area-inset-bottom, 8px)" }}
           >
-            <div className="bg-background/80 backdrop-blur-xl border-t border-border/50 shadow-[0_-1px_6px_rgba(0,0,0,0.08)]">
-              <div
-                className="flex items-center justify-around"
-                style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
-              >
                 {items.map((item) => {
                   const Icon = item.icon;
                   const isActive =
@@ -177,17 +141,17 @@ export function BottomNav() {
                         onClick={item.action}
                         aria-label={item.label}
                         className={cn(
-                          "flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] py-2 px-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg",
+                          "flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[64px] py-3 px-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg",
                           isActive ? "text-primary" : "text-muted-foreground"
                         )}
                       >
                         <motion.div
-                          animate={{ scale: isActive ? 1.1 : 1 }}
+                          animate={{ scale: isActive ? 1.15 : 1 }}
                           transition={{ type: "spring", stiffness: 400, damping: 20 }}
                         >
-                          <Icon className="h-5 w-5" />
+                          <Icon className="h-6 w-6" />
                         </motion.div>
-                        <span className="text-[10px] font-medium leading-tight truncate max-w-[64px]">
+                        <span className="text-[11px] font-medium leading-tight truncate max-w-[72px]">
                           {item.label}
                         </span>
                       </button>
@@ -200,17 +164,17 @@ export function BottomNav() {
                       to={item.path!}
                       aria-label={item.label}
                       className={cn(
-                        "flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] py-2 px-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg",
+                        "flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[64px] py-3 px-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg",
                         isActive ? "text-primary" : "text-muted-foreground"
                       )}
                     >
                       <motion.div
-                        animate={{ scale: isActive ? 1.1 : 1 }}
+                        animate={{ scale: isActive ? 1.15 : 1 }}
                         transition={{ type: "spring", stiffness: 400, damping: 20 }}
                       >
-                        <Icon className="h-5 w-5" />
+                        <Icon className="h-6 w-6" />
                       </motion.div>
-                      <span className="text-[10px] font-medium leading-tight truncate max-w-[64px]">
+                      <span className="text-[11px] font-medium leading-tight truncate max-w-[72px]">
                         {item.label}
                       </span>
                     </Link>
@@ -218,9 +182,7 @@ export function BottomNav() {
                 })}
               </div>
             </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      </nav>
 
       <NavDrawerSheet
         open={pathsOpen}

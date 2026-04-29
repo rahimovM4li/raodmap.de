@@ -36,7 +36,7 @@ export function ExperienceEditor({ data, onChange }: ExperienceEditorProps) {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">Berufserfahrung</h2>
         <Button onClick={addExperience} size="sm" variant="outline">

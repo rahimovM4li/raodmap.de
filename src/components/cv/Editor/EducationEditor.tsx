@@ -34,7 +34,7 @@ export function EducationEditor({ data, onChange }: EducationEditorProps) {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">Ausbildung</h2>
         <Button onClick={addEducation} size="sm" variant="outline">

@@ -68,6 +68,7 @@ export function Header() {
   const pathsToGermany = [
     { path: '/study', label: t.nav.study },
     { path: '/ausbildung', label: t.nav.ausbildung },
+    { path: '/ausbildung-finden', label: t.nav.ausbildungFinden },
     { path: '/work', label: t.nav.work },
     { path: '/fsj', label: t.nav.fsj },
     { path: '/aupair', label: t.nav.aupair },
@@ -213,6 +214,23 @@ export function Header() {
                 </div>
               )}
             </div>
+
+            {/* CV Generator */}
+            <Link
+              to="/cv-generator"
+              className={cn(
+                'relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 group',
+                location.pathname === '/cv-generator'
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              CV Generator
+              <span className={cn(
+                'absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-200',
+                location.pathname === '/cv-generator' ? 'w-1/2' : 'w-0 group-hover:w-1/2'
+              )} />
+            </Link>
           </nav>
 
           {/* Language Switcher & Mobile Menu */}

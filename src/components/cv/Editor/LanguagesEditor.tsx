@@ -33,9 +33,9 @@ export function LanguagesEditor({ data, onChange }: LanguagesEditorProps) {
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'Muttersprache'];
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold">Sprachen</h2>
+        <h2 className="text-lg md:text-xl font-semibold">Sprachen</h2>
         <Button onClick={addLanguage} size="sm" variant="outline">
           <Plus className="w-4 h-4 mr-2" />
           Hinzufügen
@@ -48,7 +48,7 @@ export function LanguagesEditor({ data, onChange }: LanguagesEditorProps) {
 
       <div className="space-y-3">
         {data.map((lang, index) => (
-          <div key={index} className="flex items-end gap-3 border border-gray-200 rounded-lg p-3">
+          <div key={index} className="flex flex-col sm:flex-row sm:items-end gap-3 border border-gray-200 rounded-lg p-3">
             <div className="flex-1 space-y-2">
               <Label>Sprache</Label>
               <Input
@@ -58,9 +58,10 @@ export function LanguagesEditor({ data, onChange }: LanguagesEditorProps) {
               />
             </div>
 
-            <div className="w-40 space-y-2">
-              <Label>Niveau</Label>
-              <Select
+            <div className="flex items-end gap-2">
+              <div className="flex-1 sm:w-36 space-y-2">
+                <Label>Niveau</Label>
+                <Select
                 value={lang.level || ''}
                 onValueChange={(value) => updateLanguage(index, 'level', value)}
               >
@@ -75,16 +76,17 @@ export function LanguagesEditor({ data, onChange }: LanguagesEditorProps) {
                   ))}
                 </SelectContent>
               </Select>
-            </div>
+              </div>
 
-            <Button
-              onClick={() => removeLanguage(index)}
-              size="icon"
-              variant="ghost"
-              className="text-red-600 hover:text-red-700"
-            >
-              <Trash2 className="w-4 h-4" />
-            </Button>
+              <Button
+                onClick={() => removeLanguage(index)}
+                size="icon"
+                variant="ghost"
+                className="text-red-600 hover:text-red-700 shrink-0"
+              >
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         ))}
       </div>

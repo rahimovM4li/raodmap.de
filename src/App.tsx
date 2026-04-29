@@ -27,6 +27,7 @@ import CookiesPage from "./pages/CookiesPage";
 import ImprintPage from "./pages/ImprintPage";
 import NotFound from "./pages/NotFound";
 import FSJBFDPage from "./pages/FSJBFDPage";
+import AusbildungFindenPage from "./pages/ausbildung-finden/AusbildungFindenPage";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
                   <Route path="/study" element={<StudyPage />} />
                   <Route path="/work" element={<WorkPage />} />
                   <Route path="/ausbildung" element={<AusbildungPage />} />
+                  <Route path="/ausbildung-finden" element={<AusbildungFindenPage />} />
                   <Route path="/fsj" element={<FSJPage />} />
                   <Route path="/aupair" element={<AuPairPage />} />
                   <Route path="/living" element={<LivingPage />} />

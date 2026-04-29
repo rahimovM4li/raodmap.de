@@ -8,7 +8,7 @@ interface SummaryEditorProps {
 
 export function SummaryEditor({ data, onChange }: SummaryEditorProps) {
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <h2 className="text-xl font-semibold mb-4">Kurzprofil</h2>
 
       <div className="space-y-2">

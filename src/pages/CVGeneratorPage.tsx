@@ -285,22 +285,32 @@ const CVGeneratorPage = () => {
         )}
 
         {/* MOBILE CONTENT */}
-        <main className="md:hidden">
+        <main className="md:hidden pb-24">
           {/* Editor Tab */}
           <div className={activeTab === 'edit' ? 'block' : 'hidden'}>
-            <div className="p-4 space-y-4">
+            <div className="p-3 space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold">CV-Daten</h2>
+                  <h2 className="text-base font-semibold">CV-Daten</h2>
                   <p className="text-xs text-muted-foreground">Füllen Sie Ihre Informationen aus</p>
                 </div>
-                <Button variant="ghost" size="sm" onClick={handleManualSave} disabled={isSaving}>
-                  {isSaving ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <Save className="w-4 h-4" />
-                  )}
-                </Button>
+                <div className="flex items-center gap-2">
+                  <label htmlFor="import-cv-mobile">
+                    <Button variant="ghost" size="sm" asChild>
+                      <span className="cursor-pointer">
+                        <Upload className="w-4 h-4" />
+                      </span>
+                    </Button>
+                    <input id="import-cv-mobile" type="file" accept=".json" className="hidden" onChange={handleImport} />
+                  </label>
+                  <Button variant="ghost" size="sm" onClick={handleManualSave} disabled={isSaving}>
+                    {isSaving ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Save className="w-4 h-4" />
+                    )}
+                  </Button>
+                </div>
               </div>
               <Card>
                 <EditorPanel cvData={cvData} updateCVData={handleUpdateCVData} />
@@ -310,9 +320,9 @@ const CVGeneratorPage = () => {
 
           {/* Settings Tab */}
           <div className={activeTab === 'settings' ? 'block' : 'hidden'}>
-            <div className="p-4 space-y-4">
+            <div className="p-3 space-y-3">
               <div>
-                <h2 className="text-lg font-semibold">Stil-Anpassung</h2>
+                <h2 className="text-base font-semibold">Stil-Anpassung</h2>
                 <p className="text-xs text-muted-foreground">Passen Sie das Design an</p>
               </div>
               <Card>
@@ -323,15 +333,17 @@ const CVGeneratorPage = () => {
 
           {/* Preview Tab */}
           <div className={activeTab === 'preview' ? 'block' : 'hidden'}>
-            <div className="p-2 bg-muted/50">
+            <div className="p-2">
               <div className="bg-background rounded-lg shadow-xl overflow-hidden">
-                <div className="aspect-[210/297] overflow-auto">
-                  <div className="w-full h-full" style={{ transform: 'scale(0.48)', transformOrigin: 'top left', width: '208.33%', height: '208.33%' }}>
-                    <CVPreview cvData={cvData} customization={customization} className="w-[210mm] min-h-[297mm] bg-white" />
+                <div className="relative w-full" style={{ paddingBottom: '141.4%' }}>
+                  <div className="absolute inset-0 overflow-auto">
+                    <div style={{ transform: 'scale(0.48)', transformOrigin: 'top left', width: '208.33%', height: '208.33%' }}>
+                      <CVPreview cvData={cvData} customization={customization} className="w-[210mm] min-h-[297mm] bg-white" />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-4 flex gap-2">
+              <div className="mt-3 flex gap-2">
                 <Button
                   onClick={handleDownloadPDF}
                   disabled={isExporting}

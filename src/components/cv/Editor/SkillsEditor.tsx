@@ -24,7 +24,7 @@ export function SkillsEditor({ data, onChange }: SkillsEditorProps) {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">Kenntnisse</h2>
         <Button onClick={addSkill} size="sm" variant="outline">

@@ -14,8 +14,8 @@ export function PersonalInfoEditor({ data, onChange }: PersonalInfoEditorProps) 
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-semibold mb-4">Persönliche Daten</h2>
+    <div className="p-4 md:p-6">
+      <h2 className="text-lg md:text-xl font-semibold mb-4">Persönliche Daten</h2>
 
       <div className="mb-6">
         <PhotoUpload

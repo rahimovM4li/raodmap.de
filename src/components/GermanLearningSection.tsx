@@ -115,11 +115,81 @@ function InfoList({ items }: { items: string[] }) {
 
 function PlaceholderValue({ label, value, fallback }: { label: string; value: string; fallback: string }) {
   const displayValue = value && value !== '#' ? value : fallback;
+  const normalizedValue = value.trim();
+  const isMissing = !normalizedValue || normalizedValue === '#';
+
+  const getLinkHref = () => {
+    if (isMissing) return null;
+
+    if (/^https?:\/\//i.test(normalizedValue)) {
+      return normalizedValue;
+    }
+
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedValue)) {
+      return `mailto:${normalizedValue}`;
+    }
+
+    if (/^@?[A-Za-z0-9_.]{3,}$/.test(normalizedValue) && label.toLowerCase() === 'telegram') {
+      return `https://t.me/${normalizedValue.replace(/^@/, '')}`;
+    }
+
+    const phoneValue = normalizedValue.replace(/[\s()-]/g, '');
+    if (/^\+?[0-9]{7,}$/.test(phoneValue)) {
+      return `tel:${phoneValue}`;
+    }
+
+    return null;
+  };
+
+  const href = getLinkHref();
+  const normalizedLabel = label.toLowerCase();
+
+  const getDisplayLabel = () => {
+    if (!href) return displayValue;
+
+    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+      return displayValue;
+    }
+
+    try {
+      const parsedUrl = new URL(href);
+      const pathValue = parsedUrl.pathname.replace(/^\//, '').replace(/\/$/, '');
+
+      if (normalizedLabel === 'instagram' && pathValue) {
+        return `@${pathValue}`;
+      }
+
+      if (normalizedLabel === 'telegram' && pathValue) {
+        return `@${pathValue}`;
+      }
+
+      if (normalizedLabel === 'website') {
+        return parsedUrl.hostname.replace(/^www\./, '');
+      }
+
+      return `${parsedUrl.hostname.replace(/^www\./, '')}${pathValue ? `/${pathValue}` : ''}`;
+    } catch {
+      return displayValue;
+    }
+  };
+
+  const linkText = getDisplayLabel();
 
   return (
     <div className="rounded-lg border border-border bg-background px-3 py-2">
       <p className="text-xs font-medium text-muted-foreground">{label}</p>
-      <p className="mt-1 break-words text-sm text-foreground">{displayValue}</p>
+      {href ? (
+        <a
+          href={href}
+          target={href.startsWith('http') ? '_blank' : undefined}
+          rel={href.startsWith('http') ? 'noreferrer' : undefined}
+          className="mt-1 block break-all text-sm text-primary underline-offset-4 hover:underline"
+        >
+          {linkText}
+        </a>
+      ) : (
+        <p className="mt-1 break-all text-sm text-foreground">{displayValue}</p>
+      )}
     </div>
   );
 }

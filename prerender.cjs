@@ -126,6 +126,19 @@ const PAGE_SEO = {
     },
     image: '/seo-images/resources-tj.jpg',
   },
+  germanLearning: {
+    title: {
+      tj: 'Немецкий язык – Как изучить немецкий быстро и эффективно',
+      de: 'Deutsch lernen – Schnell und effektiv Deutsch lernen',
+      ru: 'Как изучить немецкий быстро и эффективно',
+    },
+    description: {
+      tj: 'Русскоязычный практический раздел о двух путях изучения немецкого: языковые центры в Таджикистане и самостоятельный 30-дневный план.',
+      de: 'Russischsprachiger Praxisbereich über zwei Wege zum Deutschlernen: Sprachzentren in Tadschikistan und ein selbstständiger 30-Tage-Plan.',
+      ru: 'Практический раздел о двух путях изучения немецкого: языковые центры в Таджикистане и самостоятельный 30-дневный план.',
+    },
+    image: '/learning-images/german-learning-hero.png',
+  },
 };
 
 // Routes to generate
@@ -138,6 +151,7 @@ const routes = [
   { path: '/tj/roadmap', page: 'roadmap', lang: 'tj' },
   { path: '/tj/faq', page: 'faq', lang: 'tj' },
   { path: '/tj/resources', page: 'resources', lang: 'tj' },
+  { path: '/tj/german-learning', page: 'germanLearning', lang: 'tj' },
   
   { path: '/ru', page: 'home', lang: 'ru' },
   { path: '/ru/study', page: 'study', lang: 'ru' },
@@ -147,6 +161,7 @@ const routes = [
   { path: '/ru/roadmap', page: 'roadmap', lang: 'ru' },
   { path: '/ru/faq', page: 'faq', lang: 'ru' },
   { path: '/ru/resources', page: 'resources', lang: 'ru' },
+  { path: '/ru/german-learning', page: 'germanLearning', lang: 'ru' },
   
   { path: '/de', page: 'home', lang: 'de' },
   { path: '/de/study', page: 'study', lang: 'de' },
@@ -156,6 +171,7 @@ const routes = [
   { path: '/de/roadmap', page: 'roadmap', lang: 'de' },
   { path: '/de/faq', page: 'faq', lang: 'de' },
   { path: '/de/resources', page: 'resources', lang: 'de' },
+  { path: '/de/german-learning', page: 'germanLearning', lang: 'de' },
 ];
 
 // Main function

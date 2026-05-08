@@ -78,6 +78,7 @@ export function Header() {
     { path: '/living', label: t.nav.living },
     { path: '/roadmap', label: t.nav.roadmap },
     { path: '/resources', label: t.nav.resources },
+    { path: '/german-learning', label: t.nav.germanLearning },
     { path: '/faq', label: t.nav.faq },
   ];
 

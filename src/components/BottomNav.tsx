@@ -16,6 +16,7 @@ import {
   FileText,
   FolderOpen,
   Search,
+  Languages,
 } from "lucide-react";
 import {
   Drawer,
@@ -99,12 +100,13 @@ export function BottomNav() {
 
   const moreItems: NavDrawerItem[] = [
     { label: t.nav.resources, path: "/resources", icon: <FolderOpen className="h-5 w-5" /> },
+    { label: t.nav.germanLearning, path: "/german-learning", icon: <Languages className="h-5 w-5" /> },
     { label: "CV Generator", path: "/cv-generator", icon: <FileText className="h-5 w-5" /> },
     { label: "Ausbildung finden", path: "/ausbildung-finden", icon: <Search className="h-5 w-5" /> },
   ];
 
   const pathRoutes = ["/study", "/work", "/ausbildung", "/fsj", "/aupair", "/living"];
-  const moreRoutes = ["/resources", "/cv-generator", "/ausbildung-finden"];
+  const moreRoutes = ["/resources", "/german-learning", "/cv-generator", "/ausbildung-finden"];
   const isPathsActive = pathRoutes.includes(location.pathname);
   const isMoreActive = moreRoutes.includes(location.pathname);
 

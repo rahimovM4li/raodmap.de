@@ -241,6 +241,156 @@
     animation: fadeIn 0.4s ease-out forwards;
   }
 
+  .german-tilt-card {
+    box-shadow: var(--shadow-card);
+    transition: border-color 180ms ease, background-color 180ms ease;
+  }
+
+  .german-tilt-card > .relative {
+    transform: none;
+  }
+
+  .german-hero-stage {
+    perspective: 1100px;
+  }
+
+  .german-hero-shell {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, hsl(220 35% 97%) 0%, hsl(220 30% 95%) 42%, hsl(210 26% 98%) 100%);
+  }
+
+  .german-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(180deg, transparent 0%, black 18%, black 78%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .german-hero-band {
+    position: absolute;
+    inset: auto;
+    left: -10%;
+    width: 120%;
+    height: 240px;
+    border-radius: 999px;
+    filter: blur(38px);
+    opacity: 0.65;
+    pointer-events: none;
+    transform: rotate(-8deg);
+  }
+
+  .german-hero-band-primary {
+    top: 80px;
+    background: linear-gradient(90deg, hsl(var(--accent) / 0.08), hsl(var(--accent) / 0.16), hsl(var(--primary) / 0.08));
+  }
+
+  .german-hero-band-secondary {
+    top: 260px;
+    left: 12%;
+    width: 78%;
+    height: 180px;
+    transform: rotate(12deg);
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.07), hsl(var(--info) / 0.12), hsl(var(--primary) / 0.04));
+  }
+
+  .german-hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 20% 20%, hsl(var(--foreground) / 0.14) 0.8px, transparent 0.8px),
+      radial-gradient(circle at 80% 30%, hsl(var(--foreground) / 0.12) 0.8px, transparent 0.8px),
+      radial-gradient(circle at 40% 75%, hsl(var(--foreground) / 0.12) 0.8px, transparent 0.8px);
+    background-size: 24px 24px, 28px 28px, 32px 32px;
+  }
+
+  .german-hero-panel {
+    position: relative;
+    min-height: 390px;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid hsl(var(--border));
+    background:
+      linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--secondary) / 0.55) 100%);
+    box-shadow: var(--shadow-lg);
+    padding: 1.5rem;
+    transform: rotateX(7deg) rotateY(-10deg);
+    transform-style: preserve-3d;
+    animation: germanPanelFloat 5200ms ease-in-out infinite;
+  }
+
+  .german-hero-mobile-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--background) / 0.88);
+    box-shadow: var(--shadow-md);
+    padding: 0.625rem;
+    backdrop-filter: blur(12px);
+  }
+
+  .german-hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid hsl(var(--border) / 0.7);
+    transform: translateZ(-24px);
+  }
+
+  .german-level-chip {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    width: 8.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-radius: 0.9rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card) / 0.96);
+    padding: 0.9rem 1rem;
+    box-shadow: var(--shadow-md);
+    transform: translateZ(48px);
+    animation: germanChipFloat 4200ms ease-in-out infinite;
+  }
+
+  .german-level-chip:nth-child(2) {
+    animation-delay: 180ms;
+  }
+
+  .german-level-chip:nth-child(3) {
+    animation-delay: 360ms;
+  }
+
+  .german-level-chip:nth-child(4) {
+    animation-delay: 540ms;
+  }
+
+  .german-hero-axis {
+    position: absolute;
+    left: 15%;
+    right: 16%;
+    top: 49%;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.12), hsl(var(--accent) / 0.55), hsl(var(--success) / 0.35));
+    transform: rotate(24deg) translateZ(8px);
+  }
+
+  .german-hero-axis-secondary {
+    top: 58%;
+    opacity: 0.45;
+    transform: rotate(-19deg) translateZ(4px);
+  }
+
   @keyframes fadeUp {
     from {
       opacity: 0;
@@ -261,6 +411,24 @@
     }
   }
 
+  @keyframes germanPanelFloat {
+    0%, 100% {
+      transform: rotateX(7deg) rotateY(-10deg) translateY(0);
+    }
+    50% {
+      transform: rotateX(5deg) rotateY(-6deg) translateY(-8px);
+    }
+  }
+
+  @keyframes germanChipFloat {
+    0%, 100% {
+      transform: translateZ(48px) translateY(0);
+    }
+    50% {
+      transform: translateZ(58px) translateY(-7px);
+    }
+  }
+
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
@@ -273,6 +441,30 @@
     }
     .card-path:hover {
       transform: none;
+    }
+    .german-hero-shell {
+      background:
+        linear-gradient(180deg, hsl(220 32% 97%) 0%, hsl(220 26% 96%) 54%, hsl(0 0% 100%) 100%);
+    }
+    .german-hero-grid {
+      background-size: 34px 34px;
+      opacity: 0.4;
+    }
+    .german-hero-band {
+      height: 140px;
+      filter: blur(24px);
+      opacity: 0.36;
+    }
+    .german-hero-band-primary {
+      top: 88px;
+    }
+    .german-hero-band-secondary {
+      top: 240px;
+      width: 86%;
+      left: 7%;
+    }
+    .german-hero-noise {
+      opacity: 0.04;
     }
   }
 

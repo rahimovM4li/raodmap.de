@@ -21,6 +21,7 @@ import LivingPage from "./pages/LivingPage";
 import RoadmapPage from "./pages/RoadmapPage";
 import FAQPage from "./pages/FAQPage";
 import ResourcesPage from "./pages/ResourcesPage";
+import GermanLearningPage from "./pages/GermanLearningPage";
 import CVGeneratorPage from "./pages/CVGeneratorPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import CookiesPage from "./pages/CookiesPage";
@@ -63,6 +64,8 @@ const App = () => (
                   <Route path="/roadmap" element={<RoadmapPage />} />
                   <Route path="/faq" element={<FAQPage />} />
                   <Route path="/resources" element={<ResourcesPage />} />
+                  <Route path="/german-learning" element={<GermanLearningPage />} />
+                  <Route path="/:lang/german-learning" element={<GermanLearningPage />} />
                   <Route path="/cv-generator" element={<CVGeneratorPage />} />
                   <Route path="/privacy" element={<PrivacyPage />} />
                   <Route path="/cookies" element={<CookiesPage />} />

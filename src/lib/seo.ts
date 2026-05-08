@@ -252,6 +252,25 @@ export const PAGE_SEO: Record<string, SEOConfig> = {
     image: '/seo-images/resources-tj.jpg',
   },
 
+  germanLearning: {
+    title: {
+      tj: 'Немецкий язык – Как изучить немецкий быстро и эффективно',
+      de: 'Deutsch lernen – Schnell und effektiv Deutsch lernen',
+      ru: 'Как изучить немецкий быстро и эффективно',
+    },
+    description: {
+      tj: 'Русскоязычный практический раздел о двух путях изучения немецкого: языковые центры в Таджикистане и самостоятельный 30-дневный план.',
+      de: 'Russischsprachiger Praxisbereich über zwei Wege zum Deutschlernen: Sprachzentren in Tadschikistan und ein selbstständiger 30-Tage-Plan.',
+      ru: 'Практический раздел о двух путях изучения немецкого: языковые центры в Таджикистане и самостоятельный 30-дневный план.',
+    },
+    keywords: {
+      tj: ['немецкий язык', 'изучить немецкий', 'немецкий Таджикистан', 'A1 A2 B1 B2', 'Ausbildung язык'],
+      de: ['Deutsch lernen', 'Deutsch Tadschikistan', 'A1 A2 B1 B2', 'Ausbildung Sprache'],
+      ru: ['немецкий язык', 'как выучить немецкий', 'немецкий Таджикистан', 'A1 A2 B1 B2', 'немецкий для Ausbildung'],
+    },
+    image: '/learning-images/german-learning-hero.png',
+  },
+
   cvGenerator: {
     title: {
       tj: 'Эҷодкунандаи Lebenslauf – CV-и олмонӣ ройгон созед',

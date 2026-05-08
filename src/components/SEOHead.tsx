@@ -146,6 +146,13 @@ export function ResourcesPageSEO() {
 }
 
 /**
+ * German Learning Page SEO Component
+ */
+export function GermanLearningPageSEO() {
+  return <SEOHead pageKey="germanLearning" />;
+}
+
+/**
  * CV Generator Page SEO Component
  */
 export function CVGeneratorPageSEO() {

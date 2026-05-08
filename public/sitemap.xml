@@ -202,6 +202,29 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- German Learning Pages -->
+  <url>
+    <loc>https://roadmap.m4li.de/tj/german-learning</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://roadmap.m4li.de/tj/german-learning" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://roadmap.m4li.de/de/german-learning" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://roadmap.m4li.de/ru/german-learning" />
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/de/german-learning</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://roadmap.m4li.de/ru/german-learning</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- CV Generator Pages -->
   <url>
     <loc>https://roadmap.m4li.de/tj/cv-generator</loc>
